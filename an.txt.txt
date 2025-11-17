@@ -1,0 +1,43 @@
+nagir@D-Nagireddy MINGW64 ~/sample_repo (master)
+$ history
+    1  ssh-keygen -t ed25519 -C "srikanthgit1997@gmail.com"
+    2  cat /c/Users/nagir/.ssh/id_ed25519.pub
+    3  git clone git@github.com:srikanthgit1997/sample_repo.git
+    4  git init
+    5  pwd
+    6  ls
+    7  pwd
+    8  clear
+    9  cd sample_repo/
+   10  ls -lrt
+   11  git branch
+   12  git branch dev
+   13  git checkout -b dev
+   14  git checkout -b qa
+   15  git branch
+   16  git branch
+   17  git branch dev
+   18  git checkout -b dev
+   19  git checkout -b master
+   20  ls
+   21  git add >
+   22  git add .
+   23  git commit -m "added folder DOCS_GCP & TASKname  "
+   24  git push origin master
+   25  git branch
+   26  git checkout qa
+   27  git checkout -b qa
+   28  ls
+   29  git add .
+   30  git commit -m "added folder DOCS_GCP & TASKname  "
+   31  git commit -m "added folder DOCS_GCP & TASKname  "
+   32  git checkout master
+   33  ls -lrt
+   34  git pull
+   35  ls
+   36  ls
+   37  gid add case-study-3_dp.py sample.file.py
+   38  git add case-study-3_dp.py sample.file.py
+   39  git commit -m "adding chnages made time stamp"
+   40  git push origin master
+   41  history
