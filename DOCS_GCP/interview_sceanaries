@@ -1,0 +1,69 @@
+1. Project & ETL Pipelines:===========================
+Can you explain your project end-to-end?
+
+▶️What is the source of your data and how do you ingest it?
+where we get the data from multiple data sources such as SQL server, mysql and sometimes csv, Json, parquet in gcs. we extract the data from source using DataProc(pyspark)/dataflow(Apache beam python), On top this data are also performing transformations(such as duplicate removal, null handling, column naming, aggregations, joining, merging) and finally loading it into BigQuery as raw tables. what about now?
+
+▶️How do you perform transformations (examples)?
+I use PySpark and SQL to perform data transformations such as filtering, joins, aggregations, and data cleaning before loading the data into BigQuery.
+
+▶️What is the role of Cloud Composer in your project?
+“We use Cloud Composer to create a dags and schedule and manage our data pipelines, with retries and alerts for reliability. It keeps our BigQuery tables refreshed and ensures smooth end-to-end workflows.”
+
+▶️How do you handle pipeline failures?
+Once a pipeline fails, we rely on the configured retries and alerts in Cloud Composer. If retries don’t fix the issue, we get notified through alerts, and then we manually investigate and fix the problem before rerunning the pipeline.
+
+▶️How do you ensure data quality before loading into BigQuery?
+We ensure data quality performing transformations(such as duplicate removal,
+null handling, column naming, aggregations, joining, merging) and finally loading it into BigQuery as raw tables. 
+
+▶️2. SQL Questions:=====================================
+Write a query to get the second highest salary from an employee table.
+How do you remove duplicates in SQL?
+Difference between INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN.
+What is the difference between WHERE and HAVING?
+How do you use window functions (ROW_NUMBER, RANK, DENSE_RANK)?
+Partitioning and clustering in BigQuery – how would you use them in queries?
+▶️3. Python / PySpark:===================================
+Write a Python function to check if a string is palindrome.
+Explain the use of args and kwargs in Python.
+How do you handle null values in PySpark?
+Example of PySpark transformations: filter, select, join, groupBy, agg.
+Difference between RDD vs DataFrame in PySpark.
+▶️4. GCP Services
+What is the difference between Cloud Storage and BigQuery?
+What is Pub/Sub and how does it work?
+Explain Dataflow vs Dataproc.
+What is BigQuery clustering and when would you use it?
+How do you optimize queries in BigQuery?
+▶️5. Scenario-Based Questions
+If your pipeline fails at the last step, how will you restart only the failed task in Composer?
+If a BigQuery query is running slow, what steps will you take to improve performance?
+How would you handle schema changes (new column added in source data)?
+How do you design a pipeline for incremental loads instead of full loads?
+▶️6. General/Behavioral
+Tell me about a challenge you faced in your project and how you solved it.
+How do you prioritize tasks when you are working on multiple pipelines?
+Why do you want to join Datametica?
+
+
+
+*how did u develop the code.
+ what are the chalanges,
+ how did you fix, 
+ any optimization,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

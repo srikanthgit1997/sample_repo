@@ -1,0 +1,44 @@
+# install pyspark
+! pip install pyspark
+
+# spark session : entry point to spark functionality for your app
+
+import pyspark
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .master("local") \
+    .appName("demo") \
+    .getOrCreate()
+
+# Spark provides 3 core data structures :
+#  - RDD
+#  - DataFrame
+#  - Dataset
+
+# RDD :
+# - fundamental, low-level data structure
+# - immutable
+# - distributed
+# - parallel
+# - collection of objects
+# - no schema
+# - manual optimizations
+# - unstructured
+
+# DataFrame : built on top RDD
+# - high-level data structure
+# - immutable
+# - distributed
+# - parallel
+# - tabular format (columns, rows)
+# - schema
+# - catalyst & tungsten optimizer
+# - SQL-like operations
+# - Structured data
+# - ETL, SQL like queries, analytical workloads
+# - str+semi-str
+
+## Dataset : only for Scala & Java
+#   - both features of RDD + DataFrames
+

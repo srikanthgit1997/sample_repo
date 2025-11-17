@@ -1,0 +1,25 @@
+🔰 Python Roadmap for Beginners 🐍
+
+Setup & Installation 🖥️⚙️
+* Install Python, choose an IDE (VS Code, PyCharm)
+* Set up virtual environments for project isolation 🌎
+
+Basic Syntax & Data Types 📝🔢
+* Learn variables, numbers, strings, booleans
+* Understand comments, basic input/output, and simple expressions ✍️
+
+Control Flow & Loops 🔄🔀
+* Master conditionals (if, elif, else)
+* Practice loops (for, while) and use control statements like break and continue 👮
+
+Functions & Scope ⚙️🎯
+* Define functions with def and learn about parameters and return values
+* Explore lambda functions, recursion, and variable scope 📜
+
+Data Structures 📊📚
+* Work with lists, tuples, sets, and dictionaries
+* Learn list comprehensions and built-in methods for data manipulation ⚙️
+
+Object-Oriented Programming (OOP) 🏗️👩‍💻
+* Understand classes, objects, and methods
+* Dive into inheritance, polymorphism, and encapsulation 🔍

@@ -1,0 +1,96 @@
+🛑What is GCS ?  
+Google Cloud Storage, is a fully managed object storage service from GCP.
+It’s used to store any type of file—structured or unstructured—like CSV, JSON, videos, images, etc."
+it is a pay-as-you-go model.
+We don’t have to worry about infrastructure, like scaling, or backups, Google handles the everything.
+In GCS, everything is stored as objects inside buckets. A bucket is like a folder or container where you organize and manage your data.
+
+What is GCS ?  
+fully managed (no infra headache) 
+a service for storing :  
+any type of data,  
+any amount of data,  
+any number of files 
+===============================================================================
+🛑What are the storage classes in GCP Cloud Storage?
+1)Standard Storage → For frequently accessed data (hot data).Example: Real-time apps, websites.
+2)Nearline Storage → For data accessed once a month.Example: Backups, disaster recovery.
+3)Coldline Storage → For data accessed once a quarter (very infrequent).Example: Archival with occasional access.
+4)Archive Storage → For data accessed once a year or less (long-term archival).Example: Compliance records, medical/legal data.
+===============================================================================
+✅ Explanation: How to Create a GCS Bucket (in Console)
+1 Go to GCS Console
+Open https://console.cloud.google.com/storage/browser
+
+2 Click “Create bucket”
+
+3 Give a globally unique bucket name
+  Example: my_bkt_name9640
+  Bucket names must be unique across all of Google Cloud.
+  
+4 Choose the Location Type and Location
+  Location type: Regional or Multi-region
+  Location: For example, us-central1, asia-south1, etc.
+  
+5 Choose a Storage Class
+  Options: Standard, Nearline, Coldline, or Archive
+  Example: Select Standard (commonly used)
+  
+6 Set Access Control
+  Choose Uniform (recommended for most cases)
+  Or choose Fine-grained if you want object-level permissions
+  
+7 (Optional) Configure:
+  Encryption
+  Retention policies
+  Labels
+  
+8 Click “Create”
+ ✅ Your bucket is now ready to use!
+===============================================================================
+What is Composer? 
+Cloud Composer is a fully managed workflow orchestration service in Google Cloud.
+It is based /built on Apache Airflow (an open-source platform) designed for  
+
+✅Creating:-You write a Python script called a DAG (Directed Acyclic Graph),In that script, you list tasks (like load data, run query, send email) and their order.
+✅Scheduling :-	Set daily, hourly, or custom execution schedules
+✅Managing   :-	No need to install or manage Airflow servers yourself
+✅Monitoring complex workflows:--Get logs, retry failed tasks, set alerts
+
+✅ Common use cases for Cloud Composer include:---  
+Data processing pipelines, scheduling 
+ETL (Extract, Transform, Load) workflows,  
+Automation of routine tasks. 
+Infrastructure Automation 
+================================================================================
+✅COMMON TRANSFORMATION OPERATIONS:----------------------------
+1. Filtering
+▶️Keep only relevant rows.
+▶️Example: Only employees with salary > 50,000
+
+2. Renaming Columns
+▶️Make names cleaner or standard.
+▶️Example: emp_id → employee_id
+
+3. Changing Data Types
+▶️Convert a string date to actual date format.
+▶️Example: "2025-08-01" → DateType
+
+4. Aggregations
+▶️Sum, average, count, max, min
+▶️Example: Total sales per region
+
+5. Joining Data
+▶️Combine multiple datasets
+▶️Example: Join employee table with department table
+
+6. Dropping Nulls / Filling Defaults
+▶️Remove bad records or fill with defaults
+▶️Example: Replace null city with "Unknown"
+
+7. Adding Calculated Columns
+▶️Derive new columns from existing ones
+▶️Example: age = current_date - date_of_birth
+
+8. Removing Duplicates
+▶️Keep only unique records

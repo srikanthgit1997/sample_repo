@@ -1,0 +1,184 @@
+★MODULE 1: INTRODUCTION TO LAKEHOUSE ARCHITECTURE 
+
+What is Lakehouse Architecture? 
+Difference Between:  
+Data Lake 
+Data Warehouse 
+Data Lakehouse 
+
+★Module 2: Introduction to Databricks 
+
+Overview of Databricks 
+Databricks Architecture 
+Setting up a Databricks Workspace on GCP/Azure/Express 
+
+★Module 3: Unity Catalog - Unified Data Governance 
+
+(a)Introduction to Unity Catalog 
+
+(b)Core Concepts:  
+Metastore  
+Catalog  
+Schema  
+Tables 
+Volumes 
+Functions 
+Models 
+
+★External Data Access  
+Storage Credentials 
+External Locations (S3, GCS, ADLS) 
+Lakehouse Federation  
+Foreign Catalog 
+Connection 
+
+★Delta Sharing  
+Share 
+Recipient 
+Provider 
+
+★Module 4: Databricks Clusters 
+
+Introduction to Clusters 
+Types of Clusters 
+Cluster Modes 
+
+★Module 5: Databricks Notebooks 
+
+Creating Your First Notebook 
+Attaching a Cluster 
+Notebook Magic Commands 
+Notebook Versioning 
+
+★Module 6: DBUtils Commands 
+
+File handling,  
+Notebook  
+Widgets 
+Secrets 
+
+★Module 7: Introduction to Delta Lake 
+
+What is Delta Lake? 
+Creating Delta Lake Tables  
+Managed Tables 
+External Tables 
+Understanding Delta Lake Table Creation  
+Delta Log 
+Parquet Data Files 
+Advanced Delta Lake Features  
+Versioning 
+Time Travel 
+Compacting 
+Indexing 
+Vacuum 
+
+ 
+
+Module 8: Structured Streaming with Databricks 
+
+(a)Structured Streaming Overview 
+(a) Load sample data 
+(b) Initialize a stream 
+(c) Start a stream job 
+(d) Query a stream 
+(e) Write to storage/tables 
+★Trigger modes 
+Default 
+Fixed Interval 
+Triggered batch 
+Triggered micro-batches 
+★Output modes: 
+Complete 
+Append 
+
+MODULE 9: INCREMENTAL DATA LOADING WITH AUTO LOADER 
+
+★How does Auto Loader work:--
+
+Auto Loader automatically detects new files arriving in cloud storage.
+It processes files incrementally, avoiding reprocessing of old files.
+Supports streaming or micro-batch ingestion.
+
+★Incremental ingestion:-----
+
+Only new or changed data is loaded.
+Checkpoints keep track of processed files.
+Saves time and compute resources.
+
+★Configuring Auto Loader to read new files:-----
+
+Use .readStream.format("cloudFiles") in Databricks.
+Specify the file format (csv, json, parquet) using cloudFiles.format.
+
+Example:
+
+df = spark.readStream.format("cloudFiles") \
+      .option("cloudFiles.format", "csv") \
+      .option("cloudFiles.inferColumnTypes", "true") \
+      .load("/mnt/data/patient_claims/")
+
+
+★Write the data incrementally into a Delta table:----
+
+Use .writeStream.format("delta") to append new data to a Delta table.
+Provide a checkpoint location to track progress.
+Example:
+
+df.writeStream.format("delta") \
+    .option("checkpointLocation", "/mnt/checkpoints/patient_claims/") \
+    .outputMode("append") \
+    .table("patient_claims_delta")
+	
+★Summary / Flow
+Files arrive in cloud storage → Auto Loader detects new files → Reads as stream → Appends to Delta table → Checkpoint ensures no duplicates.
+=============================================================================
+
+MODULE_10 DATABRICKS WORKFLOWS:---
+🔹 Databricks Jobs – Key Features
+
+★ Creating a Job
+
+A job in Databricks is a task or workflow that runs notebooks, scripts, or queries.
+Example: ETL pipeline to clean patient data daily.
+
+★ Viewing Jobs and Job Details
+
+Check job’s configuration, runs, owner, and cluster type.
+Helps track who scheduled it, when it runs, and what it triggers.
+
+★ Running Your First Job
+
+Jobs can be run manually (on-demand) or automatically (scheduled).
+Example: Run a PySpark notebook to process CSV files in GCS.
+
+★ Scheduling Jobs
+
+Schedule jobs to run at fixed intervals (hourly, daily, weekly).
+Example: Load patient claims data every night at 1 AM.
+
+★ Setting Parameters
+
+Pass input parameters (file path, date, hospital ID).
+Makes jobs reusable for different datasets without modifying code.
+
+★ Viewing Completed Jobs
+
+After execution, view status (success/failure), logs, and execution time.
+Useful for debugging failed runs.
+
+★ Managing Dependencies
+
+Define jobs that run in sequence (multi-task jobs).
+
+Example:
+
+Ingest hospital data
+Clean and transform data
+Load into BigQuery
+
+★ Setting up Alerts
+
+Configure email/Slack alerts for failures or delays.
+
+Critical in healthcare → ensures compliance pipelines don’t silently fail.

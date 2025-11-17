@@ -1,0 +1,194 @@
+▶️GLOBESTAR SOFTWARE LIMITED –BENGALURU  GLOBESTAR SOFTWARE LIMITED  PVT LTD, NO 703, MANJALY EDIFACE, 3RD CROSS, 1ST BLOCK, HRBR LAYOUT, KALYAN NAGAR, BENGALURU 560043
+Capgemini →→→→→→→→→→→→→→→→→→→→(From Oct 2021 to 14-March-2024).
+GLOBESTAR SOFTWARE LIMITED→→→→MARCH 15, 2024 – PRESENT
+CURRECT CTC →→→→→→→→→→→→→→→→→→12.6
+CURRENTLY IM WORKING WITH →→→→CVS HEALTH.
+GLOBESTAR SOFTWARE LIMITED →→→PAYROLL
+CVS →→→→→→→→→→→→→→→→→→→→→→→→→→CLIENT
+
+▶️Project -1  :  
+
+My name is "Srikanth reddy", 
+i have completed my MCA from "Newtons institute of engineering college" from JNTUK in 2020   
+i have total "4.2+" years of It experience.
+from last "2.5" years i have been working in google cloud projects  as a data engineer.
+
+▶️“Coming to my Skills:=================================
+“My skills are Python and SQL, BigQuery, building ETL pipelines with Airflow/Cloud Composer, and working on GCP services like GCS, Dataflow, and Pub/Sub. I also use PySpark and SQL to perform data transformations such as filtering, joins, aggregations, and data cleaning before loading data into BigQuery.”
+(OR)
+
+Programming: Python (for data pipelines, scripting, and automation).
+SQL: Strong in writing complex queries, optimizing performance in BigQuery / Teradata.
+Data Warehousing: Experience with BigQuery (and some exposure to Teradata).
+ETL / Orchestration: Creating data pipelines using Airflow / Cloud Composer by writing DAGs for ingestion, transformation, and loading. ✅
+Cloud Platforms: Hands-on with Google Cloud (GCS, BigQuery, Dataflow, Pub/Sub).
+Data Transformation: Using PySpark and SQL, and BigQuery for cleaning and processing data.
+
+
+I have worked as a Data Engineer on Healthcare Data Integration and Migration project for CVS Health. where we get the data from multiple data sources such as SQL server, mysql and sometimes csv, Json, parquet in gcs.
+
+we extract the data from source using DataProc(pyspark)/dataflow(Apache beam python),
+On top this data are also performing transformations(such as duplicate removal,
+null handling, column naming, aggregations, joining, merging) and finally loading it into BigQuery as raw tables. 
+
+
+▶️ Final Healthcare Project Explanation (with Medallion Architecture)
+
+⭐ I have been working as a Data Engineer on a Healthcare Data Integration and Migration project for CVS Health.
+⭐ The main goal was to centralize data coming from different hospitals and systems into a GCP-based data lake, so that the analytics team could use it for reporting and compliance.
+
+✅ We had multiple data sources — SQL Server, MySQL, and semi-structured files like CSV, JSON, and Parquet stored in GCS.
+✅ we extract the data from source using DataProc(pyspark)/dataflow(Apache beam python), depending on the use case.
+
+✅ On top this data are also performing transformations
+Removing the dulicate values,
+null handling,
+column naming, 
+aggregations with group by, 
+joining, merging) and finally loading it into BigQuery as raw tables.
+
+✅ We followed a Medallion Architecture to organize the pipeline:
+
+Bronze layer → stored raw ingested data from Cloud SQL, GCS, and APIs
+Silver layer → contained cleaned, standardized, and enriched data after transformations
+Gold layer → stored aggregated and business-ready data, used by BI teams for dashboards and compliance reporting
+
+✅ Everything was loaded and managed in BigQuery:
+
+Starting from raw Bronze tables
+Moving to curated Gold tables
+Optimized with partitioning, clustering, and tuning to reduce cost and improve performance
+
+✅ All workflows were automated using Cloud Composer (Airflow):
+
+I created DAGs
+Defined task dependencies
+Added monitoring and alerting for reliability
+
+✅ One challenge I faced was inconsistent healthcare data across hospitals:
+
+Different hospitals used different coding standards for diagnoses and procedures
+To solve this, I integrated CPT, ICD, and NPI APIs to standardize the data, ensuring accurate reporting and HIPAA compliance
+
+✅ Overall outcomes:
+
+Built secure, scalable, end-to-end data pipelines
+Ensured data quality and standardization
+Enabled analytics on GCP for compliance and reporting
+
+✅ Now your project story:
+
+Includes Medallion Architecture (Bronze → Silver → Gold).
+Highlights real-time healthcare challenges (coding inconsistencies).
+Shows end-to-end ownership (sources → processing → BigQuery → BI).
+Covers modern best practices (automation, optimization, compliance).
+======================================================================================
+I have been working as a Data Engineer on Healthcare Data Integration and Migration project for CVS Health. The main goal was to centralize data coming from different hospitals and systems into a GCP-based data lake, so that the analytics team could use it for reporting and compliance. We had multiple data sources — SQL Server, MySQL, and semi-structured files like CSV, JSON, and Parquet stored in GCS. To extract and process this data, we used Dataproc with PySpark and sometimes Dataflow with Apache Beam in Python, depending on the use case. Once the data was ingested, I was responsible for applying transformations. For example, I handled duplicate removal, null value handling, column standardization, and also performed joins and aggregations to make the data consistent across sources. After processing, we loaded everything into BigQuery — starting with raw tables, and then moving into curated and analytics-ready layers using a medallion architecture. We automated all the workflows using Cloud Composer (Airflow), which helped us schedule jobs, manage dependencies, and set up monitoring and alerts. I also worked on query optimization in BigQuery — using clustering, partitioning, and tuning — which helped us cut down on query costs significantly. One real challenge I faced was dealing with inconsistent healthcare data across hospitals. For example, different hospitals used different coding standards for procedures and diagnoses. To solve this, I integrated external APIs like CPT, ICD, and NPI to standardize the data, which made reporting accurate and compliant with HIPAA. Overall, this project gave me strong experience in building end-to-end data pipelines, ensuring data quality, and enabling secure, scalable analytics on GCP."* in this project whee can i add medalian architecture give this explanations
+======================================================================================
+✅ Example: Interview-Ready Answer (PySpark Use Case)
+
+          "In my projects, I use PySpark mainly for building scalable ETL pipelines. For example, I perform transformations like removing duplicates, handling null values, renaming columns, joins, unions, and aggregations using group by. Since we deal with large datasets in GCS, I also optimize performance by using partitioning and caching. In one case, for the Healthcare project, I used PySpark in Dataproc to clean and standardize patient records before loading them into BigQuery, which made downstream analytics much more efficient."
+
+I am working on google cloud projects, In this project, we have implemented a data pipeline to ingest data from an Application API using a Python script. This script is scheduled to run as a part of DAG in Cloud Composer. Once the Python script retrieves the data, it is stored in Google Cloud Storage as a CSV file. 
+
+      after creation of the CSV file in the Cloud Storage bucket, a Cloud Function is triggered. This Cloud Function automatically submits a beam job to Dataflow, which is configured to load the data from Cloud Storage into BigQuery. 
+
+ on top of the BigQuery table, we have created dashboards using Looker, These dashboards provide stakeholders with interactive visualizations, enabling them to derive valuable insights and make informed decisions based on the processed data. 
+
+ ==========================================================================================================================================
+Project -1 :Healthcare Data Integration and Migration project  
+
+My name is "Srikanth reddy", 
+i have completed my MCA from "Newtons institute of engineering college" in 2020  
+i have total "4.1" years of It experience.
+from last "2.5" years i have been working in google cloud projects  as a data engineer.
+
+▶️“Coming to my Skills:=================================
+“My skills are Python and SQL, BigQuery, building ETL pipelines with Airflow/Cloud Composer, and working on GCP services like GCS, Dataflow, and Pub/Sub. I also use PySpark and SQL to perform data transformations such as filtering, joins, aggregations, and data cleaning before loading data into BigQuery.”
+(OR)
+ 
+     I have worked as a Data Engineer on Healthcare Data Integration and Migration project for CVS Health.
+
+
+=============================================================================
+✅ So your complete Data Engineer topic coverage would look like this:
+
+▶️ BigQuery Work
+▶️ SQL Work
+▶️ Python with Composer/Airflow
+▶️ Pub/Sub Work
+▶️ Dataflow (Apache Beam)
+▶️ PySpark (Dataproc)
+▶️ Cloud Storage (GCS)
+▶️ Composer (Orchestration)
+▶️ IAM & Security (HIPAA compliance)
+▶️ Monitoring & Logging
+============================================================================================================
+▶️BIGQUERY WORK:----
+“Yes, I have hands-on experience in BigQuery. I have worked on writing SQL queries, creating partitioned and clustered tables, and building ETL pipelines using Cloud Composer and GCSToBigQueryOperator to load data from GCS to BigQuery. I also implemented transformations directly in BigQuery using SQL and optimized queries for performance and cost. Additionally, I integrated BigQuery with reporting tools for business dashboards.”
+
+*"In my healthcare project, my main work with BigQuery was to design and manage the data warehouse. I created datasets and structured the data into fact and dimension tables following a medallion approach — raw, staging, and curated.
+
+I wrote complex SQL queries for data transformations, aggregations, and joins, and optimized them using partitioning on date fields and clustering on attributes like hospital ID and claim ID.
+
+I also implemented row-level security and IAM roles to protect sensitive patient data, since compliance with HIPAA was critical. Finally, I prepared curated BigQuery tables that were used by analysts and BI teams to build dashboards for claims and revenue insights."*
+============================================================================================================ 
+▶️SQL IN HEALTHCARE PROJECT:----
+Yes, I have strong hands-on experience in SQL. In my healthcare project, I used SQL extensively to write complex queries for data transformations, such as removing duplicates, handling nulls, renaming columns, and performing aggregations. I also created joins between patient, claims, and hospital transaction tables to build fact and dimension models.
+
+I optimized queries for better performance by using proper indexing in Cloud SQL, avoiding unnecessary subqueries, and applying partitioning and clustering strategies when querying BigQuery. Additionally, I used SQL scripts inside Cloud Composer DAGs as part of the ETL process, and the curated SQL outputs were later used by analysts and BI teams for revenue and claims dashboards."*
+============================================================================================================
+▶️PYTHON WITH AIRFLOW / COMPOSER
+⭐ “In Cloud Composer, I defined my DAGs using Python. First, I imported the required Airflow modules like DAG and operators such as BashOperator or GCSToBigQueryOperator. Then I set the default arguments, which included things like the owner, retry policy, and alerting emails.
+
+⭐ Next, I defined the DAG itself, giving it a name, schedule interval, and start date. Inside the DAG, I created my tasks. For example, I had an extract task to pull data from Cloud SQL into GCS, two separate transform tasks — one for claims data and one for patient data using PySpark jobs — and finally a GCSToBigQuery task to load the processed data into BigQuery.
+
+⭐ After defining the tasks, I set up the task dependencies. For example, I wrote: extract_task >> [claims_transform_task, patient_transform_task] >> load_to_bq_task. This means that extraction runs first, then the claims and patient transformations run in parallel, and once both are complete, the load-to-BigQuery task executes.
+============================================================================================================
+▶️(PUB/SUB WORK IN HEALTHCARE)
+"In my healthcare project, we used Pub/Sub to stream hospital and claims events into Dataflow, which transformed and loaded them into BigQuery in real time for reporting and dashboards."
+
+    Yes, I have used Google Pub/Sub in my healthcare project for real-time data streaming. For example, whenever a new claim record or patient transaction was generated in the hospital system, the event was published to a Pub/Sub topic.
+
+Our Dataflow pipeline subscribed to that topic, picked up the messages immediately, applied transformations like data validation and formatting, and then loaded the data into BigQuery. This allowed us to process claims and patient records in near real time, instead of waiting for batch uploads.
+
+The main benefit was decoupling the data producers, like hospital applications, from consumers, like Dataflow or BigQuery, ensuring scalability and reliability. Even if the downstream pipeline was down temporarily, Pub/Sub guaranteed that no data was lost."*
+===========================================================================================================
+▶️ Dataflow / Apache Beam Work
+
+"In my project, I used Dataflow (Apache Beam – Python) for batch and streaming pipelines. For example, we subscribed to Pub/Sub topics for real-time claim events, applied transformations such as data validation, enrichment, and schema mapping, and then wrote the results into BigQuery. For batch jobs, I used Dataflow to process files from GCS, clean them, and load them into staging tables. This helped us achieve scalable and reliable processing for both real-time and batch workloads."
+===========================================================================================================
+▶️ PySpark / Dataproc Work
+
+"I have experience using PySpark on Dataproc for large-scale data transformations. For example, we processed EMR data from Cloud SQL databases and claims flat files from GCS. Using PySpark, I performed deduplication, null handling, joins, unions, and aggregations before writing the processed data back into GCS or directly into BigQuery. This was especially useful for handling heavy transformations on large datasets."
+===========================================================================================================
+▶️ Cloud Storage (GCS) Work
+
+"I used GCS as the landing and staging area for all incoming data. Source systems like Cloud SQL, flat files, and APIs pushed data into GCS buckets. I organized data into Bronze, Silver, and Gold layers and applied lifecycle policies for retention. GCS also integrated well with Composer and BigQuery for automated ingestion."
+===========================================================================================================
+▶️ Cloud Composer (Airflow) Orchestration
+
+"In my healthcare project, I used Cloud Composer to orchestrate end-to-end workflows. I created DAGs with dependencies, used operators like GCSToBigQuery, PythonOperator, and Dataflow operators, and automated error handling, retries, and alerting. This ensured our pipelines ran in the right order and met SLAs."
+===========================================================================================================
+▶️ IAM & Security (HIPAA)
+
+"Yes, in IAM we can control all permissions using roles. The basic roles are Owner, Editor, and Viewer — Owner has full control, Editor can modify resources but not manage IAM itself, and Viewer has read-only access.
+
+"I implemented IAM policies to control access at project, dataset, and bucket levels. Analysts had read-only roles, engineers had editor roles in dev/test, and service accounts were used for pipelines. In BigQuery, I applied row-level security and column-level access controls to restrict sensitive patient information, ensuring HIPAA compliance."
+===========================================================================================================
+▶️ Monitoring & Logging
+
+"I used Stackdriver (Cloud Logging & Monitoring) to track pipeline execution and errors. We set up alerts for job failures, slow queries, or missing files. This helped in proactive troubleshooting and ensuring reliability in production pipelines."
+===========================================================================================================
+▶️TCS is looking for GCP Data Engineer 
+Proficiency in programming languages: Python, Java
+Expertise in data processing frameworks: Apache Beam (Data Flow)
+Active experience on GCP tools and technologies like Big Query, Dataflow, Cloud Composer, Cloud Spanner, GCS, DBT etc.,
+Data Engineering skillset using Python, SQL
+Experience in ETL (Extract, Transform, Load) processes
+Knowledge of DevOps tools like Jenkins, GitHub, Terraform is desirable. Should have good knowledge on Kafka (Batch/ streaming)
+Understanding of Data models and experience in performing ETL design and build, database replication using Message based CDC
+Familiarity with cloud storage solutions
+Strong problem-solving abilities in data engineering challenges
+Understanding of data security and scalability
+Proficiency in relevant tools like Apache Airflow

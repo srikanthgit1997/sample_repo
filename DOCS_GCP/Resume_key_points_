@@ -1,0 +1,97 @@
+Hands-on experience in Teradata or BigQuery (at least one is mandatory):----------
+
+“Yes, I have hands-on experience in BigQuery. I have worked on writing SQL queries, creating partitioned and clustered tables, and building ETL pipelines using Cloud Composer and GCSToBigQueryOperator to load data from GCS to BigQuery. I also implemented transformations directly in BigQuery using SQL and optimized queries for performance and cost. Additionally, I integrated BigQuery with reporting tools for business dashboards.”
+
+Ability to debug code and drive fixes end-to-end into production:-------------
+
+cloud_composer:---
+👉 “Building ETL pipelines using Cloud Composer means creating and scheduling data pipelines (DAGs) in Airflow to extract data from sources, apply transformations, and load the final data into BigQuery or other storage systems in an automated and reliable way.”
+
+▶️i have resigned at that time due to health issue(kidney ston e) now i have been recovered looking for job change now .
+
+
+▶️ Your Command History with Purpose
+
+gcloud auth list
+🔹 Shows all authenticated accounts currently active in your Cloud SDK.
+(Checks which Google account is being used.)
+
+gcloud config set project gcp-morning-batch-740
+🔹 Sets the active project where all your gcloud, bq, and gsutil commands will run.
+
+gcloud config list
+🔹 Displays the current configuration (account, project, region, zone).
+
+gsutil ls
+🔹 Lists all Cloud Storage buckets in your project.
+
+bq ls
+🔹 Lists all datasets available in your active BigQuery project.
+
+bq --location=asia-south1 mk --dataset sample_dataset
+🔹 Creates a new dataset called sample_dataset in asia-south1 region.
+
+bq --location=asia-south1 mk --dataset sample_dataset2
+🔹 Creates another dataset called sample_dataset2 in the same region.
+
+▶️history / doskey /history
+🔹 Shows the command history of your current Cloud SDK session (Windows).
+
+gcloud auth list                                           # Check authenticated accounts
+gcloud config set project gcp-morning-batch-740            # Set active project
+gcloud config list                                         # View current configuration
+gsutil ls                                                  # List Cloud Storage buckets
+bq ls                                                      # List datasets in BigQuery
+bq --location=asia-south1 mk --dataset sample_dataset      # Create dataset 1
+bq --location=asia-south1 mk --dataset sample_dataset2     # Create dataset 2
+history / doskey /history                                  # Show command history
+
+▶️the hierarchy creating the Project → Dataset → Table → Rows/Columns (data)
+Yes ✅ your understanding is correct. The order in BigQuery (and GCP) usually goes like this:
+Create a Project → Every resource in GCP must belong to a project (this gives you a unique project_id).
+Create a Dataset → Inside the project, you create a dataset (like a folder) to logically group your tables.
+Create a Table → Inside the dataset, you create tables to actually store the data.
+👉 So the hierarchy is:
+Project → Dataset → Table → Rows/Columns (data)
+Example:----my_project_id.my_dataset.my_table
+
+2. Format
+
+This round is usually a Technical Interview (since the 1st round was an online test).
+
+Typical focus areas:
+Your project explanation → ETL pipelines, Cloud Composer, BigQuery, Dataflow, GCS, Pub/Sub.
+SQL and Python coding → live coding/sharing screen or verbal explanation.
+Scenario-based questions → e.g., “What if your pipeline fails?”, “How would you optimize a BigQuery query?”
+GCP concepts → clustering vs partitioning, streaming vs batch, etc.
+
+🔹 ETL Flow (from your description)
+
+Extract → from SQL Server, MySQL, and file formats in GCS.
+Transform → using Dataproc (PySpark) or Dataflow (Apache Beam Python) to clean and process (remove duplicates, null handling, renaming, joins, aggregations).
+Load → into BigQuery (raw tables → insight tables).
+Orchestration → using Cloud Composer (Airflow) for scheduling, retries, alerts.
+
+Today_covered_topic:========Airflow or cloud_composer.
+22/08/25:===================BigQuery&about project
+23/08/25:===================SQL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+▶️Example: Ride-Hailing App (like Uber/Ola)
+
+1. Publisher 🚕
+
+When a customer books a ride, the app publishes a message:
+
+{
+  "ride_id": "R123",
+  "user_id": "U456",
+  "pickup": "Bangalore",
+  "drop": "Airport",
+  "time": "2025-09-19T10:30:00Z"
+}
+
+
+2. Topic 🎯
+
+The message goes into a Pub/Sub topic called "rides-topic".
+
+3. Subscribers 👇
+
+Billing service → subscribes to "rides-topic" and processes the payment.
+Driver-matching service → subscribes and assigns a driver.
+Analytics pipeline (Dataflow → BigQuery) → subscribes and stores ride data for reporting.
+
+✅ So, one published event → multiple subscribers handle it independently.
+
+⚡ Interview one-liner:
+
+“For example, in a ride-hailing app, when a ride is booked, the app publishes the event to a Pub/Sub topic. Different subscribers like billing, driver assignment, and analytics pipelines receive the same message in real time.”

@@ -1,0 +1,20 @@
+📢 Important Notes:
+< means left value must be smaller than right value.
+
+> means left value must be bigger than right value.
+
+<= means left value can be smaller or equal.
+
+>= means left value can be bigger or equal.
+
+
+✅ Summary:
+
+< — left smaller
+
+> — left bigger
+
+<= — left smaller or equal
+
+>= — left bigger or equal
+

@@ -1,0 +1,29 @@
+Absolutely! You can summarize your Healthcare RCM Data Lake project in resume-friendly bullet points that highlight your skills, technologies, and impact. Here's a polished version:
+
+• Designed and implemented a Data Lake for Revenue Cycle Management (RCM) on Google Cloud Platform (GCP), centralizing data from multiple hospitals and insurance sources.
+• Built ETL pipelines using PySpark and Dataproc to extract, transform, and load EMR and claims data into structured fact and dimension tables in BigQuery.
+• Implemented Medallion Architecture (Bronze → Silver → Gold) for layered data processing, ensuring clean, enriched, and business-ready datasets.
+• Applied Slowly Changing Dimensions (SCD Type 2) to maintain historical changes in patient and transaction data.
+• Developed metadata-driven ETL pipelines for scalable and dynamic workflow execution, reducing manual intervention.
+• Integrated external healthcare datasets via APIs for CPT, ICD, and NPI codes, standardizing procedures, diagnoses, and provider information.
+• Automated ETL orchestration using Cloud Composer (Apache Airflow) to manage dependencies and schedule pipelines.
+• Implemented data quality and validation checks to handle missing values, duplicates, and incorrect formats.
+• Leveraged CI/CD with GitHub and Cloud Build to enable automated deployment and version control for data pipelines.
+• Configured logging, monitoring, and error handling to track pipeline performance and alert on failures.
+• Ensured data security and compliance with HIPAA standards using IAM roles and access controls.
+• Delivered analytics-ready gold tables in BigQuery to enable KPI dashboards, revenue analysis, and claims processing optimization.
+
+
+
+• Built a Revenue Cycle Management (RCM) Data Lake on GCP using Cloud Storage, BigQuery, Dataproc, Cloud Composer, and Cloud SQL to centralize multi-hospital EMR and claims data.
+• Developed PySpark ETL pipelines performing data ingestion, cleansing, transformation, aggregation, and SCD Type 2 to maintain historical patient and transaction records.
+• Implemented Medallion Architecture (Bronze → Silver → Gold) to deliver analytics-ready datasets for reporting and KPI dashboards.
+• Integrated external healthcare standards via CPT, ICD, and NPI APIs, ensuring standardized procedures, diagnoses, and provider information.
+• Automated workflow orchestration and scheduling using Cloud Composer (Apache Airflow) with logging, monitoring, and error handling for pipeline reliability.
+• Ensured data quality, validation, security, and HIPAA compliance while optimizing BigQuery queries for efficient analytics.
+
+Bengaluru Branch
+Globestar Groupage Services Pvt Ltd
+No 703, Manjaly Ediface,
+3rd Cross, 1st Block, HRBR Layout
+Kalyan Nagar, Bengaluru 560043

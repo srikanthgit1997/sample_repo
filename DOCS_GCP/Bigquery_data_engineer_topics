@@ -1,0 +1,110 @@
+15. What is the purpose of partitioning tables in BigQuery?
+A partitioned table is divided into segments, called partitions, that make it easier to manage and query our data. By dividing a large table into smaller partitions, we can improve query performance.
+
+
+Why is partitioning important in BigQuery?
+By dividing a large table into smaller partitions, you can improve query performance and control costs by reducing the number of bytes read by a query.
+
+
+16. Explain the concept of clustering in BigQuery.
+Answer: Clustering involves organizing the data within a partitioned table using one or more columns as clustering keys. It helps physically group similar data together, reducing the need to scan unrelated data during queries and improving query performance.
+
+Clustered tables in BigQuery are tables that have a user-defined column sort order using clustered columns
+
+
+1. How do you load data into BigQuery?
+Answer: Data can be loaded into BigQuery using methods like batch loading (using bq load command or UI), streaming (using the streaming API), and federated queries (using external tables).
+
+
+2. What are the advantages of using BigQuery for analyzing large datasets compared to traditional databases?
+Answer: BigQuery offers serverless architecture, scalability, high-performance analytics, and supports SQL-like queries. It can handle massive datasets without the need for managing infrastructure.
+
+
+3. Explain the concept of nested and repeated fields in BigQuery.
+Answer: Nested fields allow you to create structures within columns, like having a JSON object inside a column. Repeated fields allow arrays of values within a column, which is useful for scenarios where one column may contain multiple values.
+
+
+4. How can you improve query performance in BigQuery?
+Answer: Query performance can be improved by using partitioning and clustering, optimizing SQL queries, avoiding SELECT * statements, and caching frequently used queries.
+
+
+5. What is the difference between Legacy SQL and Standard SQL in BigQuery?
+Answer: Legacy SQL was the original query language for BigQuery, while Standard SQL is ANSI SQL compliant. Standard SQL provides better syntax, more features, and is recommended for new projects.
+
+
+6. How can you control access and permissions to datasets and tables in BigQuery?
+Answer: Access and permissions can be controlled using Google Cloud IAM roles. You can assign roles such as Owner, Editor, and Viewer at the dataset and table levels.
+
+
+7. Can you explain the process of exporting query results from BigQuery?
+Answer: Query results can be exported to Google Cloud Storage, Google Sheets, or other supported destinations using the bq extract command or UI.
+
+
+8. How does BigQuery handle JOIN operations on large datasets?
+Answer: BigQuery uses distributed JOINs to optimize performance on large datasets. It distributes the data across multiple machines, processes JOINs in parallel, and then combines the results.
+
+
+9. What are streaming inserts in BigQuery?
+Answer: Streaming inserts allow you to insert data into BigQuery tables in real-time. This is useful for capturing live data events and having them immediately available for analysis.
+
+
+10. How can you control and manage costs when using BigQuery?
+Answer: You can manage costs by monitoring query usage and optimizing queries to reduce data processed. Additionally, you can use reservation pricing or flat-rate pricing to control costs.
+
+
+11. Explain the concept of materialized views in BigQuery.
+Answer: Materialized views are precomputed, optimized query results that are stored in BigQuery. They help improve query performance by avoiding the need to recompute complex aggregations or joins.
+
+
+12. What is the purpose of the BigQuery ML service?
+Answer: BigQuery ML allows you to build and execute machine learning models using SQL queries. It's integrated with BigQuery and enables data scientists to perform machine learning tasks directly on their data.
+
+
+13. What is Google BigQuery, and what are its advantages?
+Answer: Google BigQuery is a fully-managed, serverless data warehouse that allows users to run SQL-like queries on large datasets for analysis. Advantages include its scalability, high-speed query performance, serverless architecture, and seamless integration with other Google Cloud services.
+
+
+14. How does BigQuery handle data storage?
+Answer: BigQuery uses columnar storage, which stores data in columns rather than rows. This storage format allows for efficient compression, faster query performance, and the ability to read only the columns needed for a particular query, reducing data transfer overhead.
+
+
+17. How does BigQuery handle data ingestion for real-time use cases?
+Answer: BigQuery supports real-time data ingestion through streaming. Data can be streamed using the BigQuery Streaming API. Streaming allows for immediate availability of data in queries but comes with higher costs compared to batch loading.
+
+
+18. What is a federated query in BigQuery?
+Answer: A federated query in BigQuery refers to querying data stored in external data sources, such as Cloud Storage or other databases, without loading it into BigQuery. This can be useful when working with data that doesn't need to be fully integrated into BigQuery.
+
+
+19. How does BigQuery optimize query performance?
+Answer: BigQuery optimizes query performance through various techniques, including:
+•	Columnar storage for efficient data retrieval.
+•	Parallel processing for query execution.
+•	Automatic query optimization based on the query's structure.
+•	Caching frequently queried results.
+•	Storage management, such as partitioning and clustering.
+
+
+20. What are some security features in BigQuery?
+Answer: BigQuery offers several security features, such as:
+•	Identity and Access Management (IAM) for controlling access.
+•	Dataset and table-level access controls.
+•	Encryption of data at rest and in transit.
+•	Audit logs for tracking user activities.
+•	VPC Service Controls for network isolation.
+
+
+21. How can you control costs while using BigQuery?
+Answer: To manage costs in BigQuery:
+•	Use partitioning and clustering to reduce data scanned.
+•	Write efficient queries that retrieve only necessary data.
+•	Monitor query usage to identify costly or inefficient queries.
+•	Consider using flat-rate pricing for predictable costs.
+•	Automate the process of turning off unused resources.
+
+
+22. Can you give an example of a window function in BigQuery?
+Answer: Sure, a common window function in BigQuery is the ROW_NUMBER() function. It assigns a unique sequential integer to each row within a partition of a result set. For instance:
+sqlCopy code
+SELECT name, score, ROW_NUMBER() OVER (PARTITION BY category ORDER BY score DESC) AS rank FROM scores; 
+This query assigns ranks to individuals based on their scores within each category.

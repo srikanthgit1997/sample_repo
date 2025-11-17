@@ -1,0 +1,124 @@
+6-Week Python Learning Roadmap – Beginner Friendly 
+
+Guys, if you’ve been wanting to start learning Python but didn’t know where to begin, here’s a simple, structured 6-week plan to go from ZERO to writing your own Python projects!
+
+No fluff. Just pure learning with practice!
+
+ Week 1: Python Basics – Lay the Foundation 
+
+Install Python & set up your IDE (VS Code or Jupyter Notebook)
+
+Learn:
+
+- Variables & Data Types
+
+- Input / Output
+
+- Operators
+
+- Conditional Statements (if-elif-else)
+
+- Loops (for, while)
+
+
+ Mini Project: Build a simple number guessing game
+
+
+ Week 2: Data Structures – Your Python Toolbox 
+
+Master:
+
+- Lists & Tuples
+
+- Dictionaries & Sets
+
+- String Manipulation
+
+
+Understand slicing, indexing & common methods
+
+ Practice :
+
+- Reverse a string
+
+- Sort a list
+
+- Remove duplicates from a list
+
+
+
+ Week 3: Functions & Modules – Code Like a Pro 
+
+Write your own functions & Understand:
+
+- Parameters & Return values
+
+- Lambda functions
+
+- Python Modules (math, random, etc.)
+
+
+ Challenge :
+
+- Create a BMI Calculator
+
+- Build a simple password generator
+
+
+
+ Week 4: Object-Oriented Programming (OOP) – Think in Objects 
+
+Learn:
+
+- Classes and Objects
+
+- Constructors (init)
+
+- Inheritance
+
+- Method Overriding
+
+
+ Practice :
+
+- Build a class for Bank Account or Student Record System
+
+
+ Week 5: Real-World Essentials 
+
+- File Handling: Read/write files
+
+- Error Handling: try-except blocks
+
+ Explore Libraries: 
+
+- NumPy for numerical operations
+
+- Pandas for data analysis
+
+- Matplotlib for data visualization
+
+
+ Mini Project: Analyze and visualize a CSV dataset 
+
+
+ Week 6: Final Project Week 
+
+Choose a project idea:
+
+- To-do list CLI app
+
+- Weather app using API
+
+- Mini game with logic (Tic Tac Toe)
+
+
+ Spend time on: 
+
+- Planning
+
+- Building
+
+- Debugging
+
+- Polishing your code

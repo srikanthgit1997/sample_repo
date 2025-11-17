@@ -1,0 +1,1504 @@
+✅ Final Answer You Can Say in an Interview:=====================================
+🔹 Spoken Script for PySpark
+
+"In my project, I used PySpark to perform several data transformations. For example, I applied filtering to remove invalid or null records, used withColumn and when functions to create derived columns, and performed joins between multiple datasets to enrich the information. I also used groupBy with aggregations to calculate business metrics, and applied window functions to generate running totals and rankings. Additionally, I handled duplicates, standardized date formats, and optimized the output using partitioning and saving in Parquet format. These operations ensured the data was clean, enriched, and analytics-ready before loading into BigQuery."
+
+✅ Data Engineer Transformations (Headlines)
+Removing Duplicates → dropDuplicates() or window-based deduplication✅
+Handling Nulls → fill, replace, or drop missing values✅
+Filtering & Conditional Logic → filter rows, apply if/else (when / otherwise)✅
+Type Casting → convert columns into correct data types✅
+Column Operations → rename, add derived columns, drop columns
+Aggregations & Grouping → groupBy, sum, avg, max, count
+String Operations → split, substring, trim, concat
+Joins → inner, left, right, full joins between datasets
+Window Functions → ranking, row_number, deduplication, running totals
+=========================================================
+✅🔹 Common PySpark Transformations
+
+▶️Filtering rows → remove invalid/irrelevant records.
+🔹 Example Table: Employees
+------------------------------------
+| id | name  | department | salary |
+| -- | ----- | ---------- | ------ |
+| 1  | John  | IT         | 5000   |
+| 2  | Alice | HR         | 6000   |
+| 3  | Bob   | IT         | NULL   |
+| 4  | Sarah | Finance    | 4000   |
+| 5  | Mike  | IT         | -1000  |
+------------------------------------
+✅ Filtering Example – Remove invalid/irrelevant records 
+   
+SELECT *
+FROM Employees
+WHERE salary > 0 AND salary IS NOT NULL;
+
+✅ Output
+| id | name  | department | salary |
+| -- | ----- | ---------- | ------ |
+| 1  | John  | IT         | 5000   |
+| 2  | Alice | HR         | 6000   |
+| 4  | Sarah | Finance    | 4000   |
+------------------------------------
+==========================================================
+▶️Handling nulls → fill, drop, or replace missing values.
+🔹 1. Fill Nulls with Defaults
+You use fillna() in PySpark or COALESCE() in SQL.
+
+👉 Example (PySpark):
+df_clean = df.fillna({"department": "Unknown", "salary": 0})
+df_clean.show()
+
+✅2. Drop Nulls
+
+Sometimes you just remove rows that contain NULLs if they are useless.
+👉 Example (PySpark):
+
+df_clean = df.na.drop()
+df_clean.show()
+
+✅COALESCE() in SQL.:--------------
+
+SELECT 
+  id, 
+  name, 
+  COALESCE(department, 'Unknown') AS department, 
+  COALESCE(salary, 0) AS salary
+FROM Employees;
+
+Result:
+------------------------------------
+| id | name  | department | salary |
+| -- | ----- | ---------- | ------ |
+| 1  | John  | HR         | 5000   |
+| 2  | Alice | Unknown    | 6000   |
+| 3  | Bob   | IT         | 0      |
+| 4  | Carol | Unknown    | 0      |
+=============================================================================
+▶️Removing duplicates → dropDuplicates() or window-based deduplication.
+
+🔹 1. dropDuplicates() (Simplest way)
+Use this when you want to remove exact duplicate rows or duplicates based on specific columns.
+
+Example Table: Employees
+id	name	department	salary
+1	John	IT	5000
+2	Alice	HR	6000
+3	John	IT	5000
+4	Bob	    IT	4000
+
+✅ Code: Remove duplicates based on all columns
+df_clean = df.dropDuplicates()
+df_clean.show()
+
+Result:
+------------------------------------
+| id | name  | department | salary |
+| -- | ----- | ---------- | ------ |
+| 1  | John  | IT         | 5000   |
+| 2  | Alice | HR         | 6000   |
+| 4  | Bob   | IT         | 4000   |
+------------------------------------
+
+✅ code:Remove duplicates based on id
+
+df_clean = df.dropDuplicates(["id"])
+df_clean.show()
+
+Result:
++----+-------+------------+--------+
+| id | name  | department | salary |
++----+-------+------------+--------+
+| 1  | John  | IT         | 5000   |
+| 2  | Alice | HR         | 6000   |
+| 3  | John  | IT         | 5500   |
+| 4  | Bob   | IT         | 4000   |
+| 5  | Alice | Finance    | 6500   |
++----+-------+------------+--------+
+
+✅ Code: Remove duplicates based on name:--
+
+df_clean = df.dropDuplicates(["name"])
+df_clean.show()
+
+Result:
+------------------------------------
+| id | name  | department | salary |
+| -- | ----- | ---------- | ------ |
+| 1  | John  | IT         | 5000   |
+| 2  | Alice | HR         | 6000   |
+| 4  | Bob   | IT         | 4000   |
+------------------------------------
+
+✅ code:Remove duplicates based on department:===
+
+df_clean = df.dropDuplicates(["department"])
+df_clean.show()
+
+Result:
+------------------------------------
+| id | name  | department | salary |
+| -- | ----- | ---------- | ------ |
+| 1  | John  | IT         | 5000   |
+| 2  | Alice | HR         | 6000   |
+| 5  | Alice | Finance    | 6500   |
+------------------------------------
+
+✅ code:Remove duplicates based on salary:--
+
+df_clean = df.dropDuplicates(["salary"])
+df_clean.show()
+
+
+Result:
++----+-------+------------+--------+
+| id | name  | department | salary |
++----+-------+------------+--------+
+| 1  | John  | IT         | 5000   |
++----+-------+------------+--------+
+| 2  | Alice | HR         | 6000   |
++----+-------+------------+--------+
+| 3  | John  | IT         | 5500   |
++----+-------+------------+--------+
+| 4  | Bob   | IT         | 4000   |
++----+-------+------------+--------+
+| 5  | Alice | Finance    | 6500   |
++----+-------+------------+--------+
+=============================================================================
+▶️Renaming columns → standardize names using withColumnRenamed().
+✅  Rename Columns:-
+
+Suppose we want to standardize column names:
+first_name → fname
+last_name → lname
+
+df = df.withColumnRenamed("first_name", "fname") \
+       .withColumnRenamed("last_name", "lname")
+
+df.show()
+
+✅ Result:
++---+-----+------+------+
+|id | fname| lname| salary|
++---+-----+------+------+
+| 1 | John | Doe  | 5000 |
+| 2 | Alice| Smith| 6000 |
+| 3 | Bob  | Brown| 4000 |
++---+-----+------+------+
+================================================================================
+▶️Type casting → convert columns to correct data types.
+
+✅What is Type Casting?
+Type casting means converting a column from one data type to another.
+Useful when the data comes as strings but you need numbers, dates, or boolean types for calculations or analysis.
+
+🔹 Example Table: Employees
++---+-------+-------+------------+
+|id | name  | salary| join_date  |
++---+-------+-------+------------+
+| 1 | John  | 5000  | 2025-01-01 |
++---+-------+-------+------------+
+| 2 | Alice | 6000  | 2025-02-15 |
++---+-------+-------+------------+
+| 3 | Bob   | 4000  | 2025-03-20 |
++---+-------+-------+------------+
+
+Notice: salary is a string, join_date is a string.
+
+🔹 Convert salary to Integer and join_date to Date
+from pyspark.sql.types import IntegerType, DateType
+from pyspark.sql.functions import col
+
+df = df.withColumn("salary", col("salary").cast(IntegerType())) \
+       .withColumn("join_date", col("join_date").cast(DateType()))
+
+df.printSchema()
+df.show()
+
+✅ Resulting Schema
+root
+ |-- id: long (nullable = true)
+ |-- name: string (nullable = true)
+ |-- salary: integer (nullable = true)
+ |-- join_date: date (nullable = true)
+
+✅ Resulting Data
++---+-----+------+----------+
+|id | name| salary| join_date|
++---+-----+------+----------+
+|1  | John| 5000 |2025-01-01|
+|2  | Alice| 6000|2025-02-15|
+|3  | Bob | 4000 |2025-03-20|
++---+-----+------+----------+
+===============================================================================
+Creating derived columns → withColumn() + expressions (e.g., flags, calculations).
+String transformations → trim, lower/upper, regex replace, split.
+Date/time transformations → parse timestamps, format dates, extract month/year.
+Joins → enrich data with dimension/master datasets.
+Aggregations → groupBy().agg() to compute totals, averages, KPIs.
+Window functions → ranking, running totals, lag/lead calculations.
+Sorting → order data by specific fields.
+Pivot/Unpivot → reshape data for reporting.
+Explode → flatten arrays or nested JSON fields.
+Schema handling → union datasets with different schemas, column alignment.
+
+
+🔹 Quick 2–3 Line Version (Memorize)
+
+"I worked with PySpark to clean and transform data — like filtering invalid records, joining multiple datasets, applying aggregations, and using window functions for ranking. I also optimized the output with partitioning and Parquet format before sending it for analytics."
+
+
+✅“This list covers the major transformations and actions we perform in PySpark — creating DataFrames, filtering, grouping, handling duplicates, sorting, joining, and applying aggregations. It also includes operations like casting, adding constant or derived columns, working with strings, and handling nulls. These are sufficient for most data processing tasks. For advanced scenarios, it’s good to also be familiar with window functions, caching, broadcasting joins, UDFs, and performance tuning.”
+
+✅🔹 Resume Bullet Points (PySpark)
+
+Developed PySpark pipelines for data cleaning, transformation, and enrichment.
+Applied filtering, handling null values, and removing duplicates to ensure high data quality.
+Created derived columns using withColumn, conditional logic (when), and type casting.
+Performed joins across multiple datasets to integrate and enrich business information.
+Implemented groupBy and aggregations to calculate KPIs and business metrics.
+Utilized window functions for ranking, running totals, and time-based calculations.
+Optimized storage by partitioning, bucketing, and writing data in Parquet format.
+Improved performance with caching, broadcasting, and efficient Spark configurations.
+Prepared curated data for downstream analytics in BigQuery and visualization tools.
+
+✅🔹 Easy Interview Explanations for Each (Keep these one-liners in mind when asked to explain)
+
+Data cleaning → “I removed nulls, duplicates, and standardized formats.”
+Derived columns → “I created new columns with calculations and conditional logic.”
+Joins → “I joined fact and dimension datasets to enrich the data.”
+Aggregations → “I used groupBy to compute sales totals, customer counts, etc.”
+Window functions → “I calculated rankings, moving averages, and running totals.”
+Optimization → “I saved data in Parquet, used partitioning, and broadcast joins for speed.”
+Final output → “The curated data was pushed to BigQuery for reporting.”
+
+🛑Pyspark:=================PySpark Topics for Data Engineers         (will learn to plan on 12/09/25)
+  
+1. Basics of PySpark
+
+What is PySpark (Spark with Python)
+Spark Architecture (Driver, Executors, Cluster Manager)
+RDD vs DataFrame vs Dataset
+SparkSession (entry point for PySpark)
+
+2. DataFrame Operations (most important)
+
+Creating DataFrames (from CSV, JSON, Parquet, JDBC, etc.)
+Schema (inferred vs explicit)
+Column operations (select, withColumn, drop, alias)
+Filtering, sorting, distinct
+Joins (inner, left, right, outer)
+GroupBy and Aggregations (count, sum, avg)
+Null handling (fillna, dropna, isNull)
+
+3. Transformations & Actions
+
+Transformations (map, filter, flatMap, selectExpr)
+Actions (collect, count, show, take)
+Lazy Evaluation concept
+
+4. Data Handling
+
+Reading & Writing data in multiple formats:
+CSV
+JSON
+Parquet (very important in Data Engineering)
+Avro / ORC
+Partitioning & Bucketing
+Data skew handling basics
+==============================================================================================================
+▶️ This is a strong list, and it includes:
+
+✔ Creating DataFrames — from hardcoded values and files✅ 
+✔ Column operations — renaming, adding, transforming, changing types
+✔ Filtering — using filter() or where() with conditions
+✔ Handling duplicates — distinct(), dropDuplicates()
+✔ Sorting & grouping — sort(), orderBy(), groupBy()
+✔ Aggregation functions — min(), max(), count(), etc.
+✔ Data merging — union(), unionAll()
+✔ Conditional logic — when(), otherwise()              ✅
+✔ String manipulations — split(), concat(), substring()
+✔ Casting types — cast()
+✔ Working with nested schemas — StructType(), StructField()
+✔ Handling nulls — replacing or managing missing values✅
+✔ Joins — inner, outer, etc.                           ✅
+✔ Ranking functions — row_number(), dense_rank(), etc.
+✔ Adding constant columns — lit()
+✔ Advanced transformations — dynamic column changes, etc.
+
+==================================================================================
+✅ 1. Create DataFrame                                                                        ✅Creathe dataframes
+a. From hardcoded values
+emp = [(1, "John", "Doe", 5000),
+       (2, "Alice", "Smith", 6000)]
+columns = ["id", "first_name", "last_name", "salary"]
+
+df = spark.createDataFrame(data=emp, schema=columns)
+df.show()
+
+Output:------
+id	first_name	last_name	salary
+1	John	     Doe	    5000
+2	Alice	     Smith   	6000
+
+Explanation every position:----
+df = spark.createDataFrame(data, ["id", "first_name", "last_name", "salary"])
+
+spark → SparkSession (entry point for using PySpark).
+createDataFrame(data, [columns]) → converts the Python list into a Spark DataFrame.
+["id", "first_name", "last_name", "salary"] → column names assigned to the DataFrame.
+
+👉 Interview way to say it:
+"I used spark.createDataFrame() to convert the Python list into a Spark DataFrame and explicitly defined the column names: id, first_name, last_name, and salary."
+==================================================================================
+✅ b. From files (TEXT, CSV, JSON, Parquet)                                                   ✅Extract the data from multible data sources like text,csv,json,parquet.
+text_df = spark.read.text("path/to/file.text")
+csv_df = spark.read.option("header", True).csv("path/to/file.csv")
+json_df = spark.read.json("path/to/file.json")
+parquet_df = spark.read.parquet("path/to/file.parquet")
+
+TEXT_SOURCE_PATH = "gs://dbx-ms-22222/products.txt"
+
+# Read the text file into DataFrame
+df = spark.read.text(TEXT_SOURCE_PATH)
+
+# Show the content
+df.show(truncate=False)
+
+✅ Output
++--------------------------------------------+
+|value                                       |
++--------------------------------------------+
+|ProductID=1, Name=Mobile, Price=10000       |
+|ProductID=2, Name=Laptop, Price=55000       |
+|ProductID=3, Name=Tablet, Price=25000       |
++--------------------------------------------+
+
+👉 Here:
+The DataFrame has only one column (value).
+Each line of the text file becomes one row in the DataFrame.
+
+Output: Depends on file content.
+==================================================================================
+✅ 2. Rename column dynamically                                                               ✅Rename the column name
+df = df.withColumnRenamed("first_name", "fname")
+df.show()
+
+
+Output:
+
+id	fname	last_name	salary
+1	John	Doe	5000
+2	Alice	Smith	6000
+==================================================================================
+✅ 3. Add constant column with lit()                                                          ✅Add column name
+from pyspark.sql.functions import lit
+
+df = df.withColumn("country", lit("USA"))
+df.show()
+
+
+Output:
+
+id	first_name	last_name	salary	country
+1	John  	    Doe     	5000	USA
+2	Alice	    Smith	    6000	USA
+==================================================================================
+✅ 4. withColumn() – Add derived column                                                       ✅ADD concatenating or derived column
+from pyspark.sql.functions import concat, col
+
+df = df.withColumn("full_name", concat(col("first_name"), lit(" "), col("last_name")))
+df.show()
+
+
+Output:
+
+id	first_name	last_name	salary	full_name
+1	John	    Doe	        5000	John Doe
+2	Alice	    Smith	    6000	Alice Smith
+==================================================================================
+✅ 5. Change datatype with StructType / cast()
+from pyspark.sql.types import IntegerType
+
+df = df.withColumn("salary", col("salary").cast(IntegerType()))
+df.printSchema()
+
+
+Output:
+
+root
+ |-- id: long (nullable = true)
+ |-- first_name: string (nullable = true)
+ |-- last_name: string (nullable = true)
+ |-- salary: integer (nullable = true)
+ |-- full_name: string (nullable = true)
+==================================================================================
+✅ 6. Filter or where                                                                         ✅ to filter the records column wise.                       
+df.filter(col("salary") > 5000).show()
+df.where((col("salary") > 5000) & (col("id") != 2)).show()
+
+ex:-id	  first_name	  last_name	 salary
+    1	  John	          Doe	     5000
+    2	  Alice	          Smith	     6000
+
+Output of filter:
+
+id	first_name	last_name	salary	full_name
+2	Alice	    Smith	    6000	Alice Smith
+
+Output of where:
+
+No output because id = 2 is excluded.
+==================================================================================
+✅ 7. distinct()                                                                              ✅ to display the unique values. 
+df.select("salary").distinct().show()
+
+
+Output:
+
+salary
+5000
+6000
+==================================================================================
+✅ 8. dropDuplicates()                                                                        ✅ to remove the duplicate values in column wise.
+df.dropDuplicates(["salary"]).show() 
+
+
+Output:
+
+id	first_name	last_name	salary	full_name
+1	John	    Doe     	5000	John Doe
+2	Alice	    Smith	    6000	Alice Smith
+==================================================================================
+✅ 9. sort() / orderBy()                                                                      ✅ to find the order by values liek asc or desc.
+df.sort(col("salary").desc()).show()
+df.orderBy(col("salary").asc(), col("id").desc()).show()
+
+
+Output of sort:
+
+id	first_name	last_name	salary	full_name
+2	Alice	Smith	6000	Alice Smith
+1	John	Doe	5000	John Doe
+
+Output of orderBy:
+
+id	first_name	last_name	salary	full_name
+1	John	Doe	5000	John Doe
+2	Alice	Smith	6000	Alice Smith
+==================================================================================
+✅ 10. union()                                                                                 ✅ To combine the both values like df1, df2, df3.
+data2 = [(3, "Bob", "Lee", 5500)]
+df2 = spark.createDataFrame(data2, ["id", "first_name", "last_name", "salary"])
+combined_df = df.union(df2)
+combined_df.show()
+
+
+Output:
+
+id	first_name	last_name	salary
+1	John	    Doe	        5000
+2	Alice   	Smith	    6000
+3	Bob	        Lee	        5500
+==================================================================================
+✅ 11. groupBy()                                                                               ✅ to do the aggregations using the group by.
+df.groupBy("salary").count().show()
+
+Explanation of the fix
+1 .groupBy("salary") → groups by the salary column.
+2 .count() → counts the number of rows in each group.
+3 .show() → displays the result.
+
+Output:
+
+salary	count
+5000	1
+6000	1
+==================================================================================
+✅ 12. Aggregations                                                                           ✅Find the avg sal, max sal.       
+df.groupBy().agg({"salary": "avg"}).show()
+df.agg({"salary": "max"}).show()
+df.agg({"salary": "sum"}).show()
+df.agg({"salary": "min"}).show()
+
+Output of avg:---
+avg(salary)
+5500.0
+
+Output of max:---
+max(salary)
+6000
+
+Output of sum:---
+sum(salary)
+11000.0
+
+Output of min:---
+min(salary)
+5000
+
+=========================================
+| name  | salary |
+| ----- | ------ |
+| John  | 5000   |
+| Alice | 6000   |
+| Bob   | 5000   |
+------------------
+
+from pyspark.sql.functions import max, min, sum, avg
+
+df.groupBy().agg(
+    max("salary").alias("max_salary"),
+    min("salary").alias("min_salary"),
+    sum("salary").alias("total_salary"),
+    avg("salary").alias("avg_salary")
+).show()
+
+Output Table:-------
+-----------------------------------------------------------
+| max\_salary | min\_salary | total\_salary | avg\_salary |
+| ----------- | ----------- | ------------- | ----------- |
+| 6000        | 5000        | 16000         | 5333.33     |
+===========================================================
+==================================================================================
+✅ 13. cast()                                                                                  ✅convert a column from one data type to another data type like string → integer.
+df = df.withColumn("salary", col("salary").cast("float"))
+df.printSchema()
+
+“cast() is used to convert a column from one data type to another, for example, string → integer, integer → float, or float → string.”
+
+Output:
+
+root
+ |-- id: long (nullable = true)
+ |-- first_name: string (nullable = true)
+ |-- last_name: string (nullable = true)
+ |-- salary: float (nullable = true)
+ |-- full_name: string (nullable = true)
+==================================================================================
+;
+==================================================================================
+✅ 15. split()                                                                                    ✅split the full_name like array string.  
+from pyspark.sql.functions import split
+
+df = df.withColumn("name_parts", split(col("full_name"), " "))
+df.select("name_parts").show(truncate=False)
+
+
+Output:
+
+name_parts
+[John, Doe]
+[Alice, Smith]
+================================================================================== 
+✅ 16. concat()                                                                                   ✅used to combine multiple columns or values into a single column.
+df = df.withColumn("full_name", concat(col("first_name"), lit(" "), col("last_name")))
+df.select("full_name").show()
+
+
+Output:
+
+full_name
+John Doe
+Alice Smith
+==================================================================================
+✅ 17. substring()                                                                ✅It will give the positon of our reuirement.
+from pyspark.sql.functions import substring
+
+df = df.withColumn("name_sub", substring(col("first_name"), 1, 2))
+df.select("first_name", "name_sub").show()
+
+
+Output:
+
+first_name	name_sub
+John	    Jo
+Alice	    Al
+==================================================================================
+✅ 18. Left Joins                                                                 ✅it's done Joins topics
+dept_data = [(1, "IT"), (2, "HR")]
+dept_df = spark.createDataFrame(dept_data, ["id", "department_name"])
+
+joined_df = df.join(dept_df, "id", "left")
+joined_df.show()
+
+
+Output:
+
+id	first_name	last_name	salary	full_name	department_name
+1	John	    Doe	        5000.0	John Doe	IT
+2	Alice	    Smith	    6000.0	Alice Smith	HR
+==================================================================================
+EMP_DF:
+-------------------
+| emp\_id | name  |
+| ------- | ----- |
+| 1       | John  |
+| 2       | Alice |
+| 3       | Bob   |
+-------------------
+
+DEPT_DF:
+------------------------------
+| emp\_id | department\_name |
+| ------- | ---------------- |
+| 1       | IT               |
+| 2       | HR               |
+------------------------------
+Perform INNER JOIN:--
+joined_df = emp_df.join(dept_df, "emp_id", "inner")
+joined_df.show()
+
+Output:---
+--------------------------------------
+| emp\_id | name  | department\_name |
+| ------- | ----- | ---------------- |
+| 1       | John  | IT               |
+| 2       | Alice | HR               |
+--------------------------------------
+Explanation:---
+
+Inner join returns only rows that have matching emp_id in both tables.
+Bob is excluded because his emp_id = 3 does not exist in the departments table.
+==================================================================================
+✅ 19. Ranking functions (Window)
+from pyspark.sql.window import Window
+from pyspark.sql.functions import row_number
+
+window_spec = Window.orderBy(col("salary").desc())
+df = df.withColumn("rank", row_number().over(window_spec))
+df.show()
+
+
+Output:
+
+id	first_name	last_name	salary	full_name	rank
+2	Alice	    Smith	    6000.0	Alice Smith	1
+1	John	    Doe	        5000.0	John Doe	2
+==================================================================================
+✅ 20. Null handling                                                                  ✅it will replace the null values.
+df.fillna({"salary": 0, "department": "Unknown"})
+df.na.drop()
+
+Example Input:---
+
+| id | first\_name | last\_name | salary | department |
+| -- | ----------- | ---------- | ------ | ---------- |
+| 1  | John        | Doe        | 5000.0 | IT         |
+| 2  | Alice       | Smith      | NULL   | HR         |
+| 3  | Bob         | Brown      | 6000.0 | NULL       |
+| 4  | Charlie     | White      | NULL   | NULL       |
+
+Example Output:--
+
+| id | first\_name | last\_name | salary | department |
+| -- | ----------- | ---------- | ------ | ---------- |
+| 1  | John        | Doe        | 5000.0 | IT         |
+| 2  | Alice       | Smith      | 0.0    | HR         |
+| 3  | Bob         | Brown      | 6000.0 | Unknown    |
+| 4  | Charlie     | White      | 0.0    | Unknown    |
+==============================================================================================================
+✅ What is Hadoop?
+Hadoop is an open-source framework designed to store and process massive amounts of data across a distributed cluster of computers.
+
+
+✅ What is MapReduce?
+MapReduce is a programming model and framework used to process large datasets in a distributed manner across multiple machines in a Hadoop cluster.
+MapReduce is a programming model and framework used to process large datasets in a distributed manner across multiple machines in a Hadoop cluster.
+
+✅Apache Spark (2009)
+Definition:-----Apache Spark is a distributed, parallel programming framework and processing engine designed to handle big data efficiently. It supports in-memory computation, which makes it much faster than traditional disk-based processing systems. Spark can process batch and streaming data, and provides APIs in Python, Java, Scala, and R. It also supports SQL queries, machine learning (MLlib), and graph processing (GraphX).
+
+✅Definition of Dataproc
+Google Cloud Dataproc is a fully managed, cluster-based service for running Hadoop and Spark jobs. It helps process large datasets without the operational overhead of setting up, managing, or maintaining clusters. Dataproc automates cluster creation, scaling, and deletion, allowing you to focus on data processing tasks rather than infrastructure management.
+
+▶️Key points from your image:---
+Fully managed service
+Cluster-based environment
+Used to run Hadoop and Spark jobs
+Removes operational overhead of managing clusters
+========================================================================================
+▶️▶️▶️▶️You want me to organize all transformations you practiced in your big PySpark script into main categories (like aggregations, joins, unions, etc.) so it’s easier to understand.
+
+>>>>>>>>>Here’s a structured breakdown 👇
+
+✅1. Selection & Projection
+👉 Operations that pick or rename columns
+       select("col1", "col2")
+       withColumn() (add new column)
+       withColumnRenamed() (rename column)
+       alias() (temporary renaming in query)
+
+✅2. Filtering & Conditions
+👉 Operations that filter rows or apply conditions
+      filter() / where()
+      when() / otherwise() (case conditions)
+      like("%abc%") (pattern matching)
+      isNull() / isNotNull()
+
+✅3. Sorting
+👉 Ordering rows
+     orderBy()
+     sort()
+
+✅4. De-duplication
+👉 Removing duplicate rows
+     dropDuplicates() (on full row or specific columns)
+
+✅5. Aggregation Functions
+👉 Summarizing values
+     count()
+     max()
+     min()
+     avg()
+     sum()
+    .agg() (multiple aggregations at once)
+
+✅6. Grouping
+👉 Group-based aggregations
+     groupBy("col") → .agg(sum(), max(), …)
+
+✅7. Merging / Combining Data
+👉 To combine datasets
+     union() / unionAll() → stacking rows
+     join() (inner, left, right, full, cross, self) → combining tables
+
+✅8. Window / Ranking Functions
+👉 Row-wise advanced functions
+     row_number()
+     rank()
+     dense_rank()
+     Window.partitionBy().orderBy()
+
+✅9. String Functions
+👉 Handling text data
+     split() → split string into multiple columns
+     concat() → join multiple columns
+     substring() → extract part of string
+
+✅10. Null Handling
+👉 Dealing with missing values
+         fillna() → replace nulls
+         dropna() → remove rows with nulls
+         coalesce() → pick first non-null value
+
+✅11. Partitioning
+👉 Data distribution
+         repartition(n) → shuffle partitions
+         coalesce(n) → reduce partitions (no shuffle)
+
+✅12. SQL Queries
+👉 Run SQL on DataFrames
+       createOrReplaceTempView("vw")
+       spark.sql("SELECT ...")
+
+✅ So, to summarize in high-level categories:
+
+Selection & Renaming
+Filtering & Conditions
+Sorting
+De-duplication
+Aggregations
+Grouping
+Merging (union, joins)
+Window/Ranks
+String Functions
+Null Handling
+Partitioning
+SQL Queries
+========================================================================================
+▶️# pyspark basics
+# install pyspark
+! pip install pyspark
+# spark session : entry point to spark functionality for your app
+
+import pyspark
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+                    .master("local") \
+                    .appName("demo") \
+                    .getOrCreate()
+# Spark provides 3 core data structures : 
+#     - RDD
+#     - Dataframe
+#     - Dataset
+    
+# RDD :
+#     - Fundamental, low-level data structure
+#     - immutable
+#     - distributed 
+#     - parallel
+#     - collection of objects
+#     - no schema
+#     - manual optimizations
+#     - unstructured
+    
+# Dataframe : built on top RDD 
+#     - High-level data structure
+#     - immutable
+#     - distributed
+#     - parallel
+#     - tabular format (columns, rows)
+#     - schema
+#     - catalyst&tungsten optimizer
+#     - sql like operations
+#     - ETL, sql like queries, analytical workloads
+#     - str+semi-str
+    
+# Dataset : only for scala & java
+#     - both features of rdd + dataframes
+# Extract
+## `create df from hardcoded data`
+emp = [(1, 'anil'), 
+       (2, 'sandeep'),
+       (3, 'john'),
+       (4, "baby")]
+
+columns = ["id", "name"]
+
+df1 = spark.createDataFrame(data=emp, schema=columns)
+df1.show()
+df1.printSchema()
+df1.count()
+## `create df from text file`
+TEXT_SOURCE_PATH = "gs://dbx-ms-22222/products.txt"
+
+df2 = spark.read.text(TEXT_SOURCE_PATH)
+df2.show(truncate=False)
+## `create df from csv file`
+CSV_SOURCE_PATH = "gs://dbx-ms-22222/sales.csv"
+
+df2 = spark.read.csv(CSV_SOURCE_PATH, header=True, inferSchema=True)
+df2.show()
+df2.printSchema()
+## `create df from json file`
+JSON_SOURCE_PATH = "gs://dbx-ms-22222/employee_data.json"
+
+df3 = spark.read.json(JSON_SOURCE_PATH)
+df3.show()
+df3.printSchema()
+## `create df from parquet file`
+PAR_SOURCE_PATH = "gs://dbx-ms-22222/MT_cars.parquet"
+
+df4 = spark.read.parquet(PAR_SOURCE_PATH)
+df4.show(5, truncate=False)
+df4.printSchema()
+## `create df from bq table`
+TABLE_ID = "electric-tesla-449815-g3.gold_dataset.top10_artists"
+
+df6 = (spark 
+            .read
+            .format("bigquery")
+            .option("table", TABLE_ID)
+            .load())
+df6.show()
+df6.printSchema()
+df6.count()
+## `create df from mysql`
+mysql_properties = {
+    "driver" : "com.mysql.cj.jdbc.Driver",
+    "url" : "jdbc:mysql://<HOST-IP>:3306/<DB-NAME>",
+    "user" : "<myuser>",
+    "password" : "<mypass>"
+}
+
+TABLE = "<TABLE>"
+
+df7 = spark.read.jdbc(url=mysql_properties["url"], table=TABLE, properties=mysql_properties)
+df7.show()
+df7.printSchema()
+# Load
+emp_data = [
+    (1, "John Doe", "Male", 60000.0, "USA"),
+    (2, "Jane Smith", "Female", 55000.0, "Canada"),
+    (3, "Alice Johnson", "Female", 65000.0, "UK"),
+    (4, "Bob Williams", "Male", 62000.0, "Australia"),
+    (5, "Eve Davis", "Female", 70000.0, "India"),
+    (6, "Charlie Brown", "Male", 58000.0, "Germany"),
+    (7, "Diana Miller", "Female", 60000.0, "France"),
+    (8, "Frank Johnson", "Male", 62000.0, "Spain"),
+    (9, "Grace Wilson", "Female", 54000.0, "Italy"),
+    (10, "Henry Davis", "Male", 68000.0, "Japan"),
+    (11, "Isabel Clark", "Female", 59000.0, "Brazil"),
+    (12, "Jack Turner", "Male", 63000.0, "Mexico"),
+    (13, "Katherine White", "Female", 67000.0, "South Africa"),
+    (14, "Louis Harris", "Male", 56000.0, "Russia"),
+    (15, "Mia Lee", "Female", 61000.0, "China")
+]
+
+emp_columns = ["empId", "empName", "empGender", "empSalary", "empCountry"]
+
+df = spark.createDataFrame(emp_data,emp_columns)
+df.show()
+df.printSchema()
+df.count()
+## `load df to CSV file`
+CSV_SINK_PATH = "gs://dbx-ms-22222/sink-folder/csv1/"
+
+df.write.csv(CSV_SINK_PATH, header=True)
+# to get the number of partitions in dataframe
+
+df.rdd.getNumPartitions()
+# Partitioning : deviding data into chunks
+    
+#     1. re-partition : 
+#         - increase/descrease the no of partitions
+#         - involve shuffling(data movement across the nodes)
+        
+#     2. coalesce :
+#         - to descrease the no of partitions
+#         - no shuffling
+CSV_SINK_PATH = "gs://dbx-ms-22222/sink-folder/csv2/"
+
+df.coalesce(1).write.csv(CSV_SINK_PATH, header=True)
+CSV_SINK_PATH = "gs://dbx-ms-22222/sink-folder/csv3/"
+
+df.repartition(numPartitions=5).write.csv(CSV_SINK_PATH, header=True)
+## `load df to json file`
+JSON_SINK_PATH = "gs://dbx-ms-22222/sink-folder/json/"
+
+df.write.json(JSON_SINK_PATH)
+## `load df to parquet file`
+PAR_SINK_PATH = "gs://dbx-ms-22222/sink-folder/parquet/"
+
+df.write.parquet(PAR_SINK_PATH)
+## `load df to bq table`
+TABLE_ID = "electric-tesla-449815-g3.gold_dataset.pysparkTable"
+
+(
+    df
+        .write
+        .format("bigquery")
+        .option("table", TABLE_ID)
+        .option("temporaryGcsBucket", "dbx-ms-22222/temp/")
+        .mode("append")
+        .save()
+)
+## `load df to mysql table`
+mysql_properties = {
+    "driver" : "com.mysql.cj.jdbc.Driver",
+    "url" : "jdbc:mysql://<HOST-IP>:3306/<DB-NAME>",
+    "user" : "<mysql>",
+    "password" : "<mypass>",
+    "table" : "pysparkTable"
+}
+
+(df.write
+    .format("jdbc")
+    .options(mysql_properties)
+    .mode("overwrite")
+    .save())
+
+# Transformations
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType, FloatType
+
+emp_data = [
+    (1, "John Doe", "Male", 60000.0, "USA"),
+    (2, "Jane Smith", "Female", 55000.0, "Canada"),
+    (3, "Alice Johnson", "Female", 65000.0, "UK"),
+    (4, "Bob Williams", "Male", 62000.0, "Australia"),
+    (5, "Eve Davis", "Female", 70000.0, "India"),
+    (5, "Eve Davis", "Female", 70000.0, "India"),
+    (6, "Charlie Brown", "Male", 58000.0, "Germany"),
+    (7, "Diana Miller", "Female", 60000.0, "France"),
+    (8, "Frank Johnson", "Male", 62000.0, "Spain"),
+    (9, "Grace Wilson", "Female", 54000.0, "Italy"),
+    (10, "Henry Davis", "Male", 68000.0, "Japan"),
+    (9, "Grace Wilson", "Female", 54000.0, "Italy"),
+    (10, "Henry Davis", "Male", 68000.0, "Japan"),
+    (11, "Isabel Clark", "Female", 59000.0, "Brazil"),
+    (12, "Jack Turner", "Male", 63000.0, "Mexico"),
+    (13, "Katherine White", "Female", 67000.0, "South Africa"),
+    (14, "Louis Harris", "Male", 56000.0, "Russia"),
+    (15, "Mia Lee", "Female", 61000.0, "China"),
+    (14, "Louis Harris", "Male", 56000.0, "Russia"),
+    (15, "Mia Lee", "Female", 61000.0, "China")
+]
+
+# define the custom schema : structType and structField
+emp_schema = StructType([
+    StructField("empId", IntegerType(), True),
+    StructField("empName", StringType(), True),
+    StructField("empGender", StringType(), True),
+    StructField("empSalary", FloatType(), True),
+    StructField("empCountry", StringType(), True)
+])
+
+df1 = spark.createDataFrame(emp_data, emp_schema)
+df1.show(5)
+df1.printSchema()
+## how to select specific columns, (how many ways we can select a column)
+
+from pyspark.sql.functions import col
+
+df1.select("empId", df1.empName, col("empGender"), df1["empGender"]).show(5)
+# withColumn() : to add columns
+
+# add two more columns
+    # origin ==> constant column ==> "India"
+    # tax ==> derived column ==> "12%(salary)"
+    
+from pyspark.sql.functions import lit
+    
+df2 = df1.withColumn("origin", lit("India")) \
+         .withColumn("tax", 0.12 * df1.empSalary)
+
+df2.show(5)
+# withColumnRenamed() : to rename the columns
+    # two columns => origin, tax
+    
+df3 = df2.withColumnRenamed("origin", "empOrigin") \
+         .withColumnRenamed("tax", "empTax")
+
+df3.show(5)
+# case conditions : when(), otherwise()
+    # male ==> m
+    # female ==> f
+    
+from pyspark.sql.functions import when
+
+df4 = df3.select(
+        "empId",
+        "empName",
+        when(df3.empGender == "Male", "m").when(df3.empGender == "Female", "f").otherwise("u").alias("empGender"),
+        "empSalary", 
+        "empCountry", 
+        "empOrigin", 
+        "empTax")
+
+df4.show()
+# orderBy() or sort() : to sort the data based on columns
+
+df4.sort(df4.empSalary.desc()).show()
+df4.count()
+# dropDuplicates() : to remove the duplicates
+
+df5 = df4.dropDuplicates().sort(df4.empSalary.desc())
+
+df5.show()
+## where() or filter() : to filter the data
+
+df5.filter((df5.empSalary >= 55000) & (df5.empGender=="f") & (df5.empName.like("%e"))).show()
+data=[(1, 'anil', 'M', 5000, 'IT'),\
+      (2, 'sandeep', 'M',6000, 'IT'),\
+      (3, 'riya', 'F',2500, 'payroll'),\
+      (4, 'prteek', 'M',4000, 'HR'),\
+      (5, 'vani', 'F',2000, 'HR'),\
+      (6, 'sunil', 'M', 2000, 'payroll'),\
+      (7, 'diksha', 'F',3000, 'IT'),
+      (8, 'rajesh', 'M', 4500, 'Finance'),
+      (9, 'neha', 'F', 3500, 'Finance'),
+      (10, 'amit', 'M', 3000, 'HR'),
+      (11, 'pooja', 'F', 5500, 'IT'),
+      (12, 'rohit', 'M', 6000, 'IT')
+      ]
+
+# Define the schema for the data
+schema = StructType([
+    StructField("empId", IntegerType(), True),
+    StructField("empName", StringType(), True),
+    StructField("empGender", StringType(), True),
+    StructField("empSalary", IntegerType(), True),
+    StructField("empDepartment", StringType(), True)
+])
+
+df = spark.createDataFrame(data, schema)
+df.show()
+df.printSchema()
+# aggregate functions : count, max, min, sum, avg
+
+from pyspark.sql.functions import max, min, avg, sum, count
+
+# df.agg(count("*").alias("totalEmpCount")).show()
+# df.agg(max("empSalary").alias("maxSalary")).show()
+# df.agg(min("empSalary").alias("minSalary")).show()
+# df.agg(avg("empSalary").alias("avgSalary")).show()
+# df.agg(sum("empSalary").alias("sumSalary")).show()
+
+df.agg(
+    count("*").alias("totalEmpCount"),
+    max("empSalary").alias("maxSalary"),
+    min("empSalary").alias("minSalary"),
+    avg("empSalary").alias("avgSalary"),
+    sum("empSalary").alias("sumSalary")).show()
+# groupBy() : to group the data
+
+df.groupBy("empDepartment").agg(
+                                count("*").alias("totalEmpCount"),
+                                max("empSalary").alias("maxSalary"),
+                                min("empSalary").alias("minSalary"),
+                                avg("empSalary").alias("avgSalary"),
+                                sum("empSalary").alias("sumSalary")).show()
+# union / unionAll : to merge the data (both works same way, allows duplicates)
+
+data1 = [(1, 'Anil',27), 
+         (2, 'sandeep', 28), 
+         (3, 'riya', 29)]  #jan
+schema1 = ['id', 'name', 'age']
+
+data2 = [(3, 'riya', 29), 
+         (4, 'rani', 26)] #feb
+schema2 = ['id', 'name', 'age']
+
+data3 = [(5, 'liya', 29), 
+         (6, 'mani', 26)] #march
+schema3 = ['id', 'name', 'age']
+
+df1 = spark.createDataFrame(data1, schema1)
+df2 = spark.createDataFrame(data2, schema2)
+df3 = spark.createDataFrame(data3, schema3)
+
+df1.show()
+df2.show()
+df3.show()
+df_union = df1.unionAll(df2).unionAll(df3)
+
+df_union.dropDuplicates().show()
+emp_data = [
+    (1, "John", 1, 50000, 1),
+    (2, "Alice", 2, 60000, 2),
+    (3, "Bob", 3, 55000, 2),
+    (2, "Alice", 2, 60000, 2),
+    (3, "Bob", 3, 55000, 2),
+    (4, "Jane", 4, 52000, 3),
+    (5, "Eve", None, 48000, 4),
+    (6, "Charlie", 4, 47000, None),
+    (7, "David", 2, 55000, 3),
+    (8, "Linda", 3, 53000, 1),
+    (9, "Frank", None, 59000, 4),
+    (7, "David", 2, 55000, 3),
+    (8, "Linda", 3, 53000, None),
+    (9, "Frank", 1, 59000, 4),
+    (10, "Grace",1, 49000, None),
+    (10, "Grace",1, 49000, 4)]
+emp_schema = ["empId", "empName", "deptId", "empSalary", "cityId"]
+
+dept_data = [
+    (1, "HR"),
+    (2, "IT"),
+    (3, "Sales"),
+    (4, "Finance"),
+]
+dept_schema = ["deptId", "deptName"]
+
+address_data = [
+    (1, "hyd"),
+    (2, "blr"),
+    (3, "chn"),
+    (4, "kkt")
+]
+add_schema = ["cityId", "cityName"]
+
+print("emp_df :")
+emp_df = spark.createDataFrame(emp_data,emp_schema)
+emp_df.show()
+
+print("dept_df :")
+dept_df = spark.createDataFrame(dept_data,dept_schema)
+dept_df.show()
+
+print("address_df :")
+address_df = spark.createDataFrame(address_data,add_schema)
+address_df.show()
+## joins types : inner, left, right, full, cross, self
+
+from pyspark.sql.functions import current_timestamp
+
+df_inner = (emp_df
+                .join(dept_df, emp_df.deptId==dept_df.deptId, "left")
+                .join(address_df, emp_df.cityId==address_df.cityId, "left")
+                .filter(address_df.cityName == "hyd")
+                .drop(emp_df.deptId, emp_df.cityId)
+                .dropDuplicates()
+                .sort(emp_df.empId)
+                .withColumn("createDttm", current_timestamp())
+           )
+
+df_inner.show(truncate=False)
+## # ranking/window functions : row_number, rank, dense_rank
+
+salary     row_number      rank(skip)      dense_rank(no_skipping)
+100         1               1                 1
+100         2               1                 1
+200         3               3                 2
+300         4               4                 3
+300         5               4                 3
+300         6               4                 3
+400         7               7                 4
+500         8               8                 5
+500         9               8                 5
+500         10              8                 5
+500         11              8                 5
+600         12              12                6
+data = [
+    ("John", 50000, "IT"),
+    ("Alice", 60000, "HR"),
+    ("Bob", 55000, "IT"),
+    ("Jane", 52000, "Finance"),
+    ("Eve", 48000, "HR"),
+    ("lavanya", 55000, "IT"),
+    ("ALEX", 60000, "HR"),
+    ("Charlie", 47000, "Finance"),
+    ("David", 55000, "IT"),
+    ("Linda", 53000, "Finance"),
+    ("Frank", 59000, "HR"),
+    ("Grace", 49000, "IT"),
+    ("Raghu", 53000, "Finance"),
+]
+schema = ["empName", "salary", "department"]
+
+df = spark.createDataFrame(data, schema)
+df.show()
+from pyspark.sql.window import Window
+from pyspark.sql.functions import row_number, rank, dense_rank
+
+window_spec = Window.orderBy(df.salary.desc()).partitionBy("department")
+
+df1 = df.withColumn("rw_no_col", row_number().over(window_spec)) \
+        .withColumn("rank_col", rank().over(window_spec)) \
+        .withColumn("denseRank_col", dense_rank().over(window_spec))
+
+df1.show()
+df1.filter(df1.denseRank_col==2).show()
+data = [("John,Doe,25,Engineer",),
+        ("Jane,Smith,30,Data Scientist",),
+        ("Bob,Johnson,22,Analyst",),
+        ("Alice,Williams,28,Manager",),
+        ("Charlie,Brown,35,Developer",)]
+
+columns = ["full_details"]
+
+df = spark.createDataFrame(data, columns)
+df.show(truncate=False)
+## split() : to split the data based on delimeter
+
+from pyspark.sql.functions import split
+
+df1 = (df
+           .withColumn("firstName", split(df.full_details, ",")[0])
+           .withColumn("lastName", split(df.full_details, ",")[1])
+           .withColumn("Age", split(df.full_details, ",")[2]) 
+           .withColumn("Occupation", split(df.full_details, ",")[3])
+           .drop(df.full_details))
+df1.show()
+# concat: to combine two or more columns
+
+from pyspark.sql.functions import concat, lit
+
+df2 = df1.withColumn("email", concat(df1.firstName, lit("."), df1.lastName, lit("@gmail.com")))
+
+df2.show(truncate=False)
+# substring : to extract part of a string
+
+from pyspark.sql.functions import substring
+
+df2.withColumn("occ", substring("Occupation", 1,3)).show()
+# null handling
+
+data = [
+    (1, "Alice", None, 5000),
+    (2, "Bob", "HR", None),
+    (3, None, "IT", 6000),
+    (4, "David", "Finance", 7000),
+    (5, None, None, None)
+]
+
+columns = ["id", "name", "department", "salary"]
+
+df = spark.createDataFrame(data, columns)
+df.show()
+# find the nulls on a specific column
+
+df.filter(df.name.isNull()).show()
+# find the specific column without nulls
+
+df.filter(df.name.isNotNull()).show()
+# replacing nulls with default values using fillna()
+
+df.fillna({"salary": 0, "name" : "Unknown", "department" : "General"}).show()
+# drop the null for any column
+
+df.dropna().show()
+# drop the null for specific column
+
+df.dropna(subset=["salary"]).show()
+# handle nulls with coalesce()
+
+from pyspark.sql.functions import coalesce, lit
+
+df.withColumn("final_dep", coalesce(df.department, df.name, df.id, lit("no"))).show()
+# spark sql
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType, FloatType
+
+emp_data = [
+    (1, "John Doe", "Male", 60000.0, "USA"),
+    (2, "Jane Smith", "Female", 55000.0, "Canada"),
+    (3, "Alice Johnson", "Female", 65000.0, "UK"),
+    (4, "Bob Williams", "Male", 62000.0, "Australia"),
+    (5, "Eve Davis", "Female", 70000.0, "India"),
+    (5, "Eve Davis", "Female", 70000.0, "India"),
+    (6, "Charlie Brown", "Male", 58000.0, "Germany"),
+    (7, "Diana Miller", "Female", 60000.0, "France"),
+    (8, "Frank Johnson", "Male", 62000.0, "Spain"),
+    (9, "Grace Wilson", "Female", 54000.0, "Italy"),
+    (10, "Henry Davis", "Male", 68000.0, "Japan"),
+    (9, "Grace Wilson", "Female", 54000.0, "Italy"),
+    (10, "Henry Davis", "Male", 68000.0, "Japan"),
+    (11, "Isabel Clark", "Female", 59000.0, "Brazil"),
+    (12, "Jack Turner", "Male", 63000.0, "Mexico"),
+    (13, "Katherine White", "Female", 67000.0, "South Africa"),
+    (14, "Louis Harris", "Male", 56000.0, "Russia"),
+    (15, "Mia Lee", "Female", 61000.0, "China"),
+    (14, "Louis Harris", "Male", 56000.0, "Russia"),
+    (15, "Mia Lee", "Female", 61000.0, "China")
+]
+
+# define the custom schema : structType and structField
+emp_schema = StructType([
+    StructField("empId", IntegerType(), True),
+    StructField("empName", StringType(), True),
+    StructField("empGender", StringType(), True),
+    StructField("empSalary", FloatType(), True),
+    StructField("empCountry", StringType(), True)
+])
+
+df1 = spark.createDataFrame(emp_data,emp_schema)
+df1.show()
+df1.printSchema()
+# register this df as view
+
+df1.createOrReplaceTempView("employee_vw")
+# execute sql queries
+
+SQL_QUERY = """
+                SELECT distinct
+                    empId,
+                    empName,
+                    empGender,
+                    empSalary,
+                    empCountry, 
+                    0.12*empSalary as tax,
+                    SPLIT(empName," ")[0] as fname,
+                    SPLIT(empName," ")[1] as lname
+                FROM employee_vw
+                WHERE empSalary > 60000
+                ORDER BY empId
+                """
+
+df2 = spark.sql(SQL_QUERY)
+
+df2.show()
+===========================================================================================
+▶️EVERYONE TO LEARN BELLOW ONE THINGS RELATED TO PYSPARK TRANSFORMATIONS ALL:==============
+
+Got it ✅ You want me to organize all transformations you practiced in your big PySpark script into main categories (like aggregations, joins, unions, etc.) so it’s easier to understand.
+
+Here’s a structured breakdown 👇
+
+▶️1. Selection & Projection
+
+👉 Operations that pick or rename columns
+
+select("col1", "col2")
+withColumn() (add new column)
+withColumnRenamed() (rename column)
+alias() (temporary renaming in query)
+
+▶️2. Filtering & Conditions
+
+👉 Operations that filter rows or apply conditions
+
+filter() / where()
+when() / otherwise() (case conditions)
+like("%abc%") (pattern matching)
+isNull() / isNotNull()
+
+▶️3. Sorting
+
+👉 Ordering rows
+orderBy()
+sort()
+
+▶️4. De-duplication
+
+👉 Removing duplicate rows
+dropDuplicates() (on full row or specific columns)
+
+▶️5. Aggregation Functions
+
+👉 Summarizing values
+
+count()
+max()
+min()
+avg()
+sum()
+.agg() (multiple aggregations at once)
+
+▶️6. Grouping
+
+👉 Group-based aggregations
+
+groupBy("col") → .agg(sum(), max(), …)
+
+▶️7. Merging / Combining Data
+
+👉 To combine dataset
+
+union() / unionAll() → stacking rows
+join() (inner, left, right, full, cross, self) → combining tables
+
+▶️8. Window / Ranking Functions
+
+👉 Row-wise advanced functions
+
+row_number()
+rank()
+dense_rank()
+Window.partitionBy().orderBy()
+
+▶️9. String Functions
+
+👉 Handling text data
+
+split() → split string into multiple columns
+concat() → join multiple columns
+substring() → extract part of string
+
+▶️10. Null Handling
+
+👉 Dealing with missing values
+
+fillna() → replace nulls
+dropna() → remove rows with nulls
+coalesce() → pick first non-null value
+
+▶️11. Partitioning
+
+👉 Data distribution
+
+repartition(n) → shuffle partitions
+coalesce(n) → reduce partitions (no shuffle)
+
+▶️12. SQL Queries
+
+👉 Run SQL on DataFrames
+
+createOrReplaceTempView("vw")
+spark.sql("SELECT ...")
+
+✅ So, to summarize in high-level categories:
+
+Selection & Renaming
+Filtering & Conditions
+Sorting
+De-duplication
+Aggregations
+Grouping
+Merging (union, joins)
+Window/Ranks
+String Functions
+Null Handling
+Partitioning
+SQL Queries

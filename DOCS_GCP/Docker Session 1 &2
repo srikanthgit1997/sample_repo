@@ -1,0 +1,2334 @@
+
+introducuvtion of Python:
+=======================
+easy to lean
+git config --global user.name "NA389214"
+git config --global user.email "nagi.annapureddy@wipro.com"
+
+git config --global user.name "NA389214"
+git config --global user.email "nagi.annapureddy@wipro.com"
+
+Create a new repository
+git clone https://topgear-gitlab.wipro.com/NA389214/Djang_Project_cluster.git
+cd Djang_Project_cluster
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder
+cd existing_folder
+git init
+git remote add origin https://topgear-gitlab.wipro.com/NA389214/Djang_Project_cluster.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin https://topgear-gitlab.wipro.com/NA389214/Djang_Project_cluster.git
+git push -u origin --all
+git push -u origin --tags
+=========================================================================================================
+
+Python 2.x/Python3.x:
+====================
+Python Multi praralleldign programming Langauage
+Cutting Edge Technologies is added in Python 3.0
+Python 3.x Is easier
+=====================
+
+print statement  (function)
+Integer Division  (floor divison to gett float value  we use //,/)
+List Comprehension(iteration,condion,trasforamtion):
+================================================
+Python 2.7
+**********
+x=10
+print x
+print "List compreshension is ",[x for x in range(8)]
+
+Print "After the value is ",x
+output:
+=======
+List compreshension is [0,1,2,3,4]
+pritn x is 4 
+
+python 3.0:
+===========
+output:
+-----------
+List compreshension is [0,1,2,3,4]
+pritn x is 10
+
+
+unicode string:
+===============
+Python 2.7 
+x= "wipro teachnologies"
+type(x)# string
+x=u'Wipro technologies'
+print type(x)# Unicode string 
+
+in python 3.x everything is Unicode internally
+
+raising Exceptions:
+===================
+python 2.7:
+==========
+raise IOError,"File error" # Show file error(IO Error in Python 2.7)
+raise IoError,("File Error")# Show file error(OS Eror in python 3.0)
+
+handling Exceptions:
+=====================
+in both ethe scenariuons it is failed 
+ try:
+       10/0
+ except Exception,err
+        print err
+ except Exception as err
+        print err  
+=output python 2.7===##Error Ocuuerd Integer Divison Eroro
+output python 3.0===##Division by zero Error ( except Exception as err) it worked well 
+
+
+Iterable object instaed of Lists:
+==============================
+print range(5)########Gives list as [0,1,2,3,4]
+
+Python 2.7#####type(range(5)#########type list
+Python 3.0#######print range(5)########Gives range(0,5)
+Python 3.0#####type(range(5)#########<class range>###print list(range(5)###[0,1,2,3,4]
+
+Yield Keyword:
+============
+gen=(valu for val in range(20,40))
+next(gen)# function
+gen.next()###in Python 2.7##method this is 
+function only in Python 3.0,method is removed in Python 3.0#####next(Object )##next(gen)
+in Python 3.0###gen.next()##Show atrribute error 
+
+Raw input:
+========
+str1=raw_input("enetr any value ")#10
+input1=input("enter any value "
+type(str1)## gives string
+type(input1)## type int 
+in Python 3.0 is #### input will as depends ouput 
+
+
+chained Exceptions:
+===================
+as above uysing trace back will show in Python 3.0 ##will give where error is occured 
+
+round(2.2)# 2
+round(2.5)##3
+
+in Python 3.0 
+
+round(2.5)## is 2
+
+Keyword only Arguments:
+=====================
+multilabl elemnts like x,y=10,20
+x,y=10,20#x=10,y=20
+x,y=range(10)# show error if we print x,y
+in Python 3.0
+
+x,y,*rest=range(4)
+print x,y,rest##0,1,[2,3]
+
+
+Advacned Unapcking
+====================
+
+Python 2
+
+__init_.py
+
+import module 1
+import module 2
+
+Python 3:
+=========
+__init_.py
+
+from .import module 1
+from ..import module 2
+
+
+Python Some  Miscellaneous Statements:
+=====================================
+classes 
+Comparision
+Dictionary methods
+Exec
+File
+Imports
+Indentation
+integer division
+Long
+Sorting
+
+
+Functions&methods:
+===================
+apply()
+buffer()
+filter()
+map()
+range()
+xrange()
+.seek()
+
+Python program structure :
+=========================
+
+
+#! /usr/bin/python
+Comments :
+================
+title of the program
+Author o fthe program
+Date and Time creation
+Version of the Program
+Description
+
+
+
+Nearly 4.0+ years of experience as python developer and an open stack(cloud) development in adding the values.
+Experience in Django REST Frame Work  
+Written Python scripts in object oriented concepts.
+
+
+Commands Line Arguments:
+========================
+
+Understanding of commandline arguments
+command line syntax
+understanding argv number
+understanfing of need if typecasting 
+Points:
+=======
+<command> <options> Programmname <argumnets>
+
+
+Django Aplication:
+===================
+pip install django(2.1)
+python 3.7
+python -m django --version
+
+==================================
+django-admin.py startproject Django_projetc
+tree
+python manage.py runserver localhost:8000/
+
+python manage.py runserver createsuperuser
+python manage.py migrate
+Python manage.pt startapp blog
+
+Project Urls.py
+===============
+from django.contrib import admin
+from django.urls import path,include 
+from . import views
+
+urlpatterns=[
+     path('admin/',admin.site.urls),
+     path('blog_dev/',include('blog.urls')),
+
+]
+
+
+views.py
+========
+from django.shortcuts import render
+from django.http import Http Response
+
+def home(request):
+     return HttpResponse('<H1>Blog Home Page</H1>')
+
+def about_dev(request):
+     return HttpResponse('<h1>welcome to Django World</h1>')
+posts=[
+{ 'Author':'Nagireddy',
+   'Title' :'Blog Post 1',
+   'date_posted':'August27,2018
+}        
+,
+{ 'Author':'reddy',
+   'Title' :'Blog Post 2',
+   'date_posted':'August28,2018
+}  
+]
+
+
+def home_html (request):
+context={
+         'posts':posts 
+ 
+          }
+     return render(request,'blog/home.html',context)
+
+def about_html (request):
+     return render(request,'blog/about.html')
+
+
+app urls.py
+==========
+
+from django.urls import path
+from . import views
+
+urlpatterns=[
+     path('home/',views.home,name='blog-home'),
+     path('about/',views.about_dev,name='blog-home'),
+
+     
+]
+
+Templates:
+==========
+blog==>tempaltes==>blog==>home.html
+blog==>tempaltes==>blog==>blog.html
+
+Home.html:
+==========
+<html>
+<head>
+       
+        {%if title %}
+            <title>Django Blog- {{ title }}</title>
+        {% else %}
+             <title>Django Blog-</title>
+        {% end if %}
+        
+</head>
+
+
+<body> 
+        {% for post in posts%}
+            <h1>{{post.title}}</h1>
+            <p>  {{ post.author }}  on {{ post.date_posted }} </p>
+            <p>  {{ post.content }}
+        {% end for %}
+</body>
+</html>
+Blog.Html
+==========
+Template inheritance :
+======================
+base.html:
+===========
+{%extends " blog/base.html" % }
+{% block content %}
+       {% for post in posts%}
+            <h1>{{post.title}}</h1>
+            <p>  {{ post.author }}  on {{ post.date_posted }} </p>
+            <p>  {{ post.content }}
+        {% end for %}
+{% endblock content %}
+    
+
+
+https://www.journaldev.com/14932/python-decorator-example
+
+class method vs static method in Python
+Class Method
+
+The @classmethod decorator, is a builtin function decorator that is an expression that gets evaluated after your function is defined. The result of that evaluation shadows your function definition.
+A class method receives the class as implicit first argument, just like an instance method receives the instance
+Syntax:
+=======
+class C(object):
+    @classmethod
+    def fun(cls, arg1, arg2, ...):
+       ....
+fun: function that needs to be converted into a class method
+returns: a class method for function.
+
+A class method is a method which is bound to the class and not the object of the class.
+They have the access to the state of the class as it takes a class parameter that points to the class and not the object instance.
+It can modify a class state that would apply across all the instances of the class. For example it can modify a class variable that will be applicable to all the instances.
+Static Method:
+==============
+A static method does not receive an implicit first argument.
+Syntax:
+
+class C(object):
+    @staticmethod
+    def fun(arg1, arg2, ...):
+        ...
+returns: a static method for function fun.
+A static method is also a method which is bound to the class and not the object of the class.
+A static method can’t access or modify class state.
+It is present in a class because it makes sense for the method to be present in class.
+Class method vs Static Method
+
+A class method takes cls as first parameter while a static method needs no specific parameters.
+A class method can access or modify class state while a static method can’t access or modify it.
+In general, static methods know nothing about class state. They are utility type methods that take some parameters and work upon those parameters. On the other hand class methods must have class as parameter.
+We use @classmethod decorator in python to create a class method and we use @staticmethod decorator to create a static method in python.
+When to use what?
+
+We generally use class method to create factory methods. Factory methods return class object ( similar to a constructor ) for different use cases.
+We generally use static methods to create utility functions.
+How to define a class method and a static method?
+
+To define a class method in python, we use @classmethod decorator and to define a static method we use @staticmethod decorator.
+Let us look at an example to understand the difference between both of them. Let us say we want to create a class Person. Now, python doesn’t support method overloading like C++ or Java so we use class methods to create factory methods. In the below example we use a class method to create a person object from birth year.
+
+As explained above we use static methods to create utility functions. In the below example we use a static method to check if a person is adult or not.
+
+Implementation
+==============
+
+# Python program to demonstrate 
+# use of class method and static method. 
+from datetime import date 
+
+class Person: 
+	def __init__(self, name, age): 
+		self.name = name 
+		self.age = age 
+	
+	# a class method to create a Person object by birth year. 
+	@classmethod
+	def fromBirthYear(cls, name, year): 
+		return cls(name, date.today().year - year) 
+	
+	# a static method to check if a Person is adult or not. 
+	@staticmethod
+	def isAdult(age): 
+		return age > 18
+
+person1 = Person('mayank', 21) 
+person2 = Person.fromBirthYear('mayank', 1996) 
+
+print person1.age 
+print person2.age 
+
+# print the result 
+print Person.isAdult(22) 
+
+
+output:
+===============
+
+21
+21
+True
+summary:
+
+Instance Methods: The most common method type. Able to access data and properties unique to each instance.
+Static Methods: Cannot access anything else in the class. Totally self-contained code.
+Class Methods: Can access limited methods in the class. Can modify class specific details.
+
+
+MRO Order:
+==========
+
+class X: pass
+class Y: pass
+class Z: pass
+
+class A(X,Y): pass
+class B(Y,Z): pass
+
+class M(B,A,Z): pass
+
+# Output:
+# [<class '__main__.M'>, <class '__main__.B'>,
+# <class '__main__.A'>, <class '__main__.X'>,
+# <class '__main__.Y'>, <class '__main__.Z'>,
+# <class 'object'>]
+
+print(M.mro())
+
+
+Generators:
+===============
+
+Here is how a generator function differs from a normal function.
+
+Generator function contains one or more yield statement.
+When called, it returns an object (iterator) but does not start execution immediately.
+Methods like __iter__() and __next__() are implemented automatically. So we can iterate through the items using next().
+Once the function yields, the function is paused and the control is transferred to the caller.
+Local variables and their states are remembered between successive calls.
+Finally, when the function terminates, StopIteration is raised automatically on further calls.
+Here is an example to illustrate all of the points stated above. We have a generator function named my_gen() with several yield statements.
+
+
+The major difference between a list comprehension and a generator expression is that while list comprehension produces the entire list, generator expression produces one item at a time.
+
+They are kind of lazy, producing items only when asked for. For this reason, a generator expression is much more memory efficient than an equivalent list comprehension.
+
+Simple generators can be easily created on the fly using generator expressions. It makes building generators easy.
+
+Same as lambda function creates an anonymous function, generator expression creates an anonymous generator function.
+
+Decorator:
+===========
+A decorator takes in a function, adds some functionality and returns it. In this article, you will learn how you can create a decorator and why you should use it.
+
+def sampleDecorator(func):
+    def addingFunction():
+        # some new statments or flow control
+        print("This is the added text to the actual function.")
+        # calling the function
+        func()
+
+    return addingFunction
+
+
+@sampleDecorator
+def actualFunction():
+    print("This is the actual function.")
+
+
+actualFunction()
+
+Output:
+=========
+
+This is the added text to the actual function.
+This is the actual function.
+
+
+def make_pretty(func):
+    def inner():
+        print("I got decorated")
+        func()
+    return inner
+
+def ordinary():
+    print("I am ordinary")
+	
+	>>> ordinary()
+I am ordinary
+>>> # let's decorate this ordinary function
+>>> pretty = make_pretty(ordinary)
+>>> pretty()
+I got decorated
+I am ordinary
+
+@make_pretty
+def ordinary():
+    print("I am ordinary")
+	
+is equivalent to 
+def ordinary():
+    print("I am ordinary")
+ordinary = make_pretty(ordinary)
+	
+C:\Python27;C:\Python27\Scripts
+
+
+
+
+
+
+
+#################################################################################################
+Python Interview Point of questions:
+=====================================
+duplicate removal without builtin methods:
+=========================================
+c=[]
+l=[1,2,7,2,8,2,82,4,7]
+for i in l:
+    if i not in c:
+        c.append(i)
+print c
+
+Enumerate the Methods:
+====================
+
+a="abcdef"
+b="ijklmn"
+c=[]
+for i,j in enumerate(a):
+    c.append((a[i],a[i]+b[i]))
+print c
+
+reverse of string :
+===================
+
+s="Hello welcome python"
+d='''.join(s[i] for i in range(len(s)-1,-1,-1))
+print d
+
+factorial number:
+================== 
+
+def fact(n):
+    f=1
+    while n>=1:
+        f=f*n
+        n=n-1
+    return f
+n=7
+print fact(n)
+
+Fibonacci Series :
+==================
+
+def fib(n):
+    a,b=0,1
+    while b<n:
+        print b
+        a,b=b,a+b
+n=12
+print fib(n)
+
+
+Palindrome Number :
+===================
+
+def palin(a):
+    b=a[::-1]
+    if a == b:
+        return "paln"
+    else:
+        return "not"
+a=input("enter the string::")
+print palin(a)
+
+
+count the words using Count methods:
+===================================
+#l=['red','green','red','blue','block']
+cnt = counter()
+for word in ['red','biue','red','block']:
+    cnt[word] += 1
+print cnt
+"""
+
+File Operations:
+================
+write methods:
+=========
+f=open('reddy.txt','w+')
+f.write("venkat reddy \n redy venkat \n venkat")
+f.close()
+
+Readline& count the words :
+===========================
+f=open('reddy.txt','r')
+lines=f.readlines()
+for line in lines:
+    print line
+    if "v" in line:
+        count=count+1
+print count
+f.close()
+
+Count the words howmany repated:
+===============================
+d={}
+f=open('trash.txt')
+lines=f.readlines()
+for line in lines:
+    a=line.split()
+    print a
+    for word in a:
+        if word in d:
+            d[word]=d[word]+1
+        else:
+            d[word]=1
+print d
+f.close()
+========================================All Topics ===========================
+
+===============Python &Ansible ===============================================
+Import sys
+
+if len(sys.argv)==2:
+    print 'proceeding'
+elif len(sys.argv)==1:
+    print "Uses : python get_pci_mac.py iDRAC-IP"
+    exit()
+============================re.findall&file.read===============================
+def get_interface_list():
+    os.system("sshpass -p 'ericsson' ssh admin@"+sys.argv[1]+" racadm hwinventory nic > /root/racadm.log")
+    f = open('/root/racadm.log','r+')
+    ret = f.read()
+    niclist = re.findall('NIC.*\d-\d-\d',ret)
+    print "List of Nics on server \n"+str(niclist)
+    f.close()
+    return niclist
+
+=============================re.search&re.match,Group ===========================
+def get_interface_pci_mac(interface):
+    ret = os.system("sshpass -p 'ericsson' ssh admin@"+sys.argv[1]+" racadm hwinventory "+interface+" > /root/racadm.log")
+    f2 = open('/root/racadm.log','r+')
+    iface = f2.read()
+    match = re.search('Permanent MAC Address:\s+([A-Fa-f0-9:]*)\n',iface)
+    mac =  match.group(1)
+    match2 = re.search('Bus Number:\s+(\d+)\n',iface)
+    if len(match2.group(1))==1:
+        bus_no =  '0'+match2.group(1)
+    else:
+        bus_no = hex(int(match2.group(1))).split('x')[-1]
+    match3 = re.search('DeviceNumber:\s+(\d+)\n',iface)
+    if len(match3.group(1))==1:
+        dev_no =  '0'+match3.group(1)
+    else:
+        dev_no = match3.group(1)
+    match4 =  re.search('Function Number:\s+(\d+)\n',iface)
+    func_no = match4.group(1)
+    pci_add = '0000:'+bus_no+':'+dev_no+'.'+func_no
+    f2.close()
+    return mac , pci_add
+
+===============================Paramiko&module ===> Except Module ================================================
+
+def getssh():
+    try:
+        client = paramiko.SSHClient()
+        client.load_host_keys(os.path.expanduser('~/.ssh/known_hosts'))
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        client.connect(sys.argv[1], port=22, username='admin', password='ericsson')
+    except:
+        pass
+    finally:
+        client.close()
+=============================Ansible Script for Installcee  manual =============================
+---
+hosts: localhost
+  sudo: yes
+  tasks:
+  - name : Execute script
+    command: sshpass -p 'r00tme' ssh -q -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@192.168.0.11 /opt/ecs-fuel-utils/installcee.sh
+
+============================Install Fuel.sh  Using Ansible =========================================
+---
+- hosts: localhost
+  sudo: yes
+  tasks:
+  - name: Execute script
+    command: /root/CEE_RELEASE/scripts/install_vfuel_redhat.sh
+
+===================================Get Pci script using Ansible =====================================
+---
+- hosts: jumphosts
+  sudo: yes
+  tasks:
+  - name: Copy file
+    copy: src=/root/get_pci_mac.py dest=/root/get_pci_mac.py owner=root group=root mode=755
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.1
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.2
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.3
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.4
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.5
+==========================================Ansible Verify Conenctivity ==================================
+---
+- hosts : serverhosts
+  sudo: yes
+
+  tasks:
+  - name: Copy file
+    copy: src=/tools/swdev/bin/nfvdc/podReadiness/verify_connectivity.py dest=/root/upgrade_automation/verify_connectivity.py owner=root group=root mode=755
+  - name: Execute script
+    command: python /root/upgrade_automation/verify_connectivity.py CLOUD_PARAMS
+=================================Using Ansible & hardware_pod_readiness.py===================
+---
+- hosts : serverhosts
+  sudo: yes
+
+  tasks:
+
+  - name: Execute script
+    command: python  /root/upgrade_automation/hardware_pod_readiness.py
+    register: result
+
+
+#####################################Python Interview Point of Questions ##################################################
+============================Gateway Conenctivity ======================
+
+def Fuel_connectivity_check():
+    logging.info("Verify fuel connectivity from jumphost via ping test")
+    cmd = "ping -c 5 "+arg.FUEL_IP
+    out = commands.getoutput(cmd)
+
+    res = re.search("((\d){1,3})% packet loss",out)
+    if int(res.group(1)) < 10:
+        logging.info("connectivity verified between jmphost and " + arg.FUEL_IP)
+        logging.info("Verify connectivity to fuel from jumphost -- PASSED")
+    else:
+        logging.info(arg.FUEL_IP + " fuel is not reachable from jmphost")
+        raise Exception('fuel_connectivity_check -- FAILED')
+
+def DCGW_connectivity_check():
+====================================Fuel_connectivity_check() ===============
+def Fuel_connectivity_check():
+    logging.info("Verify fuel connectivity from jumphost via ping test")
+    cmd = "ping -c 5 "+arg.FUEL_IP
+    out = commands.getoutput(cmd)
+
+    res = re.search("((\d){1,3})% packet loss",out)
+    if int(res.group(1)) < 10:
+        logging.info("connectivity verified between jmphost and " + arg.FUEL_IP)
+        logging.info("Verify connectivity to fuel from jumphost -- PASSED")
+    else:
+        logging.info(arg.FUEL_IP + " fuel is not reachable from jmphost")
+        raise Exception('fuel_connectivity_check -- FAILED')
+==================================================
+Generator:
+==========
+Generator is a function .which is having yield keyword  
+
+Generator functions return a generator object. Generator objects are used either by calling the next method on the generator object or using the generator object in a “for in” loop (as shown in the above program).
+
+def generator():
+   yield i*i
+a=generator(10)
+l=range(10)
+for i in l:
+    print a.next()
+=======================================================
+
+Decorator:
+===========
+
+def add(x,y):
+   return x+y
+
+
+def multiply3(f):
+   def decorator():
+       return f()*3
+    return decorator
+
+def multiply(N):
+   def wrap(f):
+       def decorator():
+	       return f()*N
+		return decorator
+	wrap
+	
+example2:
+=========
+def f2(f):
+   
+
+Convert from JSON to Python:
+============================
+import json
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+# parse x:
+y = json.loads(x)
+# the result is a Python dictionary:
+print(y["age"])
+
+Convert from Python to JSON:
+============================
+import json
+
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print(y)
+
+loads====>converting  json in to Python dictionary:
+dumps====>converting python object into json string
+
+===============================Regular Expression:====================
+
+\   Used to drop the special meaning of character
+    following it (discussed below)
+[]  Represent a character class
+^   Matches the beginning
+$   Matches the end
+.   Matches any character except newline
+?   Matches zero or one occurrence.
+|   Means OR (Matches with any of the characters
+    separated by it.
+*   Any number of occurrences (including 0 occurrences)
++   One ore more occurrences
+{}  Indicate number of occurrences of a preceding RE 
+    to match.
+()  Enclose a group of REs
+##############################################################
+
+import re  
+# compile() creates regular expression character class [a-e], 
+# which is equivalent to [abcde]. 
+# class [abcde] will match with string with 'a', 'b', 'c', 'd', 'e'. 
+p = re.compile('[a-e]') 
+  
+# findall() searches for the Regular Expression and return a list upon finding 
+print(p.findall("Aye, said Mr. Gibenson Stark")) 
+
+===========output==============
+['e', 'a', 'd', 'b', 'e', 'a']
+################################################################
+
+\d   Matches any decimal digit, this is equivalent
+     to the set class [0-9].
+\D   Matches any non-digit character.
+\s   Matches any whitespace character.
+\S   Matches any non-whitespace character
+\w   Matches any alphanumeric character, this is
+     equivalent to the class [a-zA-Z0-9_].
+\W   Matches any non-alphanumeric character. 
+
+#################################################################
+
+import re 
+  
+# \d is equivalent to [0-9]. 
+p = re.compile('\d') 
+print(p.findall("I went to him at 11 A.M. on 4th July 1886")) 
+  
+# \d+ will match a group on [0-9], group of one or greater size 
+p = re.compile('\d+') 
+print(p.findall("I went to him at 11 A.M. on 4th July 1886")) 
+
+
+=============output=================
+['1', '1', '4', '1', '8', '8', '6']
+['11', '4', '1886']
+
+#####################################################
+import re 
+  
+# \w is equivalent to [a-zA-Z0-9_]. 
+p = re.compile('\w') 
+print(p.findall("He said * in some_lang.")) 
+  
+# \w+ matches to group of alphanumeric charcter. 
+p = re.compile('\w+') 
+print(p.findall("I went to him at 11 A.M., he said *** in some_language.")) 
+  
+# \W matches to non alphanumeric characters. 
+p = re.compile('\W') 
+print(p.findall("he said *** in some_language.")) 
+
+===================output=====================
+['H', 'e', 's', 'a', 'i', 'd', 'i', 'n', 's', 'o', 'm', 'e', '_', 'l', 'a', 'n', 'g']
+['I', 'went', 'to', 'him', 'at', '11', 'A', 'M', 'he', 'said', 'in', 'some_language']
+[' ', ' ', '*', '*', '*', ' ', ' ', '.']
+
+##############################################################
+
+import re 
+  
+# '*' replaces the no. of occurrence of a character. 
+p = re.compile('ab*') 
+print(p.findall("ababbaabbb")) 
+
+=====================output========================
+['ab', 'abb', 'a', 'abbb']
+
+Understanding the Output:
+Our RE is ab*, which ‘a’ accompanied by any no. of ‘b’s, starting from 0.
+Output ‘ab’, is valid because of singe ‘a’ accompanied by single ‘b’.
+Output ‘abb’, is valid because of singe ‘a’ accompanied by 2 ‘b’.
+Output ‘a’, is valid because of singe ‘a’ accompanied by 0 ‘b’.
+Output ‘abbb’, is valid because of singe ‘a’ accompanied by 3 ‘b’.
+
+###################################################################
+
+from re import split 
+  
+# '\W+' denotes Non-Alphanumeric Characters or group of characters 
+# Upon finding ',' or whitespace ' ', the split(), splits the string from that point 
+print(split('\W+', 'Words, words , Words')) 
+print(split('\W+', "Word's words Words")) 
+  
+# Here ':', ' ' ,',' are not AlphaNumeric thus, the point where splitting occurs 
+print(split('\W+', 'On 12th Jan 2016, at 11:02 AM')) 
+  
+# '\d+' denotes Numeric Characters or group of characters 
+# Spliting occurs at '12', '2016', '11', '02' only 
+print(split('\d+', 'On 12th Jan 2016, at 11:02 AM'))
+
+===================output========================================
+['Words', 'words', 'Words']
+['Word', 's', 'words', 'Words']
+['On', '12th', 'Jan', '2016', 'at', '11', '02', 'AM']
+['On ', 'th Jan ', ', at ', ':', ' AM']
+
+###################################################################
+
+re.search() : This method either returns None (if the pattern doesn’t match), or a re.MatchObject that contains information about the matching part of the string. This method stops after the first match, so this is best suited for testing a regular expression more than extracting data.
+
+
+# A Python program to demonstrate working of re.match(). 
+import re 
+  
+# Lets use a regular expression to match a date string 
+# in the form of Month name followed by day number 
+regex = r"([a-zA-Z]+) (\d+)"
+  
+match = re.search(regex, "I was born on June 24") 
+  
+if match != None: 
+  
+    # We reach here when the expression "([a-zA-Z]+) (\d+)" 
+    # matches the date string. 
+  
+    # This will print [14, 21), since it matches at index 14 
+    # and ends at 21.  
+    print "Match at index %s, %s" % (match.start(), match.end()) 
+  
+    # We us group() method to get all the matches and 
+    # captured groups. The groups contain the matched values. 
+    # In particular: 
+    #    match.group(0) always returns the fully matched string 
+    #    match.group(1) match.group(2), ... return the capture 
+    #    groups in order from left to right in the input string 
+    #    match.group() is equivalent to match.group(0) 
+  
+    # So this will print "June 24" 
+    print "Full match: %s" % (match.group(0)) 
+  
+    # So this will print "June" 
+    print "Month: %s" % (match.group(1)) 
+  
+    # So this will print "24" 
+    print "Day: %s" % (match.group(2)) 
+  
+else: 
+    print "The regex pattern does not match."
+
+
+==============output=============
+
+Match at index 14, 21
+Full match: June 24
+Month: June
+Day: 24 
+
+
+####################################################
+
+re.match() : This function attempts to match pattern to whole string. The re.match function returns a match object on success, None on failure.
+re.match(pattern, string, flags=0)
+
+pattern : Regular expression to be matched.
+string : String where p attern is searched
+flags : We can specify different flags 
+        using bitwise OR (|). 
+		
+# A Python program to demonstrate working 
+# of re.match(). 
+import re 
+  
+# a sample function that uses regular expressions 
+# to find month and day of a date. 
+def findMonthAndDate(string): 
+      
+    regex = r"([a-zA-Z]+) (\d+)"
+    match = re.match(regex, string) 
+      
+    if match == None:  
+        print "Not a valid date"
+        return
+  
+    print "Given Data: %s" % (match.group()) 
+    print "Month: %s" % (match.group(1)) 
+    print "Day: %s" % (match.group(2)) 
+  
+      
+# Driver Code 
+findMonthAndDate("Jun 24") 
+print("") 
+findMonthAndDate("I was born on June 24") 
+
+==============output============================================
+#################################################################
+
+re.findall() : Return all non-overlapping matches of pattern in string, as a list of strings. The string is scanned left-to-right, and matches are returned in the order found (Source : Python Docs).
+
+# A Python program to demonstrate working of 
+# findall() 
+import re 
+  
+# A sample text string where regular expression  
+# is searched. 
+string  = """Hello my Number is 123456789 and 
+             my friend's number is 987654321"""
+  
+# A sample regular expression to find digits. 
+regex = '\d+'             
+  
+match = re.findall(regex, string) 
+print(match) 
+  
+# This example is contributed by Ayush Saluja. 
+
+
+================output========================
+
+['123456789', '987654321']
+
+
+# extract all email addresses and add them into the resulting set
+new_emails = set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", 
+                           text, re.I))
+		
+===================================================Sorted and Reversed &Enumearate  LISts=================
+sorted
+reversed
+
+>>> for i in reversed(l):
+	print i
+
+	
+3
+2
+1
+0
+>>> 
+>>> for i in sorted(l):
+	print i
+
+	
+0
+1
+2
+3
+
+
+>>> for i in enumerate(l):
+	print i
+
+	
+(0, 0)
+(1, 1)
+(2, 2)
+(3, 3)
+===============Using Zip function====================
+
+names = [ 'Alice', 'Bob', 'Trudy' ]
+hobbies = [ 'painting', 'singing', 'hacking']
+ages = [ 21, 17, 22 ]
+
+#combine those list using zip() function
+for person,age, hobby in zip(names,ages,hobbies):
+        print (person+" is "+str(age)+"  years old and his/her hobby is "+hobby)
+		
+===========================Without bultin Functions MIn and Max===================
+
+Second Largest elemt in Python  sorted(list1)[-2]) 
+###################################################
+data_list = [-5, -23, 5, 0, 23, -6, 23, 67]
+min_list = []
+max_list=[]
+while data_list:
+    minimum =maximum= data_list[0]  # arbitrary number in list 
+    for x in data_list: 
+        if x < minimum:
+            minimum = x
+        elif x> maximum:
+            maximum=x
+    min_list.append(minimum)
+    max_list.append(maximum)
+    data_list.remove(minimum)
+    data_list.remove(maximum)
+
+print min_list
+print max_list
+
+#output is 
+#[-23, -6, -5, 0]
+#[67, 23, 23, 5]
+
+=================Factorial Number ===========================
+
+n=input("enter number")
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+print factorial(n)
+==========================RE Validations=======================
+
+import re
+"""
+m='97392212899'
+phone_re = re.match(r'\d{10}$',m)
+print phone_re
+
+a="+99-9701236632"
+b=re.match(r'(^[+0-9]{1,3})-*([0-9]{10,11}$)',a)
+print b"""
+
+a="lakshma.arikatla1988@gmail.com"
+b=re.match(r"^[A-Za-z0-9]+.+[A-Za-z0-9]+@+[A-Za-z]+.+[A-Za-z]$",a)
+print b
+
+a="192.168.0.121"
+IP=re.match(r"^\d{1,3}\.\d{1,3}\.\d{0,1}\.\d{1,4}$",a)
+print IP
+
+#below pattern featch all the words ends with reddy
+s='lakshmareddy venkat srinu ramireddy ramesh jyothi pereddy raju kotireddy'
+s1=re.findall("\w+reddy",s)
+print s1
+
+===========================MYSQL Connection using Python=====================================
+import pymysql
+
+#database connection
+connection = pymysql.connect(host="localhost", user="root", passwd="", database="databaseName")
+cursor = connection.cursor()
+# Query for creating table
+ArtistTableSql = """CREATE TABLE Artists(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+NAME  CHAR(20) NOT NULL,
+TRACK CHAR(10))"""
+
+cursor.execute(ArtistTableSql)
+connection.close()
+===============================
+import pymysql
+
+#database connection
+connection = pymysql.connect(host="localhost", user="root", passwd="", database="databaseName")
+cursor = connection.cursor()
+
+# queries for inserting values
+insert1 = "INSERT INTO Artists(NAME, TRACK) VALUES('Towang', 'Jazz' );"
+insert2 = "INSERT INTO Artists(NAME, TRACK) VALUES('Sadduz', 'Rock' );"
+
+#executing the quires
+cursor.execute(insert1)
+cursor.execute(insert2)
+
+
+#commiting the connection then closing it.
+connection.commit()
+connection.close()
+========================================
+
+
+
+
+
+
+
+
+
+
+Container:
+=========
+TCP,HTTP,HTTPS,FTP
+
+what is container  ===>Process
+why it is required   ===>for resource utilization efeeectvally
+How does it help  ==>hardware cost and maintanece
+
+Docker(Plat form as a service):
+==============================
+Docker is  Container is process 
+Isolated area for execution of your appplication
+Dokcer is an application which helps to create containers
+Linux containers stronger than windows containers
+
+
+Microservice:
+=============
+Docker is best choice for go microservices
+
+Responsibilirties:
+==================
+Containerzation applications(Docker networking.storaging,images)
+Orchestration/Clustering of containers(Kubernates)
+
+docker run -p 8080:8080 -p 50000:50000  jenkins
+
+run==>Start a new container
+docker run <name>
+
+1)request to docker server
+2)server will check in localrepositry for existence of images
+3)server will go and speak with repository (docker hub)
+4) download the image 
+5)image is executed to form container
+
+
+Note:
+====
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Docker Commands:
+================
+docker images
+docker ps --all
+docker run -it ubuntu bash
+docker pull <name>
+Daemon is a service which runs backgrounds
+
+
+docker run -d -p 8080:8080 Jenkins
+docker run -d -p 80:8080 jenkins --name myname
+docker rm -f <running container t o remove >
+docker remove <container (only stopped container>
+docker pull nginx
+docker pull ngin:1.14(this is called Tag)
+docker ps (will show running containers)
+docker run -d nginx:latest
+Left:
+=====
+ContainerImage==>Dockerfile 
+Commands
+Storage &Networking 
+K8's
+
+=============================
+
+docker rm -f $(docker ps -a -q)
+docker rmi $(docker images -q)
+
+images are just for storing 
+
+
+3rd video 45 minutes :
+
+
+Docker file:
+============
+#Thi sis first container 
+
+FROM ubuntu:15.04
+MAINTAINER nagireddy.avg@gmail.com
+RUN apt-get update && apt-get install httpd && apt-get clean | rm -rf /tmp/*
+CMD ["/bin/bash"]
+
+Tomacat Image Dokcer file :
+===============
+
+FROM ubuntu:15.04
+MAINTAINER nagireddy.avg@gmail.com
+RUN apt-get update && apt-get install tomacat -y 
+EXPOSE 80
+CMD ["service" ,"tomcat" ,"start"]
+
+Docker 4th Videos:
+=================
+Instrructions
+
+Create a basic image
+===================== 
+FROM ===> selecting base/parent image
+MAINTAINER ==>Maintaing person mail
+RUN==>these are the commands executed during build image
+CMD==executed when Container is created
+Name==>Dockerfile
+
+nginx Docker ifle:
+==================
+FROM nginx
+MAINTAINER nagi
+RUN touch test1.txt
+CMD ["echo","my first-image"]
+
+to build image using dockerfile  ====> docker build -t my-first:latest .(docker file current path )
+docker run -it <name> /bin/bash
+
+
+Namespace
+=============
+virtual networking
+   --   filesystem
+
+C Groups
+============
+docker inspect <container>
+
+
+
+List compreshensions:
+=====================
+list comprehensions allow you to create lists with a for loop with less code.
+
+comp_list = [x * 2 for x in range(10)]
+print(comp_list)
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+Generator expressions:
+======================
+Generator expression allows creating a generator on a fly without a yield keyword. However, it doesn’t share the whole power of generator created with a yield function. The syntax and concept is similar to list comprehensions
+
+
+gen_exp = (x ** 2 for x in range(10) if x % 2 == 0)
+for x in gen_exp:
+    print(x)
+0
+4
+16
+36
+64	
+	
+[x for x in range(5)]  ===>List compreshensions 
+
+(x for x in range(5))  ====>Generator expressions
+
+=============================================
+
+https://blog.usejournal.com/multithreading-vs-multiprocessing-in-python-c7dc88b50b5b
+
+
+=============================IBM Dpocker Sesion===========================
+45120671
+
+VMs                                                Containers
+
+Host os 
+
+Hypervior
+
+================================================================================
+Tekton 
+
+Jenkins
+
+
+there are new tools that are GitOps tools , ArgoCD is focused on CD
+
+
+
+Python Interview Point of questions:
+=====================================
+duplicate removal without builtin methods:
+=========================================
+c=[]
+l=[1,2,7,2,8,2,82,4,7]
+for i in l:
+    if i not in c:
+        c.append(i)
+print c
+
+Enumerate the Methods:
+====================
+
+a="abcdef"
+b="ijklmn"
+c=[]
+for i,j in enumerate(a):
+    c.append((a[i],a[i]+b[i]))
+print c
+
+reverse of string :
+===================
+
+s="Hello welcome python"
+d='''.join(s[i] for i in range(len(s)-1,-1,-1))
+print d
+
+factorial number:
+================== 
+
+def fact(n):
+    f=1
+    while n>=1:
+        f=f*n
+        n=n-1
+    return f
+n=7
+print fact(n)
+
+Fibonacci Series :
+==================
+
+def fib(n):
+    a,b=0,1
+    while b<n:
+        print b
+        a,b=b,a+b
+n=12
+print fib(n)
+
+
+Palindrome Number :
+===================
+
+def palin(a):
+    b=a[::-1]
+    if a == b:
+        return "paln"
+    else:
+        return "not"
+a=input("enter the string::")
+print palin(a)
+
+
+count the words using Count methods:
+===================================
+#l=['red','green','red','blue','block']
+cnt = counter()
+for word in ['red','biue','red','block']:
+    cnt[word] += 1
+print cnt
+"""
+
+File Operations:
+================
+write methods:
+=========
+f=open('reddy.txt','w+')
+f.write("venkat reddy \n redy venkat \n venkat")
+f.close()
+
+Readline& count the words :
+===========================
+f=open('reddy.txt','r')
+lines=f.readlines()
+for line in lines:
+    print line
+    if "v" in line:
+        count=count+1
+print count
+f.close()
+
+Count the words howmany repated:
+===============================
+d={}
+f=open('trash.txt')
+lines=f.readlines()
+for line in lines:
+    a=line.split()
+    print a
+    for word in a:
+        if word in d:
+            d[word]=d[word]+1
+        else:
+            d[word]=1
+print d
+f.close()
+========================================All Topics ===========================
+
+===============Python &Ansible ===============================================
+Import sys
+
+if len(sys.argv)==2:
+    print 'proceeding'
+elif len(sys.argv)==1:
+    print "Uses : python get_pci_mac.py iDRAC-IP"
+    exit()
+============================re.findall&file.read===============================
+def get_interface_list():
+    os.system("sshpass -p 'ericsson' ssh admin@"+sys.argv[1]+" racadm hwinventory nic > /root/racadm.log")
+    f = open('/root/racadm.log','r+')
+    ret = f.read()
+    niclist = re.findall('NIC.*\d-\d-\d',ret)
+    print "List of Nics on server \n"+str(niclist)
+    f.close()
+    return niclist
+
+=============================re.search&re.match,Group ===========================
+def get_interface_pci_mac(interface):
+    ret = os.system("sshpass -p 'ericsson' ssh admin@"+sys.argv[1]+" racadm hwinventory "+interface+" > /root/racadm.log")
+    f2 = open('/root/racadm.log','r+')
+    iface = f2.read()
+    match = re.search('Permanent MAC Address:\s+([A-Fa-f0-9:]*)\n',iface)
+    mac =  match.group(1)
+    match2 = re.search('Bus Number:\s+(\d+)\n',iface)
+    if len(match2.group(1))==1:
+        bus_no =  '0'+match2.group(1)
+    else:
+        bus_no = hex(int(match2.group(1))).split('x')[-1]
+    match3 = re.search('DeviceNumber:\s+(\d+)\n',iface)
+    if len(match3.group(1))==1:
+        dev_no =  '0'+match3.group(1)
+    else:
+        dev_no = match3.group(1)
+    match4 =  re.search('Function Number:\s+(\d+)\n',iface)
+    func_no = match4.group(1)
+    pci_add = '0000:'+bus_no+':'+dev_no+'.'+func_no
+    f2.close()
+    return mac , pci_add
+
+===============================Paramiko&module ===> Except Module ================================================
+
+def getssh():
+    try:
+        client = paramiko.SSHClient()
+        client.load_host_keys(os.path.expanduser('~/.ssh/known_hosts'))
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        client.connect(sys.argv[1], port=22, username='admin', password='ericsson')
+    except:
+        pass
+    finally:
+        client.close()
+=============================Ansible Script for Installcee  manual =============================
+---
+hosts: localhost
+  sudo: yes
+  tasks:
+  - name : Execute script
+    command: sshpass -p 'r00tme' ssh -q -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@192.168.0.11 /opt/ecs-fuel-utils/installcee.sh
+
+============================Install Fuel.sh  Using Ansible =========================================
+---
+- hosts: localhost
+  sudo: yes
+  tasks:
+  - name: Execute script
+    command: /root/CEE_RELEASE/scripts/install_vfuel_redhat.sh
+
+===================================Get Pci script using Ansible =====================================
+---
+- hosts: jumphosts
+  sudo: yes
+  tasks:
+  - name: Copy file
+    copy: src=/root/get_pci_mac.py dest=/root/get_pci_mac.py owner=root group=root mode=755
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.1
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.2
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.3
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.4
+
+  - name: Execute script
+    command: python /root/get_pci_mac.py 192.168.220.5
+==========================================Ansible Verify Conenctivity ==================================
+---
+- hosts : serverhosts
+  sudo: yes
+
+  tasks:
+  - name: Copy file
+    copy: src=/tools/swdev/bin/nfvdc/podReadiness/verify_connectivity.py dest=/root/upgrade_automation/verify_connectivity.py owner=root group=root mode=755
+  - name: Execute script
+    command: python /root/upgrade_automation/verify_connectivity.py CLOUD_PARAMS
+=================================Using Ansible & hardware_pod_readiness.py===================
+---
+- hosts : serverhosts
+  sudo: yes
+
+  tasks:
+
+  - name: Execute script
+    command: python  /root/upgrade_automation/hardware_pod_readiness.py
+    register: result
+
+
+#####################################Python Interview Point of Questions ##################################################
+============================Gateway Conenctivity ======================
+
+def Fuel_connectivity_check():
+    logging.info("Verify fuel connectivity from jumphost via ping test")
+    cmd = "ping -c 5 "+arg.FUEL_IP
+    out = commands.getoutput(cmd)
+
+    res = re.search("((\d){1,3})% packet loss",out)
+    if int(res.group(1)) < 10:
+        logging.info("connectivity verified between jmphost and " + arg.FUEL_IP)
+        logging.info("Verify connectivity to fuel from jumphost -- PASSED")
+    else:
+        logging.info(arg.FUEL_IP + " fuel is not reachable from jmphost")
+        raise Exception('fuel_connectivity_check -- FAILED')
+
+def DCGW_connectivity_check():
+====================================Fuel_connectivity_check() ===============
+def Fuel_connectivity_check():
+    logging.info("Verify fuel connectivity from jumphost via ping test")
+    cmd = "ping -c 5 "+arg.FUEL_IP
+    out = commands.getoutput(cmd)
+
+    res = re.search("((\d){1,3})% packet loss",out)
+    if int(res.group(1)) < 10:
+        logging.info("connectivity verified between jmphost and " + arg.FUEL_IP)
+        logging.info("Verify connectivity to fuel from jumphost -- PASSED")
+    else:
+        logging.info(arg.FUEL_IP + " fuel is not reachable from jmphost")
+        raise Exception('fuel_connectivity_check -- FAILED')
+==================================================
+Generator:
+==========
+Generator is a function .which is having yield keyword  
+
+Generator functions return a generator object. Generator objects are used either by calling the next method on the generator object or using the generator object in a “for in” loop (as shown in the above program).
+
+def generator():
+   yield i*i
+a=generator(10)
+l=range(10)
+for i in l:
+    print a.next()
+=======================================================
+
+Decorator:
+===========
+
+def add(x,y):
+   return x+y
+
+
+def multiply3(f):
+   def decorator():
+       return f()*3
+    return decorator
+
+def multiply(N):
+   def wrap(f):
+       def decorator():
+	       return f()*N
+		return decorator
+	wrap
+	
+example2:
+=========
+def f2(f):
+   
+
+Convert from JSON to Python:
+============================
+import json
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+# parse x:
+y = json.loads(x)
+# the result is a Python dictionary:
+print(y["age"])
+
+Convert from Python to JSON:
+============================
+import json
+
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print(y)
+
+loads====>converting  json in to Python dictionary:
+dumps====>converting python object into json string
+
+===============================Regular Expression:====================
+
+\   Used to drop the special meaning of character
+    following it (discussed below)
+[]  Represent a character class
+^   Matches the beginning
+$   Matches the end
+.   Matches any character except newline
+?   Matches zero or one occurrence.
+|   Means OR (Matches with any of the characters
+    separated by it.
+*   Any number of occurrences (including 0 occurrences)
++   One ore more occurrences
+{}  Indicate number of occurrences of a preceding RE 
+    to match.
+()  Enclose a group of REs
+##############################################################
+
+import re  
+# compile() creates regular expression character class [a-e], 
+# which is equivalent to [abcde]. 
+# class [abcde] will match with string with 'a', 'b', 'c', 'd', 'e'. 
+p = re.compile('[a-e]') 
+  
+# findall() searches for the Regular Expression and return a list upon finding 
+print(p.findall("Aye, said Mr. Gibenson Stark")) 
+
+===========output==============
+['e', 'a', 'd', 'b', 'e', 'a']
+################################################################
+
+\d   Matches any decimal digit, this is equivalent
+     to the set class [0-9].
+\D   Matches any non-digit character.
+\s   Matches any whitespace character.
+\S   Matches any non-whitespace character
+\w   Matches any alphanumeric character, this is
+     equivalent to the class [a-zA-Z0-9_].
+\W   Matches any non-alphanumeric character. 
+
+#################################################################
+
+import re 
+  
+# \d is equivalent to [0-9]. 
+p = re.compile('\d') 
+print(p.findall("I went to him at 11 A.M. on 4th July 1886")) 
+  
+# \d+ will match a group on [0-9], group of one or greater size 
+p = re.compile('\d+') 
+print(p.findall("I went to him at 11 A.M. on 4th July 1886")) 
+
+
+=============output=================
+['1', '1', '4', '1', '8', '8', '6']
+['11', '4', '1886']
+
+#####################################################
+import re 
+  
+# \w is equivalent to [a-zA-Z0-9_]. 
+p = re.compile('\w') 
+print(p.findall("He said * in some_lang.")) 
+  
+# \w+ matches to group of alphanumeric charcter. 
+p = re.compile('\w+') 
+print(p.findall("I went to him at 11 A.M., he said *** in some_language.")) 
+  
+# \W matches to non alphanumeric characters. 
+p = re.compile('\W') 
+print(p.findall("he said *** in some_language.")) 
+
+===================output=====================
+['H', 'e', 's', 'a', 'i', 'd', 'i', 'n', 's', 'o', 'm', 'e', '_', 'l', 'a', 'n', 'g']
+['I', 'went', 'to', 'him', 'at', '11', 'A', 'M', 'he', 'said', 'in', 'some_language']
+[' ', ' ', '*', '*', '*', ' ', ' ', '.']
+
+##############################################################
+
+import re 
+  
+# '*' replaces the no. of occurrence of a character. 
+p = re.compile('ab*') 
+print(p.findall("ababbaabbb")) 
+
+=====================output========================
+['ab', 'abb', 'a', 'abbb']
+
+Understanding the Output:
+Our RE is ab*, which ‘a’ accompanied by any no. of ‘b’s, starting from 0.
+Output ‘ab’, is valid because of singe ‘a’ accompanied by single ‘b’.
+Output ‘abb’, is valid because of singe ‘a’ accompanied by 2 ‘b’.
+Output ‘a’, is valid because of singe ‘a’ accompanied by 0 ‘b’.
+Output ‘abbb’, is valid because of singe ‘a’ accompanied by 3 ‘b’.
+
+###################################################################
+
+from re import split 
+  
+# '\W+' denotes Non-Alphanumeric Characters or group of characters 
+# Upon finding ',' or whitespace ' ', the split(), splits the string from that point 
+print(split('\W+', 'Words, words , Words')) 
+print(split('\W+', "Word's words Words")) 
+  
+# Here ':', ' ' ,',' are not AlphaNumeric thus, the point where splitting occurs 
+print(split('\W+', 'On 12th Jan 2016, at 11:02 AM')) 
+  
+# '\d+' denotes Numeric Characters or group of characters 
+# Spliting occurs at '12', '2016', '11', '02' only 
+print(split('\d+', 'On 12th Jan 2016, at 11:02 AM'))
+
+===================output========================================
+['Words', 'words', 'Words']
+['Word', 's', 'words', 'Words']
+['On', '12th', 'Jan', '2016', 'at', '11', '02', 'AM']
+['On ', 'th Jan ', ', at ', ':', ' AM']
+
+###################################################################
+
+re.search() : This method either returns None (if the pattern doesn’t match), or a re.MatchObject that contains information about the matching part of the string. This method stops after the first match, so this is best suited for testing a regular expression more than extracting data.
+
+
+# A Python program to demonstrate working of re.match(). 
+import re 
+  
+# Lets use a regular expression to match a date string 
+# in the form of Month name followed by day number 
+regex = r"([a-zA-Z]+) (\d+)"
+  
+match = re.search(regex, "I was born on June 24") 
+  
+  
+if match != None: 
+  
+    # We reach here when the expression "([a-zA-Z]+) (\d+)" 
+    # matches the date string. 
+  
+    # This will print [14, 21), since it matches at index 14 
+    # and ends at 21.  
+    print "Match at index %s, %s" % (match.start(), match.end()) 
+  
+    # We us group() method to get all the matches and 
+    # captured groups. The groups contain the matched values. 
+    # In particular: 
+    #    match.group(0) always returns the fully matched string 
+    #    match.group(1) match.group(2), ... return the capture 
+    #    groups in order from left to right in the input string 
+    #    match.group() is equivalent to match.group(0) 
+  
+    # So this will print "June 24" 
+    print "Full match: %s" % (match.group(0)) 
+  
+    # So this will print "June" 
+    print "Month: %s" % (match.group(1)) 
+  
+    # So this will print "24" 
+    print "Day: %s" % (match.group(2)) 
+  
+else: 
+    print "The regex pattern does not match."
+
+
+==============output=============
+
+Match at index 14, 21
+Full match: June 24
+Month: June
+Day: 24 
+
+
+####################################################
+
+re.match() : This function attempts to match pattern to whole string. The re.match function returns a match object on success, None on failure.
+re.match(pattern, string, flags=0)
+
+pattern : Regular expression to be matched.
+string : String where p attern is searched
+flags : We can specify different flags 
+        using bitwise OR (|). 
+		
+# A Python program to demonstrate working 
+# of re.match(). 
+import re 
+  
+# a sample function that uses regular expressions 
+# to find month and day of a date. 
+def findMonthAndDate(string): 
+      
+    regex = r"([a-zA-Z]+) (\d+)"
+    match = re.match(regex, string) 
+      
+    if match == None:  
+        print "Not a valid date"
+        return
+  
+    print "Given Data: %s" % (match.group()) 
+    print "Month: %s" % (match.group(1)) 
+    print "Day: %s" % (match.group(2)) 
+  
+      
+# Driver Code 
+findMonthAndDate("Jun 24") 
+print("") 
+findMonthAndDate("I was born on June 24") 
+
+==============output============================================
+#################################################################
+
+re.findall() : Return all non-overlapping matches of pattern in string, as a list of strings. The string is scanned left-to-right, and matches are returned in the order found (Source : Python Docs).
+
+# A Python program to demonstrate working of 
+# findall() 
+import re 
+  
+# A sample text string where regular expression  
+# is searched. 
+string  = """Hello my Number is 123456789 and 
+             my friend's number is 987654321"""
+  
+# A sample regular expression to find digits. 
+regex = '\d+'             
+  
+match = re.findall(regex, string) 
+print(match) 
+  
+# This example is contributed by Ayush Saluja. 
+
+
+================output========================
+
+['123456789', '987654321']
+
+
+# extract all email addresses and add them into the resulting set
+new_emails = set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", 
+                           text, re.I))
+		
+===================================================Sorted and Reversed &Enumearate  LISts=================
+sorted
+reversed
+
+>>> for i in reversed(l):
+	print i
+
+	
+3
+2
+1
+0
+>>> 
+>>> for i in sorted(l):
+	print i
+
+	
+0
+1
+2
+3
+
+
+>>> for i in enumerate(l):
+	print i
+
+	
+(0, 0)
+(1, 1)
+(2, 2)
+(3, 3)
+===============Using Zip function====================
+
+names = [ 'Alice', 'Bob', 'Trudy' ]
+hobbies = [ 'painting', 'singing', 'hacking']
+ages = [ 21, 17, 22 ]
+
+#combine those list using zip() function
+for person,age, hobby in zip(names,ages,hobbies):
+        print (person+" is "+str(age)+"  years old and his/her hobby is "+hobby)
+		
+===========================Without bultin Functions MIn and Max===================
+
+Second Largest elemt in Python  sorted(list1)[-2]) 
+###################################################
+data_list = [-5, -23, 5, 0, 23, -6, 23, 67]
+min_list = []
+max_list=[]
+while data_list:
+    minimum =maximum= data_list[0]  # arbitrary number in list 
+    for x in data_list: 
+        if x < minimum:
+            minimum = x
+        elif x> maximum:
+            maximum=x
+    min_list.append(minimum)
+    max_list.append(maximum)
+    data_list.remove(minimum)
+    data_list.remove(maximum)
+
+print min_list
+print max_list
+
+#output is 
+#[-23, -6, -5, 0]
+#[67, 23, 23, 5]
+
+=================Factorial Number ===========================
+
+n=input("enter number")
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+print factorial(n)
+
+Swallow copy and deep copy:
+=============================
+In the above program, we made changes to old_list i.e old_list[1][1] = 'AA'. Both sublists of old_list and new_list at index [1][1] were modified. This is because, both lists share the reference of same nested objects.
+
+Swallow copy method:
+===================
+import copy
+
+old_list = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+new_list = copy.copy(old_list)
+
+old_list[1][1] = 'AA'
+
+print("Old list:", old_list)
+print("New list:", new_list)
+
+====output=========
+Old list: [[1, 1, 1], [2, 'AA', 2], [3, 3, 3]]
+New list: [[1, 1, 1], [2, 'AA', 2], [3, 3, 3]]
+
+
+Adding a new nested object in the list using Deep copy
+
+In the below  program, when we assign a new value to old_list, we can see only the old_list is modified. This means, both the old_list and the new_list are independent. This is because the old_list was recursively copied, which is true for all its nested objects
+import copy
+
+old_list = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+new_list = copy.deepcopy(old_list)
+
+old_list[1][0] = 'BB'
+
+print("Old list:", old_list)
+print("New list:", new_list)
+
+output:
+=========
+Old list: [[1, 1, 1], ['BB', 2, 2], [3, 3, 3]]
+New list: [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+
+
+
+==========================RE Validations=======================
+
+import re
+"""
+m='97392212899'
+phone_re = re.match(r'\d{10}$',m)
+print phone_re
+
+a="+99-9701236632"
+b=re.match(r'(^[+0-9]{1,3})-*([0-9]{10,11}$)',a)
+print b"""
+
+a="lakshma.arikatla1988@gmail.com"
+b=re.match(r"^[A-Za-z0-9]+.+[A-Za-z0-9]+@+[A-Za-z]+.+[A-Za-z]$",a)
+print b
+
+a="192.168.0.121"
+IP=re.match(r"^\d{1,3}\.\d{1,3}\.\d{0,1}\.\d{1,4}$",a)
+print IP
+
+#below pattern featch all the words ends with reddy
+s='lakshmareddy venkat srinu ramireddy ramesh jyothi pereddy raju kotireddy'
+s1=re.findall("\w+reddy",s)
+print s1
+
+===========================MYSQL Connection using Python=====================================
+import pymysql
+
+#database connection
+connection = pymysql.connect(host="localhost", user="root", passwd="", database="databaseName")
+cursor = connection.cursor()
+# Query for creating table
+ArtistTableSql = """CREATE TABLE Artists(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+NAME  CHAR(20) NOT NULL,
+TRACK CHAR(10))"""
+
+cursor.execute(ArtistTableSql)
+connection.close()
+===============================
+import pymysql
+
+#database connection
+connection = pymysql.connect(host="localhost", user="root", passwd="", database="databaseName")
+cursor = connection.cursor()
+
+# queries for inserting values
+insert1 = "INSERT INTO Artists(NAME, TRACK) VALUES('Towang', 'Jazz' );"
+insert2 = "INSERT INTO Artists(NAME, TRACK) VALUES('Sadduz', 'Rock' );"
+
+#executing the quires
+cursor.execute(insert1)
+cursor.execute(insert2)
+
+
+#commiting the connection then closing it.
+connection.commit()
+connection.close()
+========================================
+
+
+Host nameD-113182711 
+Asset number113182711   
+Serial #8CG915BV93
+
+
+===============================
+Multithreading :
+========================
+
+
+multithreading is a way of achieving multitasking. In multithreading, the concept of threads is used.
+In computing, a process is an instance of a computer program that is being executed.
+
+process has 3 basic components:
+
+An executable program.
+The associated data needed by the program (variables, work space, buffers, etc.)
+The execution context of the program (State of process)
+
+
+
+
+Experience :
+============
+
+
+Miraco ITservices private Limited    =====> 8 months  9 days ( 16th 2015 October to June 24th  2016) 
+Mphasis Pvt Ltd                      ====> 13 months, 8 days including the end date.( june 27th 2016 to Aug3rd  2017)
+Wipro Technologies                   ====> 36 months, 17 days (3 Years 7 days ) (4th August 2017 to Till date 2020 September)
+
+
+============================================
+
+List compreshensions:
+=====================
+list comprehensions allow you to create lists with a for loop with less code.
+
+comp_list = [x * 2 for x in range(10)]
+print(comp_list)
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+Generator expressions:
+======================
+Generator expression allows creating a generator on a fly without a yield keyword. However, it doesn’t share the whole power of generator created with a yield function. The syntax and concept is similar to list comprehensions
+
+
+gen_exp = (x ** 2 for x in range(10) if x % 2 == 0)
+for x in gen_exp:
+    print(x)
+0
+4
+16
+36
+64	
+	
+[x for x in range(5)]  ===>List compreshensions 
+
+(x for x in range(5))  ====>Generator expressions
+
+ 
+tuple(range(5))
+
+Let’s check it
+
+
+import numpy as np
+actual_value = np.array([1, 2, 3])
+predicted_value = np.array([1.1, 2.1, 5 ])
+
+# take square of differences and sum them
+l2 = np.sum(np.power((actual_value-predicted_value),2))
+print(l2)
+
+
+
+import numpy as np
+
+intarray = [13.0, 10.0, 18.0, 14.5,
+17.5, 16.5, 15.0, 10.5,
+17.0, 8.5, 11.0, 11.5, 14.0,
+9.0, 13.5, 9.5, 12.5,
+16.0, 12.0, 15.5]
+
+F1 is defined on labels, not probability distributions, so use predict instead of predict_proba.
+
+=======================================================
+
+chrome 81 
+
+Decorator:
+===========
+A decorator takes in a function, adds some functionality and returns it. In this article, you will learn how you can create a decorator and why you should use it.
+
+def sampleDecorator(func):
+    def addingFunction():
+        # some new statments or flow control
+        print("This is the added text to the actual function.")
+        # calling the function
+        func()
+
+    return addingFunction
+
+
+@sampleDecorator
+def actualFunction():
+    print("This is the actual function.")
+
+
+actualFunction()
+
+Output:
+=========
+
+This is the added text to the actual function.
+This is the actual function.
+=================================================================================
+https://zoom.us/download/vdi/3.0.1/ZoomCitrixHDXMediaPlugins.msi
+
+https://zoom.us/download/vdi/ZoomCitrixHDXMediaPlugin.msi
+========================================================Google cloud enginee======================================================
+
+IAM ===?identity access management
+
+google account
+
+
+GCP Netwrkign:
+===========
+
+gcloud compute instances list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

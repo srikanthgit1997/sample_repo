@@ -1,0 +1,311 @@
+# ▶️ WHAT IS COMPOSER? 
+Cloud Composer is a fully managed workflow orchestration service in Google Cloud.
+It is based /built on Apache Airflow (an open-source platform) designed for  
+
+✅Creating:-You write a Python script called a DAG (Directed Acyclic Graph),In that script, you list tasks (like load data, run query, send email) and their order.
+✅Scheduling :-	Set daily, hourly, or custom execution schedules 
+    (chedule_interval='0 7 * * *',  # Run daily at 7 AM)
+* * * * *
+| | | | |
+| | | | └─ Day of the week (0-7) (0 or 7 = Sunday)
+| | | └── Month (1-12)
+| | └── Day of the month (1-31)
+| └── Hour (0-23)
+└── Minute (0-59)
+✅Managing   :-	No need to install or manage Airflow servers yourself
+✅Monitoring complex workflows:--Get logs, retry failed tasks, set alerts
+
+✅ Common use cases for Cloud Composer include:---  
+Data processing pipelines, scheduling 
+ETL (Extract, Transform, Load) workflows,  
+Automation of routine tasks. 
+Infrastructure Automation.
+===========================================================================================================
+# ▶️ SUMMARY – THE FOUR OPERATORS:===========================
+===================================================================================
+| Operator                          | Purpose                                           |
+| --------------------------------- | ------------------------------------------------- |
+| **GCSToBigQueryOperator**         | Load data from GCS into BigQuery                  |
+| **DataprocCreateClusterOperator** | Create a Dataproc cluster for big data processing |
+| **BeamRunPythonPipelineOperator** | Run a Dataflow job using Apache Beam              |
+| **TriggerDagRunOperator**         | Trigger another workflow or DAG                   |
+-========================================================================================
+=================================================================================================level_1_dag==========================================================================
+# import all modules
+import airflow
+from airflow import DAG
+from datetime import datetime, timedelta
+from airflow.utils.dates import days_ago
+from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
+from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
+
+# variable section
+PROJECT_ID = "project-730830-am-ist" # Your GCP project 
+LOCATION = "US"                        # BigQuery/region location
+SOURCE_BUCKET = "storage-bucket-new-1011"  # Cloud Storage bucket
+DATASET_NAME_1 = "raw_ds"              # Raw dataset (input tables)
+DATASET_NAME_2 = "insight_ds"          # Target dataset (output table)
+TABLE_NAME_1 = "emp_raw"                # Employee raw table
+TABLE_NAME_2 = "dep_raw"                # Department raw table
+TABLE_NAME_3 = "empDep_in"              # Final combined table
+
+ARGS = {
+    "owner": "Srikanthreddy ",                      # Person responsible for the DAG
+    "email_on_failure": True,                      # Send email if DAG fails
+    "email_on_retry": True,                        # Send email if task retries
+    "email": "****@gmail.com",                    # Recipient email
+    "retries": 2,                                # Retry 2 times if failed
+    "retry_delay": timedelta(minutes=2),          # Wait 2 minutes before retry
+    "start_date": days_ago(1),                    # Start date for scheduling
+}
+QUERY = f"""
+CREATE OR REPLACE TABLE `{PROJECT_ID}.{DATASET_NAME_2}.{TABLE_NAME_3}` AS
+SELECT
+    e.EmployeeID,
+    CONCAT(e.FirstName,".",e.LastName) AS FullName,
+    e.Email,
+    e.Salary,
+    e.JoinDate,
+    d.DepartmentID,
+    d.DepartmentName,
+    CAST(e.Salary AS INTEGER) * 0.01 as EmpTax
+FROM
+    `{PROJECT_ID}.{DATASET_NAME_1}.{TABLE_NAME_1}` e
+LEFT JOIN
+    `{PROJECT_ID}.{DATASET_NAME_1}.{TABLE_NAME_2}` d
+ON e.DepartmentID = d.DepartmentID
+WHERE e.EmployeeID is not null
+"""
+
+
+# define the dag
+with DAG(
+    dag_id="level_1_dag",
+    schedule_interval="0 5 * * *",
+    description="DAG to load data from GCS to BigQuery and create an enriched employee table",
+    default_args = ARGS,
+    tags=["gcs","bq","etl", "data team"]
+) as dag:    
+
+# define the tasks
+    load_emp_csv = GCSToBigQueryOperator(
+        task_id="load_emp_csv",                               #task_id="empTask",
+        bucket=SOURCE_BUCKET,
+        source_objects=["employee.csv"],
+        destination_project_dataset_table=f"{DATASET_NAME_1}.{TABLE_NAME_1}",
+        schema_fields=[
+            {"name": "EmployeeID", "type": "INT64", "mode": "NULLABLE"},
+            {"name": "FirstName", "type": "STRING", "mode": "NULLABLE"},
+            {"name": "LastName", "type": "STRING", "mode": "NULLABLE"},
+            {"name": "Email", "type": "STRING", "mode": "NULLABLE"},
+            {"name": "DepartmentID", "type": "INT64", "mode": "NULLABLE"},
+            {"name": "Salary", "type": "FLOAT64", "mode": "NULLABLE"},
+            {"name": "JoinDate", "type": "STRING", "mode": "NULLABLE"},
+        ],
+        write_disposition="WRITE_TRUNCATE",
+    )
+
+    load_department_csv = GCSToBigQueryOperator(
+        task_id="load_department_csv",                        #task_id="depTask",
+        bucket=SOURCE_BUCKET,
+        source_objects=["departments.csv"],
+        destination_project_dataset_table=f"{DATASET_NAME_1}.{TABLE_NAME_2}",
+        schema_fields=[
+            {"name": "DepartmentID", "type": "INT64", "mode": "NULLABLE"},
+            {"name": "DepartmentName", "type": "STRING", "mode": "NULLABLE"},
+        ],
+        write_disposition="WRITE_TRUNCATE"
+    )
+
+    insert_query_job = BigQueryInsertJobOperator(
+        task_id="insert_query_job",                           #task_id="empDepTask",    
+        configuration={
+            "query": {
+                "query": QUERY,
+                "useLegacySql": False,
+                "priority": "BATCH",
+            }
+        },
+        location=LOCATION,
+    )
+
+
+# define the dependencies
+(load_emp_csv,load_department_csv) >> insert_query_job #(task_1,task_2) >> task_3
+===============================================================================================
+Raw Employee Table (emp_raw)  ─┐
+                               ├─► Transformation (join, filter, calculate)
+Raw Department Table (dep_raw) ─┘
+                                ↓
+          Final Table (empDep_in) stored in BigQuery → used for reports, dashboards, etc.
+==============================================================================================level_2_dag=============================================================================
+# import all modules
+import airflow
+from airflow import DAG
+from datetime import datetime, timedelta
+from airflow.utils.dates import days_ago
+from airflow.providers.google.cloud.operators.dataproc import (
+    DataprocCreateClusterOperator,
+    DataprocDeleteClusterOperator,
+    DataprocSubmitJobOperator,
+)
+
+# variable section
+PROJECT_ID = "project-730830-am-ist"
+REGION = "us-east1"
+CLUSTER_NAME = "demo-cluster"
+ARGS = {
+    "owner": "Srikanthreddy ",
+    "email_on_failure": True,
+    "email_on_retry": True,
+    "email": "****@gmail.com",
+    "retries": 2,
+    "retry_delay": timedelta(minutes=2),
+    "start_date": days_ago(1),
+}
+CLUSTER_CONFIG = {
+    "master_config": {
+        "num_instances": 1,
+        "machine_type_uri": "e2-standard-2",
+        "disk_config": {"boot_disk_type": "pd-balanced", "boot_disk_size_gb": 32},
+    },
+    "worker_config": {
+        "num_instances": 2,
+        "machine_type_uri": "e2-standard-2",
+        "disk_config": {"boot_disk_type": "pd-balanced", "boot_disk_size_gb": 32},
+    },
+}
+PYSPARK_JOB_1 = {
+    "reference": {"project_id": PROJECT_ID},
+    "placement": {"cluster_name": CLUSTER_NAME},
+    "pyspark_job": {"main_python_file_uri": "gs://src-test-bkt-sdk/dummy_pyspark_job_1.py"},
+}
+
+PYSPARK_JOB_2 = {
+    "reference": {"project_id": PROJECT_ID},
+    "placement": {"cluster_name": CLUSTER_NAME},
+    "pyspark_job": {"main_python_file_uri": "gs://src-test-bkt-sdk/dummy_pyspark_job_2.py"},
+}
+
+# define the dag
+with DAG(
+    dag_id="level_2_dag",
+    schedule_interval="0 5 * * *",
+    description="DAG to create a Dataproc cluster, run PySpark jobs, and delete the cluster",
+    default_args = ARGS,
+    tags=["pyspark","dataproc","etl", "data team"]
+) as dag: 
+
+# define the Tasks
+    create_cluster = DataprocCreateClusterOperator(
+        task_id="create_cluster",
+        project_id=PROJECT_ID,
+        cluster_config=CLUSTER_CONFIG,
+        region=REGION,
+        cluster_name=CLUSTER_NAME,
+    )
+
+    pyspark_task_1 = DataprocSubmitJobOperator(
+        task_id="pyspark_task_1", 
+        job=PYSPARK_JOB_1, 
+        region=REGION, 
+        project_id=PROJECT_ID
+    )
+    pyspark_task_2 = DataprocSubmitJobOperator(
+        task_id="pyspark_task_2", 
+        job=PYSPARK_JOB_2, 
+        region=REGION, 
+        project_id=PROJECT_ID
+    )
+
+    delete_cluster = DataprocDeleteClusterOperator(
+        task_id="delete_cluster",
+        project_id=PROJECT_ID,
+        cluster_name=CLUSTER_NAME,
+        region=REGION,
+    )
+
+# define the task sequence
+create_cluster >> pyspark_task_1 >> pyspark_task_2 >> delete_cluster
+=================================================================================level_3_dag==========================================================================================
+# import all modules
+import airflow
+from airflow import DAG
+from datetime import datetime, timedelta
+from airflow.utils.dates import days_ago
+from airflow.providers.apache.beam.hooks.beam import BeamRunnerType
+from airflow.providers.apache.beam.operators.beam import BeamRunPythonPipelineOperator
+
+# variable section
+PROJECT_ID = "project-730830-am-ist"
+LOCATION = "us-central1"
+GCS_PYTHON_SCRIPT = "gs://src-test-bkt-sdk/dummy_beam_job.py"
+GCS_OUTPUT = "gs://src-test-bkt-sdk/output/"
+ARGS = {
+    "owner": "Srikanthreddy ",
+    "email_on_failure": True,
+    "email_on_retry": True,
+    "email": "****@gmail.com",
+    "retries": 2,
+    "retry_delay": timedelta(minutes=2),
+    "start_date": days_ago(1),
+}
+
+# define the dag
+with DAG(
+    dag_id="level_3_dag",
+    schedule_interval="0 5 * * *",
+    description="DAG to run an Apache Beam job on Dataflow",
+    default_args = ARGS,
+    tags=["gcs","dataflow","etl", "data-team"]
+) as dag:    
+
+# define the tasks
+    start_python_job = BeamRunPythonPipelineOperator(
+        runner=BeamRunnerType.DataflowRunner,
+        task_id="start_python_job",
+        py_file=GCS_PYTHON_SCRIPT,
+        py_options=[],
+        pipeline_options={
+            "output": GCS_OUTPUT,
+            "runner" : "DataflowRunner",
+        },
+        py_requirements=["apache-beam[gcp]==2.59.0"],
+        py_interpreter="python3",
+        py_system_site_packages=False,
+        dataflow_config={"location": LOCATION, "job_name": "start_python_job"},
+    )
+=========================================================================================level_4_dag==================================================================================
+# import all modules
+import airflow
+from airflow import DAG
+from datetime import datetime,timedelta
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
+
+args = {
+    "owner" : "Srikanthreddy ",
+    "start_date" : datetime(2024,2,24),  #(year,month,day)
+    "retries" : 2,
+    "retry_delay" : timedelta(minutes=5)
+}
+
+# define the DAG
+with DAG(
+    "PARENT_DAG_COMPOSER",
+    schedule_interval = '30 7 * * *',
+    default_args = args
+) as dag:
+    
+    task_1 = TriggerDagRunOperator(
+        task_id = "running_level_1_dag",
+        trigger_dag_id = "LEVEL_1_DAG_TEST"
+    )
+
+    task_2 = TriggerDagRunOperator(
+        task_id = "running_level_2_dag",
+        trigger_dag_id = "LEVEL_2_DAG"
+    )
+
+# dependency
+(task_1, task_2)
+=======================================================================

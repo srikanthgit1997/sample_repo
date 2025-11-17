@@ -1,0 +1,59 @@
+● Technologies Used:
+   ● GCP Services: BigQuery, Cloud Storage, Dataproc, Dataflow, Cloud Composer
+   ● Programming: PySpark, Python (Apache Beam), SQL
+   ● File Formats: CSV, JSON, Parquet
+
+Roles & Responsibilities:
+  
+● Designed and implemented ETL pipelines using Dataproc (PySpark) and Dataflow (Apache Beam) to ingest data from multiple sources.   
+● Performed data cleaning and transformations including:  
+   ● Duplicate removal
+   ● Null value handling
+   ● Column renaming for consistency
+   ● Aggregations, joins, and merges
+● Loaded cleaned and transformed datasets into BigQuery raw tables. ●
+● Developed insight tables in BigQuery to meet business analysis needs.
+● Integrated insight tables with BI tools for reporting and dashboard creation.
+● Automated pipeline execution using Cloud Composer, including:  
+   ● Scheduling jobs
+   ● Monitoring and alerting for failures
+   ● Managing dependencies between tasks
+● Ensured data quality and validation before loading into production tables. ●
+● Optimized BigQuery queries for cost efficiency and performance.
+● Collaborated with business analysts and stakeholders to define data requirements.
+========================================================================================
+Roles & Responsibilities:5-bullet version
+
+● Collected data from SQL, MySQL, CSV, JSON, and Parquet sources using Dataproc (PySpark) and Dataflow (Python). 
+● Cleaned and transformed data (remove duplicates, fix nulls, rename columns, join tables).
+● Loaded processed data into BigQuery for storage and analysis. ●
+● Automated data pipelines with Cloud Composer for scheduling and monitoring.
+● Created insight tables and reports for business dashboards.
+==============================================================================================================
+Roles & Responsibilities:
+
+● Built ETL pipelines using Dataproc (PySpark) and Dataflow (Python) to bring data from different sources into GCP.
+● Cleaned and prepared data by:
+   ● Removing duplicates
+   ● Handling missing values
+   ● Renaming columns for clarity
+   ● Performing joins, aggregations, and merges
+● Stored processed data in BigQuery as raw and analysis-ready tables.
+● Created insight tables for reports and dashboards.
+● Connected BigQuery data to BI tools for visual reporting.
+● Scheduled and automated data workflows using Cloud Composer.
+● Monitored pipelines and fixed issues when jobs failed. 
+● Made sure data was accurate before using it in production.
+● Improved query performance and reduced processing costs.
+● Worked with business teams to understand their data needs.
+ ===========================================================================================
+ Roles & Responsibilities (Powerful 8-point version)
+
+● Designed and implemented scalable ETL pipelines using Dataproc (PySpark) and Dataflow(Apache Beam/Python) to ingest and process data from SQL, MySQL, CSV, JSON, and Parquet sources.●
+● Performed comprehensive data cleaning and transformation, including duplicate removal, null handling, column standardization, joins, aggregations,and merges for analytics readiness.●
+● Developed insight tables in BigQuery to meet business analysis needs (or) business dashboards.●
+● Integrated BigQuery datasets with BI tools to deliver interactive dashboards and visual insights for stakeholders.
+● Automated end-to-end workflows using Cloud Composer, handling scheduling, dependency management, and monitoring with alerts for job failures.●
+● Ensured data quality and integrity through validation checks before loading into production environments.
+● Optimized BigQuery queries to improve query performance and reduce the cost, implementing partitioning, clustering, and query tuning strategies.●
+● Collaborated closely with business teams to gather requirements, translate them into technical solutions, and ensure data products met business objectives.

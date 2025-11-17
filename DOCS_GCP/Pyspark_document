@@ -1,0 +1,248 @@
+1. What is Dataproc? 
+Dataproc provides an on-demand, managed environment to run Apache Hadoop, Apache Spark, and other big data tools in the cloud.  
+It removes the operational complexities associated with setting up, managing, and maintaining Hadoop/Spark clusters. 
+
+ Key Features of Dataproc:- 
+Support for Popular Big Data Tools: Runs not just Hadoop and Spark but also Hive, Pig, Presto, and more. 
+Integrated Ecosystem: Seamlessly integrates with other GCP services such as BigQuery, Dataflow, Cloud Storage, and Pub/Sub. 
+Job-Oriented Management: You can submit Spark or Hadoop jobs directly to Dataproc without worrying about cluster management. 
+Flexibility: Works with both batch and streaming workloads. 
+
+ 
+2. How Dataproc Different from Traditional Hadoop and Spark 
+
+ Dataproc inherits the capabilities of Hadoop and Spark while addressing their limitations through cloud-native features: 
+
+ a. Managed Clusters 
+Hadoop Integration: Dataproc provides a fully configured Hadoop ecosystem, including HDFS, YARN, and Hive. 
+Spark Integration: Dataproc pre-installs and optimizes Apache Spark for distributed data processing. 
+Quick Setup: Traditional Hadoop/Spark environments can take hours or days to set up, but Dataproc clusters can be created in 90 seconds or less. 
+
+ 
+
+b. HDFS in the Cloud 
+
+Instead of using Hadoop's native HDFS, Dataproc leverages Google Cloud Storage (GCS): 
+GCS acts as the storage layer, providing a scalable, cost-effective alternative to HDFS. 
+Decoupled Storage and Compute: Data can persist in GCS independent of the Dataproc cluster lifecycle. 
+
+ 
+
+c. Cost Optimization 
+Dataproc allows users to spin up clusters on demand and shut them down when processing is complete. 
+This flexibility avoids the costs associated with maintaining always-on Hadoop/Spark clusters. 
+
+ d. Scalable and Resilient 
+Leverages GCP's infrastructure to handle scaling, fault tolerance, and node management. 
+Supports auto-scaling clusters, where the cluster size adjusts based on workload demand. 
+
+ 4. Dataproc in Modern Data Pipelines:<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+
+     Dataproc enables organizations to modernize their big data pipelines: 
+
+ Instead of setting up on-premises Hadoop/Spark, they use Dataproc to harness Hadoop/Spark in a cloud-native, scalable, and cost-effective manner. 
+Combines the robust data processing power of Spark and Hadoop with GCP's advanced analytics tools. 
+
+
+
+1  Create DataProc Cluster : 2 ways  
+
+     1 console 
+     2 Shell 
+     
+Single Node:<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+
+ CLUSTER_NAME=my-cluster-demwo REGION=us-east1  
+gcloud dataproc clusters create ${CLUSTER_NAME} \  
+--region ${REGION} \ 
+--single-node \ 
+--master-machine-type n1-standard-2 \ 
+--master-boot-disk-size 500 \ 
+--image-version 2.0-debian10 \ 
+--enable-component-gateway \ 
+--optional-components=JUPYTER \ 
+--initialization-actions gs://goog-dataproc-initialization-actions-${REGION}/connectors/connectors.sh \ 
+--metadata bigquery-connector-version=1.2.0 \ 
+--metadata spark-bigquery-connector-version=0.21.0 
+
+Multi Node:<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+  
+CLUSTER_NAME=my-cluster-demo 
+REGION=us-east1 
+PROJECT_ID=avd-databricks-demo 
+
+gcloud dataproc clusters create ${CLUSTER_NAME} \ 
+--region ${REGION} \ 
+--project ${PROJECT_ID} \ 
+--num-workers=2 \ 
+--worker-machine-type=n1-standard-2 \ 
+--worker-boot-disk-size=50GB \ 
+--master-machine-type=n1-standard-2 \ 
+--master-boot-disk-size=50GB \ 
+--image-version=2.0-debian10 \ 
+--enable-component-gateway \ 
+--optional-components=JUPYTER \ 
+--scopes=cloud-platform \ 
+--metadata bigquery-connector-version=1.2.0,spark-bigquery-connector-version=0.21.0 \ 
+--properties "spark:spark.executor.memory=4g,spark:spark.driver.memory=2g" 
+
+ 
+Cluster Types:<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+
+single node:-------------1 master
+
+only one machine
+when you don't need distributed computation
+small data processing
+
+multi-node/standard:-----1 master – N workers
+
+multiple machines
+when you need distributed computation
+large data processing
+
+high availability/concurrency:------3 masters, N workers
+
+multiple machines
+when you need distributed computation
+large data processing
+multiple users
+ 
+
+
+Open Jupiter Lab, select pyspark :<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>> 
+# install pyspark 
+! pip install pyspark 
+
+# import sparkSession : entry point to the pyspark functionality 
+import pyspark 
+from pyspark.sql import SparkSession
+ 
+# create SparkSession 
+spark = SparkSession.builder \ 
+             .master("local") \ 
+             .appName("demo") \ 
+             .getOrCreate() 
+
+What is Dataframe:<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>> 
+
+Distributed collection of data  
+Immutable nature 
+Organized into columns and rows, schema (similar to your table) 
+Perform various transformations 
+Supports both batch and streaming 
+
+
+3. Topics in pyspark sql Dataframes :  
+a.create df:<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+
+a. hardcoded values 
+b. csv 
+c. json 
+d. parquet 
+e. bigquery 
+f. avro (assignment) 
+g. txt (assignment) 
+h. cloud sql : MYSQL 
+
+ 
+
+b. write df: 
+a. txt 
+b. csv 
+c. json 
+d. parquet 
+e. bigquery 
+f. avro (assignment) 
+g. cloud sql 
+
+ 
+
+c. transformations: 
+
+     1. create dataframe : 
+       a. hard codes values 
+       b. file formats(csv, json, parquet..) 
+
+    2. apply/rename columns dynamically 
+    3. lit() : To add new constant column 
+
+    4. withColumn(): 
+      a. to add a constant column  
+      b. to add a derived column 
+
+    5. StructType() and StructField(): 
+      a. to change the column datatype 
+
+6. filter() or where() : both are same 
+      a. to filter the data  
+      b. apply multiple conditions (&, |) (and, or) 
+
+7. distinct() 
+8. dropDuplicates() 
+      a. is to remove the duplicates 
+      b. on each column 
+      
+9. sort() or orderBy(): 
+      a. to sort the data 
+      b. multiple columns 
+
+10. Union() or unionAll():  
+      a. to merge the data  
+      b. conditions : no of columns, datatypes 
+
+11. groupBy() : 
+      a. to group the data 
+
+12. aggregation :  
+      a. min, max, count, avg, sum 
+
+13. cast() :  
+14. when() and otherwise() :  
+15. split() 
+17. concat() : for concatenation 
+18. substring() : to get a part of string 
+19.Joines 
+20. Ranking functions 
+
+1.Null handling 
+
+
+Create Cluster :<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Steps to create cluster in Dataproc : 
+Make sure Compute Engine API enabled 
+Make sure Dataproc API enabled 
+Enable Cloud Resource Manager API 
+
+
+Spark and Pyspark :<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>
+What is Spark ? 
+Distributed Computing : Apache Spark is a distributed computing system that allows you to process large datasets across a cluster of machines in a fault-tolerant manner. It distributes data processing tasks across multiple nodes, enabling parallel execution and scalability. 
+
+ In-Memory Processing: Spark leverages in-memory computing, which means it can store intermediate data in memory rather than writing to disk after each step. This allows for faster data processing compared to traditional disk-based processing frameworks like Hadoop MapReduce (spark is 100 times faster than Hadoop Map Reduce) 
+
+ Programming Interface: Spark provides APIs in multiple languages including Scala, Java, Python (PySpark), and R. This flexibility enables developers to use Spark with the language they are most comfortable with. 
+
+ Rich Set of Libraries: Spark comes with a rich set of libraries for various tasks including  
+SQL and structured data processing (Spark SQL),  
+machine learning (MLlib),  
+graph processing (GraphX), and  
+streaming data (Spark Streaming).  
+These libraries make it easy to perform a range of data processing tasks within the Spark. 
+
+ Unified Processing Engine: Spark provides a unified processing engine for batch processing, interactive queries, streaming analytics, and iterative algorithms.  
+ Lazy Evaluations : all the transformations in spark are lazy, they do not compute the results right away until an action operation is called. 
+
+Spark architecture :<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+
+Spark consists of a driver node, cluster manager and multiple worker nodes 
+The driver node contains the driver program that has Spark context 
+The driver program implicitly converts the user-submitted program into a DAG 
+This Spark context with the help of cluster manager allocates the task (executable parts of a job) to worker nodes 
+The cluster manager allocates the resources needed by the driver to execute the job 
+Worker nodes are where the tasks are executed and the results are returned to the context 
+
+What is Pyspark :  
+PySpark is the Python API for Spark. It allows you to interface with Spark using Python programming language, making it easier to use Spark's capabilities within a Python-based environment. 
+ 

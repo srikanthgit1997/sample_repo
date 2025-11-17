@@ -1,0 +1,189 @@
+VPC, Cloud VPN, Cloud Load Balancing, Cloud DNS, Cloud CDN
+Cloud IAM, Cloud Identity, Cloud KMS and Access Management
+Access Management, Encryption, GCP Organization, Billing and Cost Explorer
+Cloud Storages, App Engine, Google Kubernetes Engine,
+GCP Config, Systems Manager, Automation
+CLI, SDK and API gateway
+Cloud Dataflow, Cloud Dataproc , Cloud Pub/Sub
+Cloud Sql,  Big Query, Big Table
+Cloud Datalab, Data Studio, Cloud ML
+Cloud Build, Cloud Scheduler 
+Cloud Storage Transfer Service, Stackdriver
+
+
+Google cloud COmmands :
+-========================
+
+
+gcloud auth list
+
+gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone us-central1-c
+gcloud config set compute/zone
+gcloud config set compute/region
+
+gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone $ZONE
+
+gcloud compute instances create --help
+export PROJECT_ID=<your_project_ID>
+export ZONE=<your_zone>
+gcloud compute project-info describe --project <your_project_ID>
+
+gcloud -h
+gcloud config --help
+gcloud help config
+
+gcloud config list
+gcloud config list --all
+
+gcloud components list
+gcloud compute instances describe <your_vm>
+
+gcloud compute ssh gcelab2 --zone $ZONE
+gcloud config list project
+gcloud config set compute/zone us-central1-a
+
+Kubernates:
+==========
+
+gcloud container clusters create [CLUSTER-NAME]
+gcloud container clusters get-credentials [CLUSTER-NAME]  gcloud container clusters get-credentials k81
+
+kubectl create deployment hello-server --image=gcr.io/google-samples/hello-app:1.0
+
+kubectl expose deployment hello-server --type=LoadBalancer --port 8080
+
+kubectl get service
+
+http://[EXTERNAL-IP]:8080
+
+gcloud container clusters delete [CLUSTER-NAME]  gcloud container clusters delete k81
+
+
+HTTP/HTTPS load balance r:
+==========================
+
+gcloud config set compute/zone us-central1-a
+gcloud config set compute/region us-central1
+gcloud auth list
+gcloud config list project
+
+
+cat << EOF > startup.sh
+#! /bin/bash
+apt-get update
+apt-get install -y nginx
+service nginx start
+sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
+EOF
+
+gcloud compute instance-templates create nginx-template \ --metadata-from-file startup-script=startup.sh
+		 
+gcloud compute target-pools create nginx-pool
+
+gcloud compute instance-groups managed create nginx-group \
+         --base-instance-name nginx \
+         --size 2 \
+         --template nginx-template \
+         --target-pool nginx-pool
+
+gcloud compute firewall-rules create www-firewall --allow tcp:80		
+
+
+Create an L3 network load balancer targeting your instance group:=
+===================================================================
+gcloud compute forwarding-rules create nginx-lb \
+         --region us-central1 \
+         --ports=80 \
+         --target-pool nginx-pool
+		 
+gcloud compute forwarding-rules list 
+
+gcloud compute http-health-checks create http-basic-check
+
+
+gcloud compute instance-groups managed \
+       set-named-ports nginx-group \
+       --named-ports http:80
+	   
+gcloud compute backend-services create nginx-backend \
+      --protocol HTTP --http-health-checks http-basic-check --global
+
+
+gcloud compute backend-services add-backend nginx-backend \
+    --instance-group nginx-group \
+    --instance-group-zone us-central1-a \
+    --global
+
+
+gcloud compute url-maps create web-map \
+    --default-service nginx-backend
+	
+gcloud compute target-http-proxies create http-lb-proxy \
+    --url-map web-map
+
+gcloud compute forwarding-rules create http-content-rule \
+        --global \
+        --target-http-proxy http-lb-proxy \
+        --ports 80
+		
+gcloud compute forwarding-rules list	
+
+gcloud Bucket Comamnds:
+======================
+gcloud auth list
+gcloud config list project
+gsutil mb gs://YOUR-BUCKET-NAME/     gsutil mb gs://bk524/
+
+wget --output-document ada.jpg https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg
+
+gsutil cp ada.jpg gs://bk524/
+
+rm ada.jpg
+gsutil cp -r  gs://bk524/
+
+gsutil cp gs://bk524/ada.jpg gs://bk524/image-folder/ 
+gsutil ls  gs://bk524/
+
+
+Make your object publicly accessible:=
+===============================
+gsutil acl ch -u AllUsers:R gs://bk524/
+
+
+
+CI/CD Pipe line steps:
+=====================
+
+ssh-keygen -t rsa -C "user@example.com"
+==
+
+
+gcloud app deploy
+gcloud app browse
+
+
+
+
+Networking:
+==============
+
+VPC(virtual private cloud):
+private vloud 
+cloud router
+
+virtual private network
+
+
+VPC peering 
+  private communication links 
+  between vpcs
+Sharred VPC
+
+  Share VPC Projects 
+  centrally managed 
+Cloud interconenct 
+  dedicated 
+  partner
+Firewalls
+  control flow of traffic
+  

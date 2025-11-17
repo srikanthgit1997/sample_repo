@@ -1,0 +1,63 @@
+GLOBESTAR SOFTWARE LIMITED –Bengaluru Branch, Globestar Groupage Services Pvt Ltd, No 703, Manjaly Ediface, 3rd Cross, 1st Block, HRBR Layout, Kalyan Nagar, Bengaluru 560043
+March 14, 2024 – Present
+CURRECT CTC: 12.6
+
+PROJECT -2  :
+
+My name is "Srikanth reddy", 
+i have completed my MCA from "Newtons institute of engineering college" in 2020  
+i have total "4.1" years of It experience.
+from last "2.5" years i have been working in google cloud projects  as a data engineer.
+
+▶️“Coming to my Skills:=================================
+“My skills are Python and SQL, BigQuery, building ETL pipelines with Airflow/Cloud Composer, and working on GCP services like GCS, Dataflow, and Pub/Sub. I also use PySpark and SQL to perform data transformations such as filtering, joins, aggregations, and data cleaning before loading data into BigQuery.”
+(OR)
+
+Programming: Python (for data pipelines, scripting, and automation).
+SQL: Strong in writing complex queries, optimizing performance in BigQuery / Teradata.
+Data Warehousing: Experience with BigQuery (and some exposure to Teradata).
+ETL / Orchestration: Creating data pipelines using Airflow / Cloud Composer by writing DAGs for ingestion, transformation, and loading. ✅
+Cloud Platforms: Hands-on with Google Cloud (GCS, BigQuery, Dataflow, Pub/Sub).
+Data Transformation: Using PySpark and SQL, and BigQuery for cleaning and processing data.
+
+▶️I have worked as a Data Engineer on a BigQuery Data Lake project, where we get the data from multiple data sources such as SQL server, mysql and sometimes csv, Json, parquet in gcs. 
+
+we extract the data from source using DataProc(pyspark)/dataflow(Apache beam python),
+On top this data are also performing transformations(such as duplicate removal,
+null handling, column naming, aggregations, joining, merging) and finally loading it into BigQuery as raw tables. 
+
+“Based on business requirements, we perform data analysis and create insight tables in BigQuery, which are then used by the business team for reporting and decision-making.” (or) “Business team uses it for reports, 
+“These insight tables are very useful for downstream processes, as they are used to create dashboards and reports in BI tools.”
+
+“We use Cloud Composer to schedule and manage our data pipelines, with retries and alerts for reliability. It keeps our BigQuery tables refreshed and ensures smooth end-to-end workflows.”
+“That’s all about my project.”
+============================================================================================	
+▶️Example GCP Folder Structure:--
+
+Organization (CVS Health / Globestar Software)
+│
+├── Folders
+│   ├── Development
+│   │    ├── Project: rcm-data-dev
+│   │    └── Buckets:
+│   │         ├── gcs-dev-bronze
+│   │         ├── gcs-dev-silver
+│   │         └── gcs-dev-gold
+│   │
+│   ├── Testing
+│   │    ├── Project: rcm-data-test
+│   │    └── Buckets:
+│   │         ├── gcs-test-bronze
+│   │         ├── gcs-test-silver
+│   │         └── gcs-test-gold
+│   │
+│   └── Production
+│        ├── Project: rcm-data-prod
+│        └── Buckets:
+│             ├── gcs-prod-bronze
+│             ├── gcs-prod-silver
+│             └── gcs-prod-gold
+│
+└── Shared Services
+     ├── Project: monitoring-logging
+     └── Project: networking

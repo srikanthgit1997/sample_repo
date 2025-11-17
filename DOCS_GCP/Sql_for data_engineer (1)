@@ -1,0 +1,459 @@
+🛑Need to focus on bellow one:----------------
+
+SQL:-
+Basics:-
+  Filtering with WHERE, HAVING, GROUP BY.
+
+1.JOINs (INNER, LEFT, RIGHT, FULL OUTER, SELF JOIN, CROSS JOIN).✔️
+2.Aggregations COUNT(), SUM(), AVG(), MIN(), MAX().             ✔️     
+  Window Functions: ROW_NUMBER, RANK, DENSE_RANK, PARTITION BY. ✔️ 
+3.CTEs (WITH clause) vs Subquery.
+4.Stored Procedures vs Functions.Optional for DE, but nice 
+5.Write a query to get the second highest salary from a table.
+6.How to find duplicate rows in a table?
+
+BIGQUERY
+Dataproc
+Dataflow
+Apachebeam(airflow)
+
+
+BASICS OF SQL COMMANDS:-                                                            
+============================================SELECT:-============================
+SELECT:-The SELECT Statement is used to select data from a database.
+The data returned is stored in a result table, called the result-set.
+
+Syntax:-SELECT column1, column2 FROM table_name;
+       OR
+SELECT * FROM table_name;
+EX:-SELECT CustomerName, City FROM Customers;
+============================================SELECT_DISTINCT:-===================
+SELECT DISTINCT:-The SELECT DISTINCT Statement is used to return only distinct (different) values.
+
+Syntax:-SELECT DISTINCT column1, column2, ...
+FROM table_name;
+EX:-SELECT DISTINCT Country FROM Customers;
+============================================FROM:-==============================
+FROM:----The FROM command is used to specify which table to select or delete data from.
+The following SQL statement selects the "CustomerName" and "City" columns from the "Customers" table:
+Syntax:-SELECT CustomerName, City FROM Customers;
+EX:-SELECT * FROM Customers;
+============================================SELECT TOP:-========================
+SELECT TOP:----The SELECT TOP clause is used to specify the number of records to return.
+EX:-SELECT TOP 3 * FROM Customers;
+============================================WHERE:-=============================
+WHERE:-The WHERE clause is used to filter records.
+It is used to extract only those records that fulfill a specified condition.
+
+Syntax:-SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+EX:-SELECT * FROM Customers
+WHERE Country='Mexico'='
+============================================AS:-================================
+AS:----The AS command is used to rename a column or table with an alias.
+An alias only exists for the duration of the query.
+
+Sytax:-SELECT CustomerID AS ID, CustomerName AS Customer
+FROM Customers;
+EX:-SELECT CustomerName AS Customer, ContactName AS [Contact Person]
+FROM Customers;
+================================================================================
+
+================================================================================
+LIMIT:--Limit rows returned. See also FETCH & TOP
+
+IN:--Specify multiple values when using WHERE
+
+CASE :---Return value on a specified condition Return only rows with a NULL value
+
+IS NULL:-----RETURN ONLY ROWS WITH A NULL VALUE
+
+LIKE:----Search for patterns in column
+
+COMMIT:------Write transaction to database Undo a transaction block
+
+ROLLBACK:-----UNDO A TRANSACTION BLOCK
+===========================================ALTER================================
+ALTER TABLE:--SQL ALTER TABLE Statement
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+Syntax:-
+ALTER TABLE table_name
+ADD column_name datatype;
+Ex:--ALTER TABLE Customers
+ADD Email varchar(255);
+===========================================UPDATE:-=============================
+UPDATE:-------The UPDATE statement is used to modify the existing records in a table.
+Syntax:-
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+EX:-UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+===========================================CREATE:-==============================
+CREATE:-----The CREATE TABLE statement is used to create a new table in a database.
+
+Syntax:-
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   .... b
+);
+EX:-CREATE TABLE Customers (
+    Customer_ID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+==========================================INSERT INTO:-===========================
+INSERT:-----The INSERT INTO statement is used to insert new records in a table.
+
+Syntax:-INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+EX:-INSERT INTO Customers (Customer_ID, LastName, FirstName, Address, City)
+VALUES (46146928, 'Annapureddy', 'Srikanth', 'Hyd', 'Kphb');
+==========================================DELETE:-================================
+DELETE:-----The DELETE statement is used to delete existing records in a table.
+
+Syntax:-DELETE FROM table_name WHERE condition;
+EX:-DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+==========================================DROP:-==================================
+DROP:-------The DROP command is used to remove the whole database or table indexes, data, and more.
+
+Syntax:-DROP TABLE table_name;
+EX:-DROP TABLE Shippers;
+==========================================TRUNCATE:-==============================
+TRUNCATE:-The TRUNCATE command is used to remove all the rows from the table.
+
+Syntax:-TRUNCATE TABLE table_name;
+EX:-TRUNCATE TABLE Shippers;
+==========================================ORDER BY:-==============================
+ORDER BY:----The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
+
+Syntax:-SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+EX:-SELECT * FROM Customers
+ORDER BY Country ASC|DESC;
+==========================================GROUP BY:-===============================
+GROUP BY:-The group by clause is used to group rows by one or more columns.
+Syntax:-SELECT column_name(s)l
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+EX:-SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+
+| Use Case                | Example                                                     |
+| ----------------------- | ----------------------------------------------------------- |
+| Count rows per category | `SELECT category, COUNT(*) FROM table GROUP BY category`    |
+| Sum revenue by product  | `SELECT product, SUM(revenue) FROM sales GROUP BY product`  |
+| Average rating per user | `SELECT user_id, AVG(rating) FROM reviews GROUP BY user_id` |
+==========================================MERGE:-===================================
+The MERGE statement runs insert, update, or delete operations on a target table from the results of a join with a source tableFor example, synchronize two tables by inserting, updating, or deleting rows in one table based on differences found in the other table.
+
+SYNTAX:-MERGE target table USING source table
+
+ON merge_condition
+
+WHEN MATCHED
+
+THEN update statement	
+
+WHEN NOT MATCHED
+
+THEN insert statement
+
+WHEN NOT MATCHED BY SOURCE THEN DELETE;
+==========================================HAVING:-==================================
+HAVING:------Same as WHERE but filters groups
+
+
+==========================================Stored Procedure:-========================
+What is a Stored Procedure?
+A stored procedure is a prepared SQL code that we can save, so the code can be reused over and over again.
+So if you have an SQL query that you write over and over again, save it as a stored procedure, and then just call it to execute it.
+
+Stored Procedure Syntax:-----
+CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;
+===========================================VIEWS:-==================================
+VIEWS:-In SQL, a view is a virtual table.It is used to make secure access of the data.
+simple way of accessing the data.
+SYNTAX:-------
+CREATE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName
+FROM Customers
+WHERE Country = 'Brazil';
+
+EX:-CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+
+SQL PRIMARY KEY Constraint
+The PRIMARY KEY constraint uniquely identifies each record in a table.
+Primary keys must contain UNIQUE values, and cannot contain NULL values.
+A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+
+SQL FOREIGN KEY Constraint
+The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
+
+A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
+=======================================ABOUT JOINS:-=================================
+🛑Joins:-JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+🛑INNER JOIN:--- The INNER JOIN Returns records that have matching values in both tables.
+EX:-SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+🛑LEFT (OUTER) JOIN : Returns all records from the left table, and the matched records from the right table.
+EX:-SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name; 
+
+ 
+🛑RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table.
+EX:-SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+
+🛑FULL (OUTER) JOIN : Returns all records when there is a match in left table or right table
+EX:-SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+=======================================AGGREGATIVE FUNCTION:-=========================
+🛑COUNT:-------The COUNT() function in SQL is an aggregate function used to count rows in a table.
+SELECT COUNT(*) AS total_rows
+FROM Employees;
+
+🛑SUM:--------The SUM() function returns the total sum of a numeric column.
+SELECT SUM(Salary) AS TotalSalary
+FROM Employees;
+
+🛑AVG:--------The AVG() function returns the average value of a numeric column.
+SELECT AVG(Salary) AS AvgSalary
+FROM Employees;
+
+🛑MIN:--------The MIN() function returns the smallest value of the selected column.
+SELECT Department, MIN(Salary) AS MinSalary   #if u want find smallest value the department wise we can use it. 
+FROM Employees
+GROUP BY Department; 
+
+🛑SELECT  MIN(Salary) AS MinSalary   #if u want find the smallest value we can use it. 
+FROM Employees; 
+
+🛑MAX:--------The MAX() function returns the largest value of the selected column.
+SELECT Department, MAX(Salary) AS MAXSalary
+FROM Employees
+GROUP BY Department; 
+=============================================================================================
+🛑Common operations you can do with aggregate functions:
+
+1. Find totals
+SUM() → total of values
+SELECT SUM(Salary) AS TotalSalary FROM Employees;
+
+2. Find averages
+AVG() → average value
+SELECT AVG(Salary) AS AvgSalary FROM Employees;
+
+3. Find minimum & maximum
+MIN() → smallest value
+MAX() → largest value
+SELECT MIN(Salary), MAX(Salary) FROM Employees;
+
+4. Count rows
+COUNT(*) → total number of rows
+COUNT(column) → total non-NULL values in a column
+SELECT COUNT(*) AS TotalEmployees FROM Employees;
+
+5. Group-wise calculations
+Combine aggregates with GROUP BY to get results per category/department:
+
+SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department;
+=======================================WINDOWS FUNCTIONS:-============================
+1🛑ROW_NUMBER() - Assigns a unique number to each row within a result set. based on the order specified in the ORDER BY clause of the function. ()
+
+ROW_NUMBER ( )   
+    OVER ( [ PARTITION BY value_expression , ... [ n ] ] order_by_clause ) 
+	
+1.ROW_NUMBER():---Assigns a unique number to each row.
+SELECT Employee, Department, Salary,
+       ROW_NUMBER() OVER (PARTITION BY Department ORDER BY Salary DESC) AS RowNum
+FROM Employees;
+-------------------------------------------
+| Employee | Department | Salary | RowNum |
+| -------- | ---------- | ------ | ------ |
+| Alice    | IT         | 5000   | 1      |
+| Bob      | IT         | 4000   | 2      |
+| Charlie  | IT         | 4000   | 3      |
+| David    | HR         | 4500   | 1      |
+| Eva      | HR         | 4500   | 2      |
+| Frank    | HR         | 3000   | 3      |
+-------------------------------------------
+✅ Every row gets a unique number, even if salaries are tied.
+=====================================================================================================================
+2🛑RANK() - Assigns same rank for ties, skips next ranks.
+Syntax:-select
+	    name,marks,rank() over (order by marks desc) as student_rank
+	    from student_table
+		
+2.RANK():---Assigns same rank for ties, skips next ranks.
+SELECT Employee, Department, Salary,
+       RANK() OVER (PARTITION BY Department ORDER BY Salary DESC) AS RankVal
+FROM Employees;
+--------------------------------------------
+| Employee | Department | Salary | Rank |
+| -------- | ---------- | ------ | ---- |
+| Alice    | IT         | 5000   | 1    |
+| Bob      | IT         | 4000   | 2    |
+| Charlie  | IT         | 4000   | 2    |
+| Frank    | IT         | 3500   | 4    |
+| Grace    | IT         | 3000   | 5    |
+| David    | HR         | 4500   | 1    |
+| Eva      | HR         | 4500   | 1    |
+| Henry    | HR         | 4200   | 3    |
+| Irene    | HR         | 4000   | 4    |
+| Jack     | HR         | 4000   | 4    |
+-----------------------------------------
+✅Notice:
+✅Tied salaries share the same rank.
+✅RANK skips ranks after ties (IT department skipped 3, HR didn’t need skip here because two tied at 1 → next is 3).
+======================================================================================================================-
+3🛑DENSE_RANK() - Assigns same rank for ties, no skipped ranks.
+
+DENSE_RANK() OVER (
+    [PARTITION BY partition_expression, ... ]
+    ORDER BY sort_expression [ASC | DESC], .	
+)l
+
+3️.DENSE_RANK():---Assigns same rank for ties, no skipped ranks.
+SELECT Employee, Department, Salary,
+       DENSE_RANK() OVER (PARTITION BY Department ORDER BY Salary DESC) AS DenseRank
+FROM Employees;
+----------------------------------------------
+| Employee | Department | Salary | DenseRank |
+| -------- | ---------- | ------ | --------- |
+| Alice    | IT         | 5000   | 1         |
+| Bob      | IT         | 4000   | 2         |
+| Charlie  | IT         | 4000   | 2         |
+| Frank    | IT         | 3500   | 3         |
+| Grace    | IT         | 3000   | 4         |
+| David    | HR         | 4500   | 1         |
+| Eva      | HR         | 4500   | 1         |
+| Henry    | HR         | 4200   | 2         |
+| Irene    | HR         | 4000   | 3         |
+| Jack     | HR         | 4000   | 3         |
+----------------------------------------------
+✅Tied salaries share rank.
+✅Dense rank does not skip ranks, unlike RANK.
+================================================================================================================
+🛑ROW_NUMBER() → Unique numbers, ignores ties.
+🛑RANK() → skips ranks after ties
+🛑DENSE_RANK() → doesn’t skip ranks
+-------------------------------------------------------------------------------
+| Function      | Ties? | Skips Ranks? | Example Output (5000,4000,4000,3000) |
+| ------------- | ----- | ------------ | ------------------------------------ |
+| ROW\_NUMBER() | No    | No           | 1, 2, 3, 4                           |
+| RANK()        | Yes   | Yes          | 1, 2, 2, 4                           |
+| DENSE\_RANK() | Yes   | No           | 1, 2, 2, 3                           |
+	
+=======================================OPERATORS:-============================== ======
+AND:--The AND operator displays a record if all the conditions separated by AND are TRUE.
+Syntax:-SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND condition3 ...;
+EX:-SELECT * FROM Customers
+WHERE Country='Germany' AND City='Berlin';
+
+OR:---Combine query conditions. One must be metl
+
+NOT:--The NOT operator is used in combination with other operators to give the opposite result, also called the negative result.
+======================================================================================
+how to query nested table data
+Nested query tipics :- 
+There are mainly two types of nested queries: Independent Nested Queries: In independent nested queries, query execution starts from innermost query to outermost queries. The execution of inner query is independent of outer query, but the result of inner query is used in execution of outer query.
+======================================================================================
+second height Salary, We can find 2ways, one is  SUBQUERIES AND DENS RANK 
+merge Statement
+joins:-
+union and union all
+optimize techiniques
+partion and cluster 
+group BY
+
+
+
+Previously I was worked python with api testing,GCP compute engines(vm create and do the testing ) ,cloud storage(we keep our files)  and moved some AWS cloud with api development and testing (extenda client)
+
+Testing :
+
+1)python testing CRUD api 
+2)Basic SQL 
+3)Postman tools 
+
+AWS cloud :
+===========
+
+AWS lambda functions (python code )==>pythn file 
+code changes in dev  and Production,and implementded some apis for list of employee ,list of locations ,filter the list of contract employee of bamboo hr API.
+if dev works modify in prod and run the code and move it to production.
+AWS logging group(logs to chek)
+
+Volvo :
+=======
+same testing but cloud is Azure (service like vms,cloud stroage azure blob)
+apis down ibm dpod to check all the services and api's 
+dev to production 
+if dev works we move into Production
+i have attended some couple of GCP trainings from capgemini and datbricks but had knowledge on databricks and gcp trainings .
+
+i have certified PDE,ACE ,planning to take complete gcp trainings ooutside to get more experience and knwoledge on GCP services like apache airflow and datbricks ,sql .requesting you need  some time to prove my expertiese in gcp.
+=========================================================================
+
+the drop command is used to remove whole database.
+the drop command is used to remove whole database.
+DROP TABLE Customers;
+drop table customers;
+=====================================
+🛑Need to focus on bellow one:----------------
+
+Python
+SQL:-
+Basics:-
+  Filtering with WHERE, HAVING, GROUP BY.
+
+1.JOINs (INNER, LEFT, RIGHT, FULL OUTER, SELF JOIN, CROSS JOIN).
+2.Aggregations COUNT(), SUM(), AVG(), MIN(), MAX().
+  Window Functions: ROW_NUMBER, RANK, DENSE_RANK, PARTITION BY.
+3.CTEs (WITH clause) vs Subquery.
+4.Stored Procedures vs Functions.Optional for DE, but nice ✔️
+5.Write a query to get the second highest salary from a table.
+6.How to find duplicate rows in a table?
+
+BIGQUERY
+Dataproc
+Dataflow
+Apachebeam(airflow)
+
+
+
+

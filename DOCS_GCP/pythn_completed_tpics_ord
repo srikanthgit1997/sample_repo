@@ -1,0 +1,2286 @@
+                                                  <<<<<<<<<<<<<<<<<<<<<<COMPLETED_TOPICS>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+✅ 1. Python Basics
+
+▶️WHAT IS A FUNCTION>>>>>>A function is a reusable block of code which only runs when it is called.
+▶️CREATING FUNCTION>>>>>>>In Python a function is defined using the def keyword:
+▶️CALLING A FUNCTION>>>>>>To call a function, use the function name followed by parenthesis:
+▶️ARGUMENTS>>>>>>>>>>>>>>>def my_function(fname):  print(fname + " Refsnes"), Then called_function, my_function("Emil")
+▶️NUMBER OF ARGUMENTS>>>>>This function expects 2 arguments, and gets 2 arguments Not more and not less:
+▶️ARBITRARY ARGUMENTS,>>>>If the number of arguments is unknown, add a * before the parameter name: *ARGS
+▶️ARBITRARY KEYWORD>>>>>>>If the number of keyword arguments is unknown, add a double ** before the parameter name: **KWARGS
+▶️KEYWORD ARGUMENTS>>>>>>>You can also send arguments with the key = value syntax.
+▶️DEFAULT PARAMTER VALUE>>The following example shows how to use a default parameter value. If we call the function without argument, it uses the default value:
+▶️PASSING A LIST>>>>>>>>>>You can send any data types of argument to a function (string, number, list, dictionary etc.), AS AN ARGUMENTS
+▶️RETURN VALUES>>>>>>>>>>>To let a function return a value, use the return statement:
+▶️Python For Loops>>>>>>>>A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+▶️While loop>>>>>>>>>>>>>>A while loop Runs a block of code as long as a condition is true.
+
+✅ 2. Data Types & Collections
+
+▶️Lists in Datatypes>>>>>>List is a collection of data. It is mutable and ordered. allows duplicate values, lists are indicated by [] (or) square brackets.
+▶️Tuple>>>>>>>>>>>>>>>>>>>Tuple is a collection of data. It is immutable and ordered. allows duplicate values, Tuples are indicated by () (or) parentheses.
+▶️Sets>>>>>>>>>>>>>>>>>>>>A set is a collection of heterogeneous elements, does not allow duplicates, mainly used to remove duplicates. Set is mutable and unordered,*, and unindexed.
+▶️Dictionary	>>>>>>>>>>>>>A dictionary is a collection of key-value pairs. Keys must be unique, value may be of any type, Dictionary is mutable and unordered,  indicated by {}.
+▶️Strings>>>>>>>>>>>>>>>>A string is a collection (or sequence) of characters. String is immutable & we can't change the values after they are created. Strings are indicated by "".
+                        A string is a sequence (or collection) of characters enclosed in quotes.
+
+✅ 3. File handling and OS Handling
+
+▶️File handling>>>>>>>>>>>file handling in python is the process of performing operations like creating  folder or file, opening, reading, writting,appending, and closing files,                          allows data to be stored and retrived from on the system.   (write, read, append, readline, readlines, writelines.)
+*Readline>>>>>>>>>>>>>>>>readline() reads one line at a time from a file.
+*Readlines>>>>>>>>>>>>>>>"readlines() reads the entire file and returns a list of lines, preserving newline characters. It's useful when you want to process each line separately."
+*Writelines>>>>>>>>>>>>>>writelines() This will write each line on a separate line in the file.
+
+▶️os_module>>>>>>>>>>>>>>>create folders, delete files, rename files or directories,                                                               its going?
+
+✅ 4. Exception Handling                                                                                                                          ✅
+
+▶️Exception Handling?>>>>>Exception Handling is a way to manage errors in your Python program gracefully without crashing the entire program.
+                         try, except, else, finally and know types of Errors.
+
+✅ 5. Functional Programming
+
+▶️Lambda Function?>>>>>>>>A lambda is an anonymous function (no name) written in one line, defined using the lambda keyword.
+▶️Map>>>>>>>>>>>>>>>>>>>>>sqrs=list(map(lambda x:x*x, numbers)), cubes=list(map(lambda x:x**3, nums))
+▶️Filter>>>>>>>>>>>>>>>>>>evens=list(filter(lambda x:x%2 == 0, nums)), Filter returns items that return True.
+▶️Reduce>>>>>>>>>>>>>>>>>>from functools import reduce, reduce combines all items into a single result.
+▶️List comprensive>>>>>>>>Square Numbers, Even Numbers
+
+✅ 6. Iterators & Generators& Decorators
+
+▶️Iterator>>>>>>>>>>>>>>>>iterator consists of 2 methods: iter(), next()
+▶️Generator>>>>>>>>>>>>>>>has 2 methods: yield i, return i
+▶️Decorator>>>>>>>>>>>>>>>A decorator is a function that modifies the behavior of another function without changing the original function's code.
+
+✅ 7. Regular Expressions
+▶️Regular_expressions>>>>>Regular Expression is a sequence of characters that forms a search pattern.
+                          findall(): The findall() function returns a list containing all matches.
+                          search(): search returns only the first match object.
+                          split():The split() function returns a list and Split at each white-space character:
+                          sub():The sub() function Replace every white-space character with the number 9:
+
+						  
+➤IP Validation>>>>>>>>>>>IP Validation is the process of checking whether a given string or value is a valid IP address according to the standard format and rules. 
+➤Phone Validation>>>>>>>>Phone number validation is the process of checking whether a given phone number is in the correct format.
+
+						  
+✅ 8. Object-Oriented Programming (OOP)
+
+▶️Class>>>>>>>>>>>>>>>>>>Class is a collection of data members and member functions.
+▶️Object>>>>>>>>>>>>>>>>>An object is an instance of a class with its own state, behavior, and identity.
+▶️Encapsulation>>>>>>>>>>Encapsulation protects our data. Hides internal details (like a bag with laptop, charger inside).
+▶️Abstraction>>>>>>>>>>>>Abstraction refers to the process of hiding the implementation details.
+▶️Inheritance>>>>>>>>>>>>It is the process of creating a new class from an existing class. The existing class is the base/super class, and the new class is the derived/subclass.
+▶️Single inheritance>>>>>One child class inherits from a parent class.
+▶️multiple inhritance>>>>A child class inherits from multiple parent classes.
+▶️multi levl inhritance>>One class inherits from another, then another class inherits from it (a chain).
+▶️hierarcical inhritance>Multiple child classes inherit from a single parent class.
+▶️Hybrid Inheritance>>>>>A mix of multiple inheritance types (like multilevel + multiple).
+▶️Polymorphism>>>>>>>>>>>Polymorphism means "many forms" — same method name, different behavior depending on the object.
+▶️Method overriding>>>>>>Redefining a method in child class that already exists in the parent class.
+▶️Method overloading>>>>>>Multiple methods with the same name but different arguments (Python does not support it directly, but can be simulated).
+====================================================================================================================================================================================
+
+▶️WHAT IS A FUNCTION:--"A function is a reusable block of code which only runs when it is called."
+
+▶️CREATING A FUNCTION:---In Python a function is defined using the def keyword.
+
+Example:-
+def my_function():
+  print("Hello from a function")
+  
+▶️CALLING A FUNCTION:---To call a function, use the function name followed by parenthesis:
+
+Example:-
+def my_function():
+  print("Hello from a function")
+
+my_function()
+
+▶️ARGUMENTS:-+++++++++++++++++++++++++++++++++++++++++++++++++
+Information can be passed into functions as arguments.
+Arguments are specified after the function name, inside the parentheses. You can add as many arguments as you want, just separate them with a comma.
+The following example has a function with one argument (fname). When the function is called, we pass along a first name, which is used inside the function to print the full name:
+(or)
+Functions can accept information through arguments placed in parentheses.
+Example:-
+
+def my_function(fname):
+  print(fname + " Refsnes")
+
+my_function("Emil")
+my_function("Tobias")
+my_function("Linus")
+
+OUTPUT:-
+Emil Refsnes
+Tobias Refsnes
+Linus Refsnes
+
+***Function Call:--- how to called function Explanation here
+
+my_function("Emil")    #Here’s what happens when Python sees this:
+
+Step-by-step:
+You call the function and pass in "Emil" as the argument.
+Python assigns this value to the parameter:------  #fname = "Emil"
+
+Now the function’s line becomes:----------#print("Emil" + " Refsnes")
+Python concatenates the two strings:-----------"Emil Refsnes"
+It prints:----Emil Refsnes
+
+▶️NUMBER OF ARGUMENTS:-By default, a function must be called with the correct number of arguments. Meaning that if your function expects 2 arguments, you have to call the function with 2 arguments, not more, and not less.
+
+Example:-
+
+This function expects 2 arguments, and gets 2 arguments:
+
+def my_function(fname, lname):
+  print(fname + " " + lname)
+
+my_function("Emil", "Refsnes")
+
+OUTPUT:-
+Emil Refsnes
+===================================================================================
+▶️ARBITRARY ARGUMENTS, *ARGS:--If we do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
+This way the function will receive a tuple of arguments, and can access the items accordingly:
+
+Example:----If the number of arguments is unknown, add a * before the parameter name:
+(or)
+Use *args when we don’t know how many arguments will be passed.
+
+def my_function(*kids):
+  print("The youngest child is " + kids[2])
+my_function("Emil", "Tobias", "Linus")
+
+output:---The youngest child is Linus
+====================================================================================
+▶️ARBITRARY KEYWORD ARGUMENTS, **KWARGS:-+++++++++++++++++++++
+
+If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
+This way the function will receive a dictionary of arguments, and can access the items accordingly:
+Example:-------
+
+If the number of keyword arguments is unknown, add a double ** before the parameter name:
+(OR)
+Use **kwargs when you don’t know how many keyword arguments will be passed.
+
+def my_function(**a):
+    print(a)
+my_function(name = "asreddy", age = 25)
+ 
+          (or)
+def my_function(**kid):
+  print("His last name is " + kid["lname"])
+my_function(fname = "Tobias", lname = "Refsnes")   #output:------His last name is Refsnes
+
+✅ Another Similar Example:
+
+def my_function(**student):
+    print("The first name is " + student['fname'])
+my_function(fname='Alice', lname='Walker')         #output:---The first name is Alice
+==========================================================================================
+▶️Keyword Arguments:-------------------------
+
+You can also send arguments with the key = value syntax.
+This way the order of the arguments does not matter.
+(or)
+Use key = value syntax so the order does not matter.
+
+Example
+def my_function(child3, child2, child1):
+  print("The youngest child is " + child3)
+
+my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+
+output:-------The youngest child is Linus
+==========================================================================================
+▶️DAFAULT PARAMETERS VALUE:-++++++++++++++++++++++++++++++++++
+
+The following example shows how to use a default parameter value.
+If we call the function without argument, it uses the default value:
+(or)
+If no argument is passed, the default value is used.
+
+Example:-
+def my_function(country = "Norway"):
+  print("I am from " + country)
+
+my_function("Sweden")
+my_function("India")
+my_function()
+my_function("Brazil")
+
+interview question:-----What is a default parameter?
+A default parameter is a value that a function uses if no argument is provided.
+===========================================================================================
+▶️PASSING A LIST AS AN  ARGUMENTS:-++++++++++++++++++++++++++++++
+You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
+E.g. if you send a List as an argument, it will still be a List when it reaches the function:
+(or)
+You can pass any data type, including lists.
+
+Example:-
+
+def my_function(food):
+  for x in food:
+    print(x)
+
+fruits = ["apple", "banana", "cherry"]
+
+my_function(fruits)
+===========================================================================================
+▶️RETURN VALUES:-
+To let a function return a value, use the return statement:
+(or)
+Functions can return values using the return keyword.
+
+Example:-def my_function(x):
+             return 5 * x
+print(my_function(3))    #Output:15
+print(my_function(5))    #Output:25
+print(my_function(9))    #Output:45
+===========================================================================================
+▶️Python For Loops:---------
+
+A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).👉Ex It means going through each item one by one.
+(Or)
+With the for loop we can execute a set of statements, once for each item in a list, tuple, set etc.
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)         #Output:-apple,banana,cherry
+
+▶️The break Statement
+With the break statement we can stop the loop before it has looped through all the items:
+(or)
+The break statement is enough to stop the loop prematurely.
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+  if x == "banana":
+    break
+Output:-
+Apple
+banana
+
+▶️The continue Statement
+With the continue statement we can stop the current iteration of the loop, and continue with the next:
+(Or)
+Skip the current iteration and continue with the next.
+
+Example:---Do not print banana:  
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    continue
+  print(x)
+  
+output:-
+apple
+cherry
+===================================================
+l=[1,2,3,4,5]
+for x in l:
+    print(x)  O/P:--1,2,3,4,5
+===================================================
+    l=[1,2,3,4,5]
+    for x in l:
+        if x==2:               #Exit the loop when x is "2", but this time the break comes before the print:
+            break
+        print(x)     O/P:--1
+===================================================
+#With the continue statement we can stop the current iteration of the loop, and continue with the next:
+l=[1,2,3,4,5]   
+for x in l:
+    if x==2:               # Skip the iteration when x equals 2
+        continue
+    print(x)  O/P:--1,3,4,5
+===============================
+#With the break statement we can stop the loop before it has looped through all the items:
+l=[1,2,3,4,5]
+for x in l:
+    print(x)
+    if x==3:
+        break O/P:--1,2,3   
+===============================
+l=[1,2,3,4,5]
+for x in l:
+    if x==5:
+        print(x) O/P:--5
+========================================================================
+▶️While loop:----A while loop Runs a block of code as long as a condition is true.(or) "As long as the condition is True, the loop runs."
+while count <= 5: — What does this mean?
+This is the loop condition. It controls whether the loop keeps running or stops.
+
+# Example 1: Print numbers 1 to 5
+count = 1
+while count <= 5:
+    print("Number is:", count)
+    count += 1
+#output:-
+Number is: 1
+Number is: 2
+Number is: 3
+Number is: 4
+Number is: 5
+=============================================================================
+# Example 2: Print even numbers from 2 to 10
+num = 2
+while num <= 10:
+    print(num)
+    num += 2
+#output:--2,4,6,8,10
+=============================================================================
+# Example 3: Countdown from 5 to 1
+count = 5
+while count >= 1:
+    print(count)
+    count -= 1
+#output:--5,4,3,2,1
+=============================================================================
+▶️Simple translation:
+"As long as count is less than or equal to 5, keep doing the loop."
+
+Let’s say count = 3:
+
+count <= 5 becomes 3 <= 5, which is True → ✅ loop runs
+
+If count = 6: 6 <= 5 is False → ❌ loop stops
+
+🔢 Real-life example:
+Imagine you want to take 5 steps forward.
+
+You might say:
+
+“While I haven’t taken more than 5 steps, keep walking.”
+
+Each time you take a step, you add 1 to your step count. When your count reaches 6, you stop — because you’ve already taken 5 steps.
+===================================================================================================================================
+DATATYPES:▶️Lists in python
+| Data Type | Syntax Example                     | Ordered? | Mutable? | Allows Duplicates? |
+|-----------|------------------------------------|----------|----------|---------------------|
+| `list`    | `["apple", "banana", "cherry"]`    | ✅ Yes    | ✅ Yes    | ✅ Yes              |
+| `tuple`   | `("apple", "banana", "cherry")`    | ✅ Yes    | ❌ No     | ✅ Yes              |
+| `set`     | `{"apple", "banana", "cherry"}`    | ❌ No     | ✅ Yes    | ❌ No               |
+| `dict`    | `{"name": "John", "age": 25}`      | ✅ Yes*   | ✅ Yes    | ❌ No (keys only)   |
+| `str`     | `"hello"`                          | ✅ Yes    | ❌ No     | ✅ Yes              |
+
+🧠 Quick Notes:
+✅ Use list when you need an ordered, changeable collection.
+✅ Use tuple when you need an ordered, unchangeable collection.
+✅ Use set when you need a unique, unordered collection.
+✅ Use dict for key-value pairs.
+
+▶️What is a List?:-list is a collection of data and it is a mutable and ordered and we can change the values in list, list allow the dupicate values also lists are indicated by square brackets [].
+
+▶️Corrected & Clear Definition:
+What is a List in Python?
+A list is a collection of data that is:
+Ordered (items have a defined order),
+Mutable (you can change items),
+Allows duplicate values, and
+Is written using square brackets [].
+
+▶️Definition with Practical Examples:--A list is a collection of data:
+fruits = ["apple", "banana", "cherry"]
+print(fruits)
+#Output:--['apple', 'banana', 'cherry']  #This list holds multiple values (data items) together.
+
+▶️Lists are ordered:
+print(fruits[0])  # First item
+print(fruits[1])  # Second item
+#Output:--
+apple
+banana
+✔️ Each item has a fixed position (index starts from 0).
+
+▶️Lists are mutable (you can change them):
+fruits[1] = "mango"
+print(fruits)
+#Output:--['apple', 'mango', 'cherry']    # The value at index 1 (originally "banana") was changed to "mango".
+
+▶️Lists allow duplicate values:
+numbers = [1, 2, 2, 3, 4, 4]
+print(numbers)
+#Output:--[1, 2, 2, 3, 4, 4]   # You can have the same value appear more than once.
+
+▶️Lists use square brackets []:
+colors = ["red", "green", "blue"] #️ Always define lists using square brackets.  # LIST EVERYTHING EXPLAINED WITH PRACTICAL.
+==============================================================================================================================
+▶️Creating a List: 
+fruits = ["apple", "banana", "mango"]
+print(fruits)             #output:  ["apple", "banana", "mango", "orange"]
+
+▶️Accessing Items:
+fruits = ["apple", "banana", "cherry"] 
+print(fruits[0])          # Output: [apple]
+
+▶️Adding Items:
+fruits = ["apple", "banana", "cherry"]
+fruits.append("orange")  
+print(fruits)             # Output: ["apple", "banana", "mango", "orange"]
+
+▶️Removing Items:
+fruits = ["apple", "banana", "cherry"] 
+fruits.remove("banana")   
+print(fruits)             # Output: ["apple", "mango", "orange"]
+
+▶️Remove Specified Index:-The pop() method removes the specified index, Remove the second item:
+fruits = ["apple", "banana", "cherry"]
+fruits.pop(1)
+print(fruits)             #output:['apple', 'cherry']
+
+▶️Remove the last item:-If you do not specify the index, the pop() method removes the last item.
+fruits = ["apple", "banana", "cherry"]
+fruits.pop()
+print(fruits)             #output:['apple', 'banana']
+
+▶️The del keyword also removes the specified index, Remove the first item:
+fruits = ["apple", "banana", "cherry"]
+del fruits[0]
+print(fruits)             #output:['banana', 'cherry']
+
+▶️The del keyword can also delete the list completely, Delete the entire list:
+fruits = ["apple", "banana", "cherry"]
+del fruits                #output:NameError:#this will cause an error because you have succsesfully deleted "thislist".
+
+▶️Clear the List:--Clear the list content:
+fruits = ["apple", "banana", "cherry"]
+fruits.clear()
+print(fruits)              #output:show like this symbol []
+
+▶️Change Item Value:---To change the value of a specific item, refer to the index number: Change the second item:
+fruits = ["apple", "banana", "cherry"]
+fruits[1] = "blackcurrant" 
+print(fruits)              #output:['apple', 'blackcurrant', 'cherry']
+
+▶️Insert Items:---The insert() method inserts an item at the specified index:
+fruits = ["apple", "banana", "cherry"]
+fruits.insert(2, "watermelon")
+print(fruits)             #output:['apple', 'banana', 'watermelon', 'cherry']
+
+▶️Append Items:--To add an item to the end of the list, use the append() method:
+fruits = ["apple", "banana", "cherry"]
+fruits.append("orange")
+print(fruits)             #output:['apple', 'banana', 'cherry', 'orange']
+
+▶️Extend List:--To append elements from another list to the current list, use the extend() method.
+fruits = ["apple", "banana", "cherry"]
+my_fruits = ["mango", "pineapple", "papaya"]
+fruits.extend(my_fruits)
+print(fruits)             #output:['apple', 'banana', 'cherry', 'mango', 'pineapple', 'papaya']
+
+▶️Python - Loop Lists:--You can loop through the list items by using a for loop, Print all items in the list, one by one:
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)                #output:apple,banana,cherry
+
+▶️Python - Sort Lists:--- Sort List Alphanumerically, List objects have a sort() method that will sort the list alphanumerically, ascending, by default:Sort the list alphabetically:
+fruits = ["orange", "mango", "kiwi", "pineapple", "banana"]
+fruits.sort()
+print(fruits)              #output:['banana', 'kiwi', 'mango', 'orange', 'pineapple']
+
+▶️Sort Descending:---To sort descending, use the keyword argument reverse = True:
+Sort the list descending:
+fruits = ["orange", "mango", "kiwi", "pineapple", "banana"]
+fruits.sort(reverse = True)
+print(fruits)               #output:['pineapple', 'orange', 'mango', 'kiwi', 'banana']
+
+▶️Sort the list numerically with ascending:
+fruits = [100, 50, 65, 82, 23]
+fruits.sort()
+print(fruits)               #output:[23, 50, 65, 82, 100]
+
+▶️Sort the list descending:
+fruits = [100, 50, 65, 82, 23]
+fruits.sort(reverse = True)
+print(fruits)               #output:[100, 82, 65, 50, 23]
+
+▶️Use the copy() method:-You can use the built-in List method copy() to copy a list.
+Make a copy of a list with the copy() method:
+fruits = ["apple", "banana", "cherry"]
+mylist =fruits.copy()
+print(mylist)               #output:['apple', 'banana', 'cherry']
+
+▶️Convert list to tuple:df
+fruits = ["apple", "banana", "cherry"]
+x = tuple(fruits)
+print(x)       #output: ('apple', 'banana', 'cherry')
+
+▶️Remove duplicates from a List                                     
+my_list = [1, 2, 2, 3, 4, 4, 5]
+unique_list = list(set(my_list))
+print(unique_list)  # Output order may vary
+#output: [1, 2, 3, 4, 5]
+====================================================================================================
+TUPLE:-tuple is a collection of data and it is a immutable and ordered and we can't the change values, tuples are indicated by the paranthesis ().
+
+▶️Create a Tuple:
+fruits = ("apple", "banana", "cherry")
+print(fruits)             #output: ('apple', 'banana', 'cherry')
+
+▶️Access Tuple Items:-You can access tuple items by referring to the index number, inside square brackets: Print the second item in the tuple:
+fruits = ("apple", "banana", "cherry")
+print(fruits[1])          #output: banana
+
+▶️Negative Indexing:-Negative indexing means start from the end, -1 refers to the last item, -2 refers to the second last item etc. Print the last item of the tuple:
+fruits = ("apple", "banana", "cherry")
+print(fruits[-1])         #output: cherry
+
+▶️Range of Indexes:--Return the third, fourth, and fifth item:
+fruits  = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(fruits[2:5])        #output:('cherry', 'orange', 'kiwi')         #This will return the items from position 2 to 5.#and note that the item in position 5 is NOT included
+
+▶️Check if Item Exists:--To determine if a specified item is present in a tuple use the in keyword: Check if "apple" is present in the tuple:
+fruits = ("apple", "banana", "cherry")
+if "apple" in fruits:
+  print("Yes, 'apple' is in the fruits tuple")    #output:Yes, 'apple' is in the fruits tuple
+  
+▶️Change Tuple Values:--Once a tuple is created, you cannot change its values. Tuples are unchangeable, or immutable as it also is called.
+But there is a workaround. You can convert the tuple into a list, change the list, and convert the list back into a tuple.
+Convert the tuple into a list to be able to change it:
+
+fruits = ("apple", "banana", "cherry")
+y = list(fruits)                            #convert to list ["apple", "banana", "cherry"]
+y[1] = "kiwi"                               #changed banana replaced kiwi #y=["apple", "kiwi", "cherry"]
+fruits = tuple(y)
+print(fruits)                               #output: ("apple", "kiwi", "cherry")
+
+▶️Convert tuple to list:
+fruits =("apple", "banana", "cherry")
+x=list(fruits)
+print(x)       #output: ['apple', 'banana', 'cherry']
+
+▶️Add Items:--Since tuples are immutable, they do not have a built-in append() method, but there are other ways to add items to a tuple.
+1. Convert into a list: Just like the workaround for changing a tuple, you can convert it into a list, add your item(s), and convert it back into a tuple.
+Convert the tuple into a list, add "orange", and convert it back into a tuple:
+
+fruits = ("apple", "banana", "cherry")
+y = list(fruits)
+y.append("orange")
+fruits = tuple(y)
+print(fruits)            #output:  ('apple', 'banana', 'cherry', 'orange')
+
+▶️Add Items to a tuple ia anothe way:--Create a new tuple with the value "orange", and add that tuple:   ▶️2nd way process to add items.
+fruits = ("apple", "banana", "cherry")
+y = ("orange",)
+fruits += y          
+print(fruits)            #output: ('apple', 'banana', 'cherry', 'orange')
+
+▶️Remove Items:-Tuples are unchangeable, so you cannot remove items from it, but you can use the same workaround as we used for changing and adding tuple items:
+Convert the tuple into a list, remove "apple", and convert it back into a tuple: Note: You cannot remove items in a tuple.
+fruits = ("apple", "banana", "cherry")
+y = list(fruits)
+y.remove("apple")
+fruits = tuple(y)
+print(fruits)            #output: ('banana', 'cherry')
+
+▶️you can delete the tuple completely:The del keyword can delete the tuple completely:
+fruits = ("apple", "banana", "cherry")
+del fruits
+print(fruits) #this will raise an error because the tuple no longer exists
+
+▶️Unpacking a Tuple topic:-????
+
+▶️Python Tuple count() Method
+Return the number of times the value 5 appears in the tuple:
+fruits = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)
+x = fruits.count(5)
+print(x)                 #output: 2     
+  
+▶️Tuple Length:--To determine how many items a tuple has, use the len() function:Print the number of items in the tuple:
+fruits = ("apple", "banana", "cherry")
+print(len(fruits))        #output: 3   
+
+▶️Create Tuple With One Item:-To create a tuple with only one item, you have to add a comma after the item, otherwise Python will not recognize it as a tuple.
+One item tuple, remember the comma:
+fruits = ("apple",)
+print(type(fruits))       #output: <class 'tuple'>
+
+#NOT a tuple
+thistuple = ("apple")
+print(type(thistuple))    #output: <class 'str'>
+
+▶️Allow Duplicates:--Tuples allow duplicate values:
+fruits = ("apple", "banana", "cherry", "apple", "cherry")
+print(fruits)               #output: ('apple', 'banana', 'cherry', 'apple', 'cherry')
+
+▶️Remove duplicates from a Tuple   Convert to a list, remove duplicates, then back to a tuple.
+my_tuple = (1, 2, 2, 3, 4, 4, 5)
+unique_tuple = tuple(dict.fromkeys(my_tuple))
+print(unique_tuple)  # Output: (1, 2, 3, 4, 5)
+================================================================================================================
+SETS:-A set is a collection of heterogeneous elememts, it does n't allow duplicate values and it mainly used to remove duplicate elements in another data structure.set items are unordered, changeable*, and unindexed.
+
+▶️Create a Set
+fruits = {"apple", "banana", "cherry"}
+print(fruits)             # Output: {'cherry', 'apple', 'banana'}
+
+▶️Add an item
+fruits = {"apple", "banana"}
+fruits.add("cherry")
+print(fruits)             # Output: {'apple', 'banana', 'cherry'}
+
+▶️Add multiple items (update)
+fruits = {"apple", "banana"}
+fruits.update(["cherry", "mango"])
+print(fruits)             # Output: {'apple', 'banana', 'cherry', 'mango'}
+
+▶️Remove an item
+fruits = {"apple", "banana", "cherry"}
+fruits.remove("banana")
+print(fruits)             # Output: {'apple', 'cherry'}
+
+▶️Discard an item (no error if missing)
+fruits = {"apple", "banana"}
+fruits.discard("mango")  
+print(fruits)             # no error
+
+▶️Pop an item (removes random item)
+fruits = {"apple", "banana", "cherry"}
+item = fruits.pop()
+print(item)
+print(fruits)
+
+# Output:
+apple
+{'cherry', 'banana'}
+
+▶️Clear a set
+fruits = {"apple", "banana"}
+fruits.clear()
+print(fruits)            #Output: set()
+
+▶️Delete a set
+fruits = {"apple", "banana"}
+del fruits               # print(fruits) → Error: not defined
+
+▶️Copy a set
+a = {1, 2, 3}
+b = a.copy()
+print(b)                 #Output:  {1, 2, 3}
+
+▶️Removing Duplicates from strings:
+fruits = ["apple", "banana", "apple", "cherry", "banana"]
+unique_items = set(fruits)
+print(unique_items)      #Output:  {'cherry', 'apple', 'banana'}
+
+▶️Removing Duplicates from a List:
+nums = [1, 2, 2, 3, 4, 4, 5]
+unique = list(set(nums))
+print(unique)            #Output:  [1, 2, 3, 4, 5]
+
+▶️But heads up — it doesn’t preserve the order.
+Preserving Order While Removing Duplicates:
+nums = [1, 2, 2, 3, 1, 4]
+seen = set()
+unique = []
+for num in nums:
+    if num not in seen:
+        unique.append(num)
+        seen.add(num)
+		
+		
+		
+▶️nums = [1, 2, 2, 3, 1, 4]
+unique = list(dict.fromkeys(nums))
+print(unique)            #Output:  [1, 2, 3, 4]
+===================================================================================
+▶️What is a Dictionary? 
+ A dictionary is a collection of key-value pairs, The dictionary keys must be unique. The dictionary value may be of any type,
+ A dictionary is an unordered and mutable, Dictionaries are indicated by curly braces {}.
+
+▶️Creating a Dictionary: 
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+print(person)
+   
+▶️Accessing Values :
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+print(person["name"])     # Output: Alice
+print(person.get("age"))  # Output: 25      #Using .get() is safer because it won’t crash if the key doesn’t exist.
+
+▶️Get Keys:----The keys() method will return a list of all the keys in the dictionary, Get a list of the keys:
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+print(person.keys())
+(or)
+x = person.keys()
+print(x)
+
+▶️Get Values:--The values() method will return a list of all the values in the dictionary, Get a list of the values:
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+print(person.values())
+(or)
+x = person.values()
+print(x)
+
+▶️Get Items:--The items() method will return each item in a dictionary, as tuples in a list, Get a list of the key:value pairs
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+print(person.items())
+(or)
+x = person.items()
+print(x)
+
+
+▶️Check if Key Exists:-To determine if a specified key is present in a dictionary use the in keyword, Check if "model" is present in the dictionary:
+person = {"brand": "Ford", "model": "Mustang", "year": 1964}
+if "model" in thisdict:
+  print("Yes, 'model' is one of the keys in the thisdict dictionary")  #output: Yes, 'model' is one of the keys in the thisdict dictionary
+
+▶️Adding items
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+person["email"] = "alice@example.com"  # Add new key
+print(person)
+
+▶️Updating Items:
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+person["age"] = 26                     # Update value
+print(person)
+
+▶️Adding New Key-Value Pair:
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+person["city"] = "Delhi"
+print(person)
+
+▶️Changing Value:
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+person["age"] = 30
+print(person)
+
+▶️Deleting Items: 
+person = {"name": "Alice", "age": 25,  "city": "New York"}
+del person["city"]
+print(person)
+
+▶️Looping through a Dictionary: 
+for key, value in person.items():
+    print(key, ":", value)
+
+▶️ Why Use Dictionaries? 
+- Fast access via keys
+- Ideal for storing structured data (like a JSON object)
+- Very flexible in combining with loops and functions
+
+
+▶️Trick :
+- Use lists when order matters.
+- Use dictionaries when you want to label your data.
+
+▶️dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+print(dict.values())
+(or)
+x=dict.values()
+print(x)       #output: dict_values(['Zara', 7, 'First'])
+
+▶️Using .get() to avoid KeyErrors: 
+If a key doesn't exist, .get() won't crash your code — you can return a default value instead.
+print(student.get("gender", "Not specified"))
+
+
+▶️Looping through a Dictionary: 
+student = {"name": "Alice", "age": 25}
+for key, value in student.items():
+    print(f"{key}: {value}")  
+#output:
+name: Alice
+age: 25
+
+
+▶️Dictionary Comprehension :
+squares = {x: x*x for x in range(5)}
+print(squares) #output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+▶️Merging Two Dictionaries
+a = {"x": 1}
+b = {"y": 2}
+merged = a | b
+print(merged)  #output: {'x': 1, 'y': 2}
+
+▶️student = {"name": "Alice", "age": 25}  #Always use .get() when you’re not sure if a key exists — it’s cleaner and safer.
+print(student.get("grade", "N/A"))  #output: N/A
+
+Explanation:----------
+.get("grade", "N/A") tries to get the value for the key "grade".
+If "grade" does not exist, it returns "N/A" instead of raising an error.
+This is safer than directly accessing student["grade"], which would cause a KeyError.
+=====================================================================================
+STRING:-A string is a collection (or sequence) of characters.string is a immutable and we can't the changed values,after they are created.strings are indicated by the quotes.
+
+▶️ Common String Operations in Python:
+| Operation             | Description                              | Example & Output                          |
+| --------------------- | ---------------------------------------- | ----------------------------------------- |
+| `len()`               | Get length of string                     | `len("hello")` → `5`                      |
+| `+` (concatenation)   | Join strings                             | `"Hello" + " World"` → `"Hello World"`    |
+| `*` (repeat)          | Repeat string                            | `"Hi" * 3` → `"HiHiHi"`                   |
+| `str.upper()`         | Convert to uppercase                     | `"hello".upper()` → `"HELLO"`             |
+| `str.lower()`         | Convert to lowercase                     | `"HELLO".lower()` → `"hello"`             |
+| `str.strip()`         | Remove leading/trailing spaces           | `" hello ".strip()` → `"hello"`           |
+| `str.replace(a, b)`   | Replace part of string                   | `"apple".replace("a", "b")` → `"bpple"`   |
+| `str.split()`         | Split into list by spaces (or character) | `"a b c".split()` → `['a', 'b', 'c']`     |
+| `str.find(sub)`       | Find position of substring               | `"hello".find("e")` → `1`                 |
+| `str.count(sub)`      | Count occurrences of substring           | `"banana".count("a")` → `3`               |
+| `str.startswith(sub)` | Check if string starts with sub          | `"hello".startswith("he")` → `True`       |
+| `str.endswith(sub)`   | Check if string ends with sub            | `"hello".endswith("lo")` → `True`         |
+| `str.isalpha()`       | Check if all characters are letters      | `"abc".isalpha()` → `True`                |
+| `str.isdigit()`       | Check if all characters are digits       | `"123".isdigit()` → `True`                |
+| `str.isalnum()`       | Check if all characters are alphanumeric | `"abc123".isalnum()` → `True`             |
+| `str.title()`         | Capitalize each word                     | `"hello world".title()` → `"Hello World"` |
+| `str.capitalize()`    | Capitalize first letter                  | `"hello".capitalize()` → `"Hello"`        |
+
+▶️Creating Strings:
+name = '''Alice'''
+greeting = "Hello"
+age  = '27'
+print(name, greeting, age) #output: Alice Hello
+
+▶️String Methods: 
+text = " hello world "
+print(text.strip())   # Removes whitespace → 'hello world'  
+print(text.upper())   # → ' HELLO WORLD '  
+print(text.lower())   # → ' hello world '  
+print(text.title())   # → ' Hello World '  
+print(text.replace(" ", "-")) # →'-hello-world-'
+
+▶️String Slicing: 
+text = "Python"
+print(text[0:4])   # → 'Pyth'
+print(text[-1])    # → 'n'
+
+▶️Slicing Strings
+b = "Hello, World!"
+print(b[2:5])      #output: llo
+
+▶️Slice From the Start:--Get the characters from the start to position 5 (not included):
+b = "Hello, World!"
+print(b[:5])       #output: Hello
+
+▶️Slice To the End:---Get the characters from position 2, and all the way to the end:
+b = "Hello, World!"
+print(b[2:])       #output: llo, World!
+
+▶️Negative Indexing:--Get the characters:
+From: "o" in "World!" (position -5)
+To, but not included: "d" in "World!" (position -2):
+b = "Hello, World!"
+print(b[-5:-2])    #output:  orl
+
+▶️Modify Strings:--The upper() method returns the string in upper case:
+a = "Hello, World!"
+print(a.upper())   #output: HELLO, WORLD!
+
+▶️Lower Case:--The lower() method returns the string in lower case:
+a = "Hello, World!"
+print(a.lower())   #output: hello, world!
+
+▶️Remove Whitespace:--The strip() method removes any whitespace from the beginning or the end:
+a = " Hello, World! "
+print(a.strip())   #output: Hello, World!
+
+▶️Replace String:---The replace() method replaces a string with another string:
+a = "Hello, World!"
+print(a.replace("H", "J"))   #output: Jello, World!
+
+▶️Split String:--The split() method splits the string into substrings if it finds instances of the separator:
+a = "Hello, World!"
+print(a.split(",")) #output: ['Hello', ' World!']
+
+▶️String Concatenation:-Merge variable a with variable b into variable c:
+a = "Hello"
+b = "World"
+c = a + " " + b@gmail.com
+print(c)            #output:  HelloWorld
+
+▶️F-Strings
+age = 36    
+txt = f"My name is John, I am {age}"
+print(txt)          #output:  My name is John, I am 36
+
+▶️String Formatting: 
+name = "Alice"
+age = 25
+print(f"My name is {name} and I'm {age} years old.")  #output:  My name is Alice and I'm 25 years old.
+
+▶️Ex:===What will be the output of the following code?
+text = "  Python Is Fun  "
+result = text.strip().lower().replace(" ", "-")
+print(result)        #output: python-is-fun
+Explanation above syntax:---
+strip() removes the spaces at the beginning and end → 'Python Is Fun'
+lower() converts to lowercase → 'python is fun' 
+replace(" ", "-") replaces spaces with dashes → 'python-is-fun'
+=======================================================================================
+▶️File handling:--file handling in python is the process of performing operations like creating  folder or file, opening, reading, writting,appending, and closing files, allows data to be stored and retrived from on the system.
+
+▶️using with process:--
+
+# Writing  the file
+with open('myfile.txt', 'w') as f:
+    f.write("Hello from Python!\n")
+    f.write("This is a second line.")
+    
+
+# Reading the file
+with open('myfile.txt', 'r') as f:
+    print(f.read())
+
+# Writing (overwrite existing content)
+with open('myfile.txt', 'w') as f:
+    f.write("New content! Overwriting old content.")
+
+# Appending new content to the file
+with open('myfile.txt', 'a') as f:
+    f.write("\nThis is the new content added at the end.") #observe here if u mention \n the line will print newline.
+
+# Reading again after appending
+with open('myfile.txt', 'r') as f:
+    print(f.read())
+========================================================================
+▶️# Writing to file
+f = open("data.txt", "w")
+f.write("Hello from Python!\n")
+f.write("This is a second line.")
+f.close()
+
+# Reading the file
+f = open("data.txt", "r")
+print(f.read())
+f.close()
+
+#Second way to reading the file
+f = open("data.txt", "r")
+content=f.read()
+print(content)
+f.close()
+
+**Best Practice: Use with statement
+It automatically closes the file.
+
+with open("data.txt", "r") as f:
+    content = f.read()
+    print(content)
+
+
+Write to an Existing File
+
+To write to an existing file, you must add a parameter to the open() function:
+
+"a" - Append - will append to the end of the file
+"w" - Write - will overwrite any existing content
+
+Example:---Open the file "demofile.txt" and append content to the file:
+
+with open("demofile.txt", "a") as f:
+  f.write("Now the file has more content!")      (missing, if we want to add \n at beggining,)
+
+#open and read the file after the appending:
+with open("demofile.txt") as f:
+  print(f.read())
+===================================================================
+If you want to overwrite existing content, here’s the correct way:
+
+# Open the file in 'w' mode to overwrite it
+with open('my.txt.file', 'w') as f:
+    f.write('will overwrite any existing content')
+
+# Open again in 'r' mode to read and check content
+with open('my.txt.file', 'r') as f:
+    content = f.read()
+    print(content)
+==================================================================
+▶️Readline:-----readline() reads one line at a time from a file.
+
+with open("myfile.txt", "w")as f:              #Example
+    f.write("Hello from Python!\n")
+    f.write("This is a second line.")
+
+with open('myfile.txt', 'r') as f:
+    line1 = f.readline()  # Reads first line
+    line2 = f.readline()  # Reads second line
+
+    print(line1)  # Prints first line
+    print(line2)  # Prints second line
+#Output:--
+Hello from Python!
+Hello from Python!
+==================================================================
+▶️Readlines:------"readlines() reads the entire file and returns a list of lines, preserving newline characters. It's useful when you want to process each line separately."
+
+with open("myfile.txt", "w")as f:              #Example
+    f.write("Hello from Python!\n")
+    f.write("This is a second line.")
+    f.write("This is third line.")
+
+with open('myfile.txt', 'r') as f:
+    lines = f.readlines()  # Reads all lines into a list
+    print(lines)           # Prints the list of lines
+	 
+#output:-['Hello from Python!\n', 'This is a second line.\n', 'This is third line.This is third line.\n', 'This is third line.']
+==================================================================
+▶️Writelines:------writelines() can write each line on a separate line in the file.
+
+lines = ['Hello\n', 'Welcome to Python!\n', 'This is a file.\n']
+
+with open('myfile.txt', 'w') as f:
+    f.writelines(lines)  # Writes all lines from the list to the file
+	
+	with open('myfile.txt', 'r') as f: # If u want to read to execute u can use this syntax.
+    print(f.read())
+#Output:---
+Hello
+Welcome to Python!
+This is a file.
+
+(OR)
+
+▶️Writelines:---This will write each line on a separate line in the file.
+
+line=['Hello\n', 'Bye\n', 'good Bye\n']
+
+with open('sample2.txt', 'w')as f:
+    f.writelines(line)   # Writes all lines from the list to the file
+	
+with open('sample2.txt', 'r')as f:   # If u want to read to execute u can use this syntax.
+    print(f.read())
+	
+#Output:---
+Hello
+Bye
+good Bye
+================================================================================OS__MODULE===================================================
+▶️Os module in python:------The os module in Python is used to interact with the operating system.
+It lets you create folders, delete files, rename files or directories, work with paths, and run system-level tasks directly from your Python code.
+
+import os
+if not os.path.exists('srkcodes1'):                             #os.path.exists('srkcodes1') checks if the folder is already there.
+    os.mkdir('srkcodes1')
+for i in range(1,51):
+    os.mkdir(os.path.join('srkcodes1', f'Data{i}'))             #Folder path need to give
+print("✅ Folders created successfully.")                       #output:✅ Folders created successfully.
+
+
+**if not os.path.exists(folder_path):
+    os.mkdir(folder_path)  # Create the logs folder only if it doesn't exist
+================================================================================
+▶️Create a single folder :----
+
+import os
+folder_name = 'srkcodes1'
+if not os.path.exists('srkcodes1'):
+    os.mkdir('srkcodes1')
+    print("Folder created.")
+else:
+    print("Folder already exists.")
+===========================================
+▶️crete a multple folders:---------
+
+import os
+os.makedirs('srkcodes1/nrkcodes', exist_ok=True)
+print('creted a multple folders')
+
+In Simple Words:
+os.makedirs() = make many folders at once, safely.
+exist_ok=True = don't crash if folders already there.
+================================================================================
+▶️To Remove an Empty Folder:
+Use os.rmdir() (only works if the folder is empty):
+
+import os
+folder_path = 'empty_folder'
+if os.path.exists(folder_path):
+    os.rmdir(folder_path)
+    print("Empty folder removed.")
+else:
+    print("Folder does not exist.")
+============================================================================
+▶️To Remove a Folder with files inside it:
+
+import shutil
+import os
+folder_path='srkcodes1'
+
+if os.path.exists('srkcodes1'):
+    shutil.rmtree('srkcodes1')
+ print("Folder and all contents removed.")
+else:
+    print("Folder does not exist.")
+=============================================================================
+▶️Rename the folders :----
+
+import os
+os.rename('old_folder', 'new_folder')   # Rename a folder from old name to new name
+print("Folder renamed successfully.")
+=============================================================================
+▶️To see the all the files and folders
+
+import os
+items=os.listdir('srkcodes1')
+for item in items:
+    print(item)
+=============================================================================
+▶️NEED TO OBSERVE BELLOW ONE:----
+os.path.exists('srkcodes1') checks if the folder already exists.
+If it does not exist, os.mkdir('srkcodes1') will create it.
+
+some operations:------
+
+Task:----------	            Function:----
+
+Import                  	        import os
+Shows current working directory	    os.getcwd()
+Changes current directory	        os.chdir(path)
+Lists files/folders in a directory  os.listdir(path)
+Creates a new folder                os.mkdir(), os.makedirs()
+Delete director&empty foldr         os.rmdir(), os.removedirs()
+Renames a file or folder            os.rename(old, new)
+Delete file              	        os.remove(filename)
+Path operations          	        os.path.*
+Environment variables	            os.environ.get("VAR")
+Run system command	                os.system("command")
+Detect platform	                    os.name
+Checks if a file/folder exists      os.path.exists()	
+===========================================================================
+▶️Exception Handling:-Exception Handling is a way to manage errors in your Python program gracefully without crashing the entire program.
+
+*Handling errors that happen while running the program,
+*So that the program doesn't crash,
+*And you can show a nice message or take safe action when something goes wrong.
+✅ Without exception handling → Program crashes when error happens.
+✅ With exception handling → Program continues safely even if error happens.
+Examples:----
+try:
+    a='hello'
+    b=5
+    print(a+b)
+
+except TypeError:
+    print('TypeError')
+except IndexError:
+    print('IndexError')
+    raise
+else:
+    print('hai')
+finally:
+    print('executed')
+==========================================================================
+***Important Points:
+	                 
+if no error in try block    Else will run
+Error in try	            Python jumps to except, else will NOT run
+==========================================================================
+Keyword	Purpose:===
+
+try:======	Try To test a block of code for errors
+except:===	Except To handle the error
+else:=====	Else will Runs if no error in try block
+finally:==	Finally Always runs, no matter what (cleanup code)
+raise:====	To manually raise an exception
+assert:===	Debugging tool to trigger errors if a condition is false
+==========================================================================
+Exception	Raised when:======
+
+ZeroDivisionError     	Division by zero
+TypeError           	Wrong data type used  (or)  Adding incompatible types (string + int)
+NameError	            Variable not defined
+IndexError           	Accessing invalid index in list/tuple
+ValueError          	Function receives correct type but wrong value
+KeyError	            Accessing missing key in dictionary
+FileNotFoundError   	File doesn’t exist
+AttributeError	        Attribute not found in object
+ImportError	            Import fails
+==========================================================================
+Example 1: With an exception "ZeroDivisionError"
+
+try:
+    a = 10
+    b = 0
+    print(a / b)
+except ZeroDivisionError:        #division by zero will get an ZeroDivisionError
+    print('ZeroDivisionError')
+    raise                        #will give error full information
+else:
+    print('Anything')
+finally:
+    print('Always run no matter what' )
+O/P:---  ZeroDivisionError
+         Always run no matter what
+		 
+         ZeroDivisionError: division by zero                #Given error full information
+==========================================================================
+Example:----2  With an exception "TypeError"
+
+try: 
+    a = "hello"
+    b = 5
+    print(a + b)
+except TypeError:     # Adding incompatible types (string + int)
+    print('TypeError')
+    raise             #will give error full information
+else:
+    print('Anything')
+finally:
+    print('Always run no matter what' )
+O/P:-TypeError
+     Always run no matter what
+	 
+	 TypeError: can only concatenate str (not "int") to str  #Given error full information
+========================================================================
+Example:---3    With an exception "Name Error"
+
+try:
+    a=5
+    b=5
+    print(a+c)
+except NameError:       # variable not defined that's why we got nameerror. 
+    print('NameError')
+    raise               #will give error full information
+else:
+    print('Anythin')
+finally:
+    print('Always run no matter what')
+O/p:-NameError
+     Always run no matter what
+	 
+	 NameError: name 'c' is not defined                     #Given error full information
+======================================================================
+Example:---4    With an exception "IndexError"
+
+try:
+    a='hello'
+    b=5
+    print(a[5])
+except IndexError:       #Accessing invalid index in list/tuple
+    print('IndexError')  #will give error full information
+    raise               
+else:
+    print('Anythin')
+finally:
+    print('Always run no matter what')
+O/P:-IndexError
+     Always run no matter what
+	 IndexError: string index out of range
+=====================================================================
+Example 5: No exception 
+
+try:
+    a = 10
+    b = 5
+    print(a+b)
+    
+except NoError:
+    print('NoError')
+    raise
+else:
+    print('Anything')
+finally:
+    print('Always run no matter what' )
+O/P:--15
+      Anything
+      Always run no matter what
+=====================================================================
+▶️ What Is a Lambda Function?
+A lambda is an anonymous function (no name) written in one line function defined using the lambda keyword.
+It's commonly used for short, simple operations, especially where a full def function would be unnecessarily verbose.
+
+Syntax:---lambda arguments: expression
+
+(1)Square a number
+
+square = lambda x: x**2  
+print(square(4))  # Output: 16
+
+(2)Double a number
+
+double = lambda x: x * 2
+print(double(5))  # Output: 10
+
+(3)Add two numbers
+
+add = lambda a, b: a + b
+print(add(3, 4))  # Output: 7
+
+(4)Subtract two numbers
+
+sub = lambda a, b: a - b
+print(sub(3, 4))  # Output: -1
+
+(5) Divide two numbers
+
+div = lambda a, b: a / b
+print(div(10, 2))  # Output: 5.0
+==================================================================================================================================================
+▶️The map() function in Python:--map() applies a function to each item in an iterable (like a list) and returns a new iterable with the transformed results.
+
+✅ You will get the same result with both.
+
+nums = [1, 2, 3, 4, 5]
+sqrs1 = list(map(lambda x: x * x, nums))   # Using x * x
+print(sqrs1)  # Output: [1, 4, 9, 16, 25]
+
+
+sqrs2 = list(map(lambda x: x ** 2, nums))  # Using x ** 2
+print(sqrs2)  # Output: [1, 4, 9, 16, 25]
+
+
+Use map() + lambda to Get Cubes of Numbers:-----------------  
+
+nums = [1, 2, 3, 4, 5]
+cubes = list(map(lambda x: x**3, nums))
+print(cubes)   #output will give:----[1, 8, 27, 64, 125]
+===========================================================================================================================
+▶️The filter() function in Python:-filter() applies a function that returns True or False to each item, and keeps only the items that return True.
+
+nums=[1,2,3,4,5]
+evens=list(filter(lambda x:x%2 ==0,nums))
+print(evens) #output will give:----[2,4]
+
+▶️List Comprehension
+nums = [1, 2, 3, 4, 5, 6, 7]
+result = [x * 2 for x in nums if x % 2 != 0]     # In one line: Filter and multiply
+print(result) #output will give:-[2, 6, 10, 14]
+
+
+
+▶️filter() + map() combined
+nums = [1, 2, 3, 4, 5, 6, 7]
+result = list(map(lambda x: x * 2, filter(lambda x: x % 2 != 0, nums))) # In one line: Filter odd numbers and multiply them by 2
+print(result)#output will give:---[2, 6, 10, 14]
+===========================================================================================================================
+▶️The reduce() function in Python?
+reduce() applies a function to combine all items in an iterable into a single result,
+like adding or multiplying them together.
+
+program:--
+from functools import reduce
+nums = [1, 2, 3, 4, 5]
+result = reduce(lambda x, y: x + y, nums)
+print(result)       #output will give:----[15]
+
+▶️multiplication using reduce:
+
+from functools import reduce
+nums = [1, 2, 3, 4, 5]
+result = reduce(lambda x, y: x * y, nums)
+print(result)       #output will give:--120
+=================================================================
+▶️List Comprehensions in Python:A concise way to create lists using a single line of code.
+
+List comprehensions are a clean and fast way to create lists in Python.
+Instead of writing a loop, you can do it all in one line.
+
+Basic Syntax :
+new_list = [expression for item in iterable]
+
+Create the same list using list comprehension:
+
+numbers = [x for x in range(1, 6)]
+print(numbers)  #Output: [1, 2, 3, 4, 5]
+
+Example 1: Squares of numbers 1 to 5 
+squares = [x**2 for x in range(1, 6)]  
+print(squares)  # Output: [1, 4, 9, 16, 25]
+
+Example 2: Get even numbers from a list 
+nums = [1, 2, 3, 4, 5, 6]  
+evens = [x for x in nums if x % 2 == 0]  
+print(evens)  # Output: [2, 4, 6]
+
+Ex:----3: nums = [1, 2, 3, 4, 5]  
+result = [x*2 for x in nums if x % 2 != 0]  #observe here Takes only odd numbers (x % 2 !== 0),  Multiplies them by 2
+print(result) #Output:[2, 6, 10] 
+
+Explanation:---Only odd numbers (1, 3, 5) are selected → then multiplied by 2 → [2, 6, 10]
+
+List Comprehensions in Python:-------y to create new lists by applying an expression to each item in an iterable (like a list or range), optionally filtering with conditions.
+With Condition: 
+even_numbers = [x for x in range(10) if x % 2 == 0]
+print(even_numbers)  # Output: [0, 2, 4, 6, 8]
+
+
+Equivalent Without List Comprehension: 
+
+squares = []
+for x in range(5):
+    squares.append(x**2) # Output: [0, 1, 4, 9, 16]
+print(squares)
+
+Why to use list comprehensions? 
+
+- It’s more readable and compact
+- Runs faster than traditional for loops (in most cases)
+- Helps clean up your code
+============================================================================================
+============================================================================
+▶️ITERATOR:An iterator is an object in Python that allows traversing (iterating) through a sequence of elements, and 
+it will print one by one value  using the __next__() method.
+iterator consists of 2 methods one is iter(), another one is next()
+iter():--this methods creates an iterator from the list.
+next():--this method returns each element one by one.
+
+EX:---1
+l = [1, 2, 3, 4, 5]
+it = iter(l)  # Creates an iterator object from the list
+print(next(it)) o/p:-1 # returns each element one by one.
+print(next(it)) o/p:-2 # here aslo same process.
+=============================================
+EX:---2  Iterator with a For Loop:-----
+names = ["Alice", "Bob", "Charlie"]
+for name in names:
+    print(name)   
+O/P:--
+Alice
+Bob
+Charlie
+=============================================
+EX:-3 Print the all the numbers
+l=[1,2,3,4,5]
+for x in l:
+    print (x) #O/P:-1,2,3,4,5
+==============================================
+Ex4:--Skip value 3 using continue
+
+l = [1, 2, 3, 4, 5]
+for x in l:
+    if x == 3:
+        continue
+    print(x) O/p:---1,2,4,5
+=============================================
+Ex5:-- Stop printing when value is 4
+
+l = [1, 2, 3, 4, 5]
+for x in l:
+    if x == 4:
+        break
+    print(x) O/P:--1,2,3
+=============================================
+Ex6:--Print only the first value in the loop:
+
+l = [1, 2, 3, 4, 5]
+for x in l:
+    print(x)
+    break    O/P:---1
+=============================================
+Ex7:--Print a specific value (e.g., only the number 3):
+
+l = [1, 2, 3, 4, 5]
+for x in l:
+    if x == 3:
+        print(x)  O/P:---3
+===============================================================================================================================================
+ GENARATOR:generators are like functions which contain yield keyword.
+Want Generator Behavior?
+If you want to print multiple values, use yield.
+
+EX:-
+def my_gen():
+    for i in range(10):
+        yield i
+result=my_gen()
+print(next(result))
+print(next(result)) o/p:---0,1
+====================================================================
+both are differences conditions can we observe:--------------------
+
+def my_gen():
+    for i in range(10):
+        return i
+result=my_gen()
+print(result)      
+print(result)     o/p:-----0,0 
+====================================================================
+1. First Example (Using next() manually):
+
+def my_gen():
+    for i in range(10):
+        yield i
+
+result = my_gen()
+for i in range(10):
+    print(next(result))  o/p:----0,1,2,3,4,5,6,7,8,9
+==========================================================
+2. Second Example (Using for loop directly):
+
+def numbers():
+    for i in range(5):
+        yield i
+
+for num in numbers():
+    print(num) o/p:---0,1,2,3,4
+==============================================================================================================================================
+▶️DECORATOR:-"A decorator is a function that modifies the behavior of another function — without changing the original function's code.
+or
+A decorator in Python is a way to add extra behavior to a function without changing its code.
+EX:-----
+def my_decorator(func):
+    def modified():
+        print('Good Morning BOSS!')
+        func()
+        print('bye!')
+    return modified
+
+@my_decorator    
+def start():
+    print('hello world')
+
+start()
+======================================================================================================================================
+▶️Regular_expressions:---Regular Expression, is a sequence of characters that forms a search pattern. This pattern can be used to search, match, and manipulate text, based on specific rules or patterns.
+
+▶️The findall() Function:--The findall() function returns a list containing all matches.
+Example:--
+Print a list of all matches:
+
+import re                        #Return a list containing every occurrence of "ai":
+txt = "The rain in Spain"
+x = re.findall("ai", txt)
+print(x) O/p:--['ai', 'ai']
+=================================================================
+If no matches are found, an empty list is returned:
+Example:---
+Return an empty list if no match was found:
+
+import re
+txt = "The rain in Spain"
+x = re.findall("Portugal", txt)
+print(x)
+
+if (x):
+  print("Yes, there is at least one match!")
+else:
+  print("No match") O/P:--[] No match
+=====================================================================
+▶️Find all words that start with a capital letter
+import re
+text = "Hello World, this is Python"
+x = re.findall(r'\b[A-Z][a-z]*', text)
+print(x)  # Output: ['Hello', 'World', 'Python']
+======================================================================
+▶️Find all digits in a string
+import re
+text = "My phone number is 123-456-7890"
+result = re.findall(r'\d+', text)
+print(result)  # Output: ['123', '456', '7890']
+================================================================
+▶️The search()Function:--The search() function searches the string for a match, and returns a Match object if there is a match.
+If there is more than one match, only the first occurrence of the match will be returned:
+(OR)
+▶️The search()Function:-search returns only the first match object.
+
+Example:----
+Search for the first white-space character in the string:
+
+import re
+txt = "The rain in Spain"
+x = re.search(r"\s", txt)
+print("The first white-space character is located in position:", x.start())
+=====================================================================================
+Example:---Search the string to see if it starts with "The" and ends with "Spain":
+
+import re                                 #Check if the string starts with "The" and ends with "Spain": 
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)
+if x:
+  print("YES! We have a match!")
+else:
+  print("No match")
+=====================================================================================
+If no matches are found, the value None is returned:
+
+Example
+Make a search that returns no match:
+
+import re
+
+txt = "The rain in Spain"
+x = re.search("Portugal", txt)
+print(x)
+=========================================================================================
+▶️The split() Function
+The split() function returns a list where the string has been split at each match:
+The split() function returns a list and Split at each white-space character:
+
+Example:-
+Split at each white-space character:
+
+import re
+txt = "The rain in Spain"
+x = re.split(r"\s", txt)
+print(x) O/P:-['The', 'rain', 'in', 'Spain']
+==========================================================================================
+Example:--
+Split the string only at the first occurrence:
+
+import re
+txt = "The rain in Spain"   
+x = re.split(r"\s", txt, 1)
+print(x)  O/P:---['The', 'rain in Spain']
+===========================================================================================
+▶️The sub() Function
+The sub() function Replace every white-space character with the number 9:
+
+
+import re
+txt = "The rain in Spain"
+x = re.sub(r"\s", "9", txt)
+print(x)  O/P:---The9rain9in9Spain
+
+Example:-Replace the first 2 occurrences:
+
+import re
+txt = "The rain in Spain"
+x = re.sub(r"\s", "9", txt, 2)
+print(x)  O/P:---The9rain9in Spain
+===========================================================================================
+▶️IP Validation:----IP Validation is the process of checking whether a given string or value is a valid IP address according to the standard format and rules.
+import re
+
+pattern = r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}" \
+          r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+
+ips = ["192.168.0.1", "256.100.1.1", "123.456.78.90"]
+
+for ip in ips:
+    if re.match(pattern, ip):
+        print(f"{ip}: ✅ Valid IP Address")
+    else:
+        print(f"{ip}: ❌ Invalid IP Address")
+ 
+	
+Output:--
+192.168.0.1: ✅ Valid IP Address
+256.100.1.1: ❌ Invalid IP Address
+123.456.78.90: ❌ Invalid IP Address
+
+✅ Explanation:
+25[0-5]: Matches 250–255
+
+2[0-4][0-9]: Matches 200–249
+
+[01]?[0-9][0-9]?: Matches 0–199
+
+The {3} ensures exactly 3 dots between the 4 numbers.
+
+✅Breakdown:
+^ : Start of string
+( ... ){3}: Match three octets followed by dots (.)
+25[0-5]: Matches 250 to 255
+2[0-4][0-9]: Matches 200 to 249
+[01]?[0-9][0-9]?: Matches 0 to 199 (including 1-digit and 2-digit numbers)
+Final part matches the fourth octet (no trailing dot)
+$: End of string
+=============================================================================================================================
+▶️Phone Validation:-----Phone number validation is the process of checking whether a given phone number is in the correct format.
+
+--------------------------------------------------------------------------------------------------------------------------
+| Part          | Meaning                     | Example match                                  |                         |
+| ------------- | --------------------------- | ---------------------------------------------- | ----------------------- |
+| `^`           | Start of string             |                                                |                         |
+| \`(+91\[-\s]? | 0)?\`                       | Optional prefix: `+91`, `+91-`, `+91 `, or `0` | `+91-`, `0`, or nothing |
+| `[6-9]`       | First digit of phone number | `9`, `8`, etc.                                 |                         |
+| `\d{9}`       | Remaining 9 digits          | `876543210`                                    |                         |
+| `$`           | End of string               |                                                |                         |
+--------------------------------------------------------------------------------------------------------------------------
+
+import re
+pattern = r"^(\+91[\-\s]?|0)?[6-9]\d{9}$"
+phones = ["9876543210", "+91 9876543210","+919876543210", "+91-9876543210","09876543210", "091-9876543210", "123456", "+92 9876543210"]
+
+for phone in phones:
+    if re.match(pattern, phone):
+        print(f"{phone}: ✅ Valid Phone Number")
+    else:
+        print(f"{phone}: ❌ Invalid Phone Number")
+
+output:--------		
+9876543210: ✅ Valid Phone Number
++91 9876543210: ✅ Valid Phone Number
++919876543210: ✅ Valid Phone Number
++91-9876543210: ✅ Valid Phone Number
+09876543210: ✅ Valid Phone Number
+091-9876543210: ❌ Invalid Phone Number
+123456: ❌ Invalid Phone Number
++92 9876543210: ❌ Invalid Phone Number
+=============================================================================================================================
+▶️class:- class is a collection of datamenbers and member functions.
+Example1:-Constructor_method with class
+class Laptop:
+    def __init__(self, company, colour, cpu_ram):
+        self.company = company
+        self.colour = colour
+        self.cpu_ram = cpu_ram
+
+l = Laptop("hp", "white", 8)
+print(l.colour)
+print(l.cpu_ram)
+print(l.company)                #output:---white,8,hp
+
+▶️Example2:-Normal class method
+class Laptop:
+    name="hp"
+    colour="redd"
+    model="HP"
+    cpu_ram=20
+
+    def display(self):
+        print(self.name,self.colour,self.model,self.cpu_ram)
+l=Laptop()
+print(l.name)
+print(l.display())
+
+#output:-
+hp
+hp redd HP 20
+None
+=======================================================================================================================================================================
+▶️object:--object is an instance of a class it has its own state, behavior, and identity.
+class Laptop:
+    def __init__(self, company, colour, cpu_ram):
+        self.company = company
+        self.colour = colour
+        self.cpu_ram = cpu_ram
+
+l = Laptop("hp", "white", 8)
+print(l.colour)
+print(l.cpu_ram)
+print(l.company)           #output:---white,8,hp
+======================================================================
+▶️Encapsulation:- Encapsulation protecting our data  is called encapsulation.ex:Hides internal details. Achieved using private variables.
+Example:- "Encapsulation is like an office bag that keeps your laptop, mouse, and charger inside. You can't see or directly access each item — they’re protected. You must open the bag (controlled access) to use them. Similarly, in OOP, 
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name            # Public attribute
+        self.__age = age            # Private attribute (encapsulated)
+
+    def get_age(self):              # Getter method to access private variable
+        return self.__age
+
+    def set_age(self, new_age):     # Setter method to update private variable
+        if new_age > 0:
+            self.__age = new_age
+        else:
+            print("Invalid age!")
+
+# Creating a Person object
+p1 = Person("Alice", 25)
+
+# Accessing public and private data
+print(p1.name)             # ✅ Accessing public variable directly
+print(p1.get_age())        # ✅ Accessing private variable using getter method
+
+# Updating private variable using setter method
+p1.set_age(30)
+print(p1.get_age())        # ✅ Output: 30
+
+# Trying to access private variable directly (will cause error)
+# print(p1.__age)          ❌ Error: 'Person' object has no attribute '__age'
+
+(or)
+
+▶️class Employee:
+    def __init__(self, name, salary):
+        self.name = name            # public variable
+        self.__salary = salary      # private variable (encapsulated)
+
+    def get_salary(self):           # public method to access private data
+        return self.__salary
+
+    def set_salary(self, amount):   # public method to modify private data
+        if amount > 0:
+            self.__salary = amount
+        else:
+            print("Invalid salary!")
+
+# Create object
+emp = Employee("John", 50000)
+
+print(emp.name)              # ✅ Accessible (public)
+print(emp.get_salary())      # ✅ Accessing private data via method
+
+emp.set_salary(60000)        # ✅ Modifying private data via method
+print(emp.get_salary())      # Output: 60000
+
+# print(emp.__salary)        ❌ This would cause an error (private)
+============================================================================
+▶️Abstraction:- Abstraction refers to the process of hiding.
+
+ATM Machine (Abstraction):
+You press a button to withdraw cash.
+You don’t see how:
+Your account is verified
+Cash is counted
+Logs are stored
+You only see essential actions. All internal processing is hidden — that’s abstraction.
+
+▶️from abc import ABC, abstractmethod
+class Bank(ABC):
+    @abstractmethod
+    def loan_approval(self):
+        pass
+
+class SBI(Bank):
+    def loan_approval(self):
+        return "SBI: Loan Approved"
+
+class HDFC(Bank):
+    def loan_approval(self):
+        return "HDFC: Loan Approved"
+
+b = HDFC()
+print(b.loan_approval())  # Output: HDFC: Loan Approved
+(or)
+
+▶️from abc import ABC, abstractmethod
+class Animal(ABC):  # Abstract base class
+    @abstractmethod
+    def sound(self):
+        pass
+
+class Dog(Animal):
+    def sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def sound(self):
+        return "Meow"
+
+# Using abstraction
+a = Dog()
+print(a.sound())          # Output: Woof!
+=======================================================================================================================
+▶️inheritance:-Inheritance : It is process of creating a new class from already existing class.
+existing class is called as base class or super class and new class is called as derived class or sub class.
+
+class Animal:  # ← parent/base/superclass
+    def speak(self):
+        return "Sound"
+
+class Dog(Animal):  # ← child/derived/subclass
+    def bark(self):
+        return "Woof!"
+
+d = Dog()         # Creating object of child class
+print(d.speak())  # inherited from Animal
+print(d.bark())   # defined in Dog
+#output:-Woof!
+
+         (or)
+		 
+class Animal:
+    def speak(self):
+        return "I make sound"
+
+class Dog(Animal):
+    def bark(self):
+        return "Woof!"
+
+d = Dog()
+print(d.speak())  # Inherited
+
+Output:
+I make sound
+=================================================================================================
+▶️single inheritance:-Single inheritance enables a derived class to inherit properties from a single parent class,
+thus enabling code reusability and the addition of new features to existing code.
+(OR)
+one child class inherits from parent class is called single inherits.
+
+class Parent:
+    def work(self):
+        print("Parent is working.")
+
+class Child(Parent):  # Inheriting from one parent only
+    def play(self):
+        print("Child is playing.")
+
+c = Child()
+c.work()  # Inherited from Parent
+c.play()  # Defined in Child
+Output:--
+Parent is working.
+Child is playing.
+=================================================================================================
+▶️multiple inheritance:-When a class is derived from more than one base class it is called multiple Inheritance.
+The derived class inherits all the features of the base case. Syntax: Class Base1: Body of the class Class Base2: 
+Body of the class Class Derived(Base1, Base2): Body of the class.2
+(OR)
+A child class inherits from multiple parent classes is called multiple inheritance
+
+class father:
+    def skill(self):
+        print('father: gardening')
+
+class mother:
+    def hobby(self):
+        print('mother: painting')
+
+class child(father, mother):
+    def play(self):
+        print('child: playing')
+
+# These lines should be outside the class definition
+c = child()w2w
+c.skill()
+c.hobby()
+c.play()
+
+Output:--
+father: gardening
+mother: painting
+child: playing
+===================================================================================================
+▶️multi level inheritance:-In multilevel inheritance, features of the base class and the derived class are further inherited into the new derived class.
+This is similar to a relationship representing a child and a grandfather.
+(OR)
+One class inherits from another, and then another class inherits from it (a chain).
+(OR)
+One class inherits from a class, which itself inherits from another class.
+(OR)
+When one class inherits from another class, and that class itself inherits from a third class, it's called multi-level inheritance.
+
+class grandfather:
+  def house(self):
+    print('grandfarher has a big house')
+class parent(grandfather):
+  def car(self):
+    print('parents drives a car')
+
+class child(parent):
+  def bike(self):
+    print('child rides a bike')
+
+c=child()
+c.house()
+c.car()
+c.bike()
+
+Output:--
+grandfarher has a big house
+parents drives a car
+child rides a bike
+=================================================================================================
+▶️hierarchical inheritance:-When more than one derived class are created from a single base this type of inheritance is called hierarchical inheritance.
+In this program, we have a parent (base) class and two child (derived) classes.
+(OR)
+Multiple child classes inherit from the same parent class.
+
+class Animal:
+    def eat(self):
+        print("Animal eats")
+
+class Dog(Animal):
+    def bark(self):
+        print("Dog barks")
+
+class Cat(Animal):
+    def meow(self):
+        print("Cat meows")
+
+d = Dog()
+d.eat()
+d.bark()
+
+c = Cat()
+c.eat()
+c.meow()
+
+output:----
+Animal eats
+Dog barks
+Animal eats
+Cat meows
+=================================================================================================
+▶️Hybrid Inheritance:A mix of multiple inheritance types (like multilevel + multiple).
+
+class Animal:
+    def speak(self):
+        print('Animal makes a sound')
+
+class Dog(Animal):
+    def bark(self):
+        print('Dog barks')
+
+class Cat(Animal):
+    def meow(self):
+        print('Cat meows')
+
+# Hybrid: inherits from both Dog and Cat
+class Pet(Dog, Cat):
+    def play(self):
+        print('Pet plays')
+
+# Testing
+p = Pet()
+p.speak()   # From Animal
+p.bark()    # From Dog
+p.meow()    # From Cat
+p.play()    # From Pet
+=================================================================================================
+▶️multipath inheritance or cyclic inheritance
+=================================================================================================
+▶️Polymorphism:-The"polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes
+▶️Polymorphism:---The"polymorphism" means "many forms",Same method name, different behavior depending on the object.
+
+class Cat:
+    def speak(self):
+        return "Meow"
+
+class Dog:
+    def speak(self):
+        return "Woof"
+
+for pet in (Cat(), Dog()):
+    print(pet.speak())  #Output: Meow,Woof
+======================================================================================================================
+▶️Method overriding in oops:---Redefining a method in child class that already exists in the parent class.
+class Animal:
+  def speak(self):
+    print('make sound')
+class Dog(Animal):
+  def speak(self):
+    print('bow')
+class Cat(Animal):
+  def speak(self):
+    print('meow')
+
+a=Animal()
+d=Dog()
+c=Cat()
+a.speak()
+d.speak()
+c.speak()
+
+#output:-
+make sound
+bow
+meow
+=================================================================================================
+▶️method overloading:----Multiple methods with the same name but different arguments (Python does not support it directly, but can be simulated).
+
+class Greet:
+    def say_hello(self, name=None):
+        if name:
+            print("Hello", name)
+        else:
+            print("Hello")
+
+g = Greet()
+g.say_hello()           # Output: Hello
+g.say_hello("Alice")    # Output: Hello Alice
+
+(or)
+
+class Info:
+    def show(self, name="User", age=None):
+        if age:
+            print(f"Name: {name}, Age: {age}")
+        else:
+            print(f"Name: {name}")
+
+i = Info()
+i.show()                # Output: Name: User
+i.show("Tom")           # Output: Name: Tom
+i.show("Tom", 25)       # Output: Name: Tom, Age: 25
+
+(or)
+
+class Calculator:
+    def add(self, a, b=0):
+        print("Sum is:", a + b)
+
+c = Calculator()
+c.add(5)          # Output: Sum is: 5
+c.add(5, 3)       # Output: Sum is: 8
+=============================================================================
+
+
+
+
+
+
+
+ 
+
+
+
+
+===============================================================<<<<<<<<<<<INTERVIEW POINT OF QUESTIONS>>>>>>>>>>>>>>===================================================================
+▶️list and tuple difference doubt?
+▶️dictionary explanation
+▶️set an fozen set ?
+A frozenset is:
+Immutable version of a set
+You cannot add or remove elements after creation
+Still stores unique, unordered items
+my_fset = frozenset([1, 2, 3])
+print(my_fset)  # Output: frozenset({1, 2, 3})
+====================================================================================
+▶️json data (loads,dumps)
+1. Convert JSON string → Python object
+#Use: json.loads()
+import json
+json_data = '{"name": "Alice", "age": 25, "is_student": false}'
+python_data = json.loads(json_data)      # Convert JSON to Python dict  
+print(python_data)
+print(python_data['name'])  # Output: Alice
+=====================================================================================
+▶️2.Convert Python object → JSON string
+Use: json.dumps()
+import json
+data = {"name": "Bob","age": 30,"is_student": True}
+json_string = json.dumps(data)  # Convert Python dict to JSON string
+print(json_string)      #output:--  {"name": "Bob", "age": 30, "is_student": true}
+===================================================================================
+▶️API valdiation methods
+get, put, post, delete 
+
+▶️map reduce filter
+ *,** functions keywords 
+▶️list compreshension (*,**,power of ,cube)
+▶️dictionary comprehenions{}
+▶️while break for loop continue 
+▶️==,=,>,<,//,/,!=, operatiors scenarios
+▶️split ,join,count,strip,replace strings methods
+▶️list (append,extend)
+▶️dictiorny keys ,values,get method,has_key
+▶️try,exception,finally,else ==>if no error else black will execute 
+▶️os,subprocess,time,
+▶️os.path..exist():-
+
+▶️sys module
+▶️re findall,search,ip validation,phone numebr
+▶️class,object,inheritence,multiple inheritence,multilevel inhertence,
+
+▶️method overloading:----
+class Greet:
+    def say_hello(self, name=None):
+        if name:
+            print("Hello", name)
+        else:
+            print("Hello")
+
+g = Greet()
+g.say_hello()           # Output: Hello
+g.say_hello("Alice")    # Output: Hello Alice
+
+(or)
+
+class Info:
+    def show(self, name="User", age=None):
+        if age:
+            print(f"Name: {name}, Age: {age}")
+        else:
+            print(f"Name: {name}")
+
+i = Info()
+i.show()                # Output: Name: User
+i.show("Tom")           # Output: Name: Tom
+i.show("Tom", 25)       # Output: Name: Tom, Age: 25
+
+(or)
+
+class Calculator:
+    def add(self, a, b=0):
+        print("Sum is:", a + b)
+
+c = Calculator()
+c.add(5)          # Output: Sum is: 5
+c.add(5, 3)       # Output: Sum is: 8
+=======================================================================
+▶️Method overriding in oops:---
+class Animal:
+  def speak(self):
+    print('make sound')
+class Dog(Animal):
+  def speak(self):
+    print('bow')
+class Cat(Animal):
+  def speak(self):
+    print('meow')
+
+a=Animal()
+d=Dog()
+c=Cat()
+a.speak()
+d.speak()
+c.speak()
+
+#output:-
+make sound
+bow
+meow
+======================================================================
+▶️Automation Testing scenarios robot,pytest,unittest
+
+a=1
+assert a==1==>positive 
+assert a==2==>will get error
+
+===============
+testing 
+
+def testsuite
+clas Test():
+
+"""testcases1"""
+   def test_case1():
+      assert 
+    
+testcases2
+
+# test_sample.py
+
+# ✅ This is a test suite (group of test cases)
+class TestExample:
+    
+    # ✅ Test Case 1
+    def test_case1(self):
+        assert 2 + 2 == 4
+
+    # ✅ Test Case 2
+    def test_case2(self):
+        assert "hello".upper() == "HELLO"
+===========================================
+▶️flask API ,crud operation ,(businesslogice)
+table
+
+create ,append,modify,delete (crud 
+
+ {backend json data  }
+===========================================
+
+▶️Need to learn to data engineer bellow tppics:--
+CHAPTER 1:-- - `Data Types` 
+
+Strings 
+operators 
+Numbers (Int, Float) 
+Booleans 
+None
+ 
+CHAPTER 2:-- `Data Structures` 
+
+Lists                    “✅”           
+Tuple                    “✅”
+Dictionaries             “✅”
+Sets                     “✅”
+
+CHAPTER 3:-- `Python Programming Constructs` 
+
+if, elif, else statements 
+for loops, while loops 
+Exception Handling 
+File I/O operations      “✅”
+
+CHAPTER 4:--`Modular Programming in Python` 
+
+Functions                “✅”
+Classes 
+=====================================================================
+
+
+ 
+	
